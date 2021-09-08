@@ -1,0 +1,40 @@
+extends layout 
+
+block content
+    div.container
+        div.row
+            div.col.text-center
+                h1 Login to Your Account
+                p Choose from over 20 investment portfolios with high ROI
+                br
+                p.title 
+                    a(href="/signup") New Here? Sign up
+        div.row 
+            div.col.auth-bg
+                .row 
+                    .col 
+                        form.row(action="/login", method="post")
+                            div.row.gx-5.gy-3
+                                div.col
+                                    input.form-control.form-control-lg(type="email", name="email", placeholder="Email" aria-label="Email")
+                            div.row.gx-5.gy-3
+                                div.col        
+                                    input.form-control.form-control-lg(type="password", name="password", placeholder="Password", aria-label="Password", required=true)
+                            .row.gy-3.gx-5
+                                .col.d-grid 
+                                    button.btn.btn-success.btn-lg.btn-block(type="submit") Login to Your Account  
+                    .col      
+                        .row.gy-3.gx-5
+                            .col.d-grid 
+                                button.btn.btn-success.btn-lg.btn-block(type="submit") Login to Your Account 
+                        .row.gy-3.gx-5
+                            .col.d-grid 
+                                button.btn.btn-success.btn-lg.btn-block(type="submit") Login to Your Account 
+                        .row.gy-3.gx-5
+                            .col.d-grid 
+                                button.btn.btn-success.btn-lg.btn-block(type="submit") Login to Your Account                  
+                .row 
+                    .col.text-center 
+                        p.title 
+                            a(href="/reset-password") Forgot Password?
+                                  

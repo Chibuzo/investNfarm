@@ -1,0 +1,47 @@
+extends layout 
+
+block content
+    div.container
+        div.row
+            div.col.text-center
+                h1 Sign Up
+                p Choose from over 20 investment portfolios with high ROI
+        div.row 
+            div.col.auth-bg
+                if newUser 
+                    div.alert.alert-success.text-center
+                        i.fa.fa-check-circle.fa-4x
+                        br/ 
+                        | Thank you for signing up with Invest"N"Farm. 
+                        br/ A mail has been sent to you to verify your email address
+                else
+                    form.row(action="/signup", method="post")
+                        div.row.gx-5.gy-3
+                            div.col
+                                input.form-control.form-control-lg(type="text", name="fname", placeholder="First name" aria-label="First name")
+                            div.col
+                                input.form-control.form-control-lg(type="text", name="lname", placeholder="Last name" aria-label="Last name")
+                        div.row.gx-5.gy-3
+                            div.col
+                                select.form-select.form-select-lg(type="text", name="gender", placeholder="Gender" aria-label="Gender")
+                                    option(value="Female") Female
+                                    option(value="Male") Male
+                            div.col
+                                input.form-control.form-control-lg(type="text", name="phone", placeholder="Phone Number" aria-label="Phone Number")
+                        div.row.gx-5.gy-3
+                            div.col
+                                input.form-control.form-control-lg(type="email", name="email", placeholder="Email" aria-label="Email")
+                            div.col
+                                input.form-control.form-control-lg(type="text", name="country", placeholder="Country" aria-label="Country")
+                        div.row.gx-5.gy-3
+                            div.col
+                                input.form-control.form-control-lg#password(type="password", name="password", placeholder="Password" aria-label="Password")
+                            div.col
+                                input.form-control.form-control-lg#confirm_password(type="password", name="confirm_password" placeholder="Confirm Password" aria-label="Confirm Password")    
+
+                        .row.gy-3.justify-content-md-center 
+                            .col-md-3.d-grid 
+                                button.btn.btn-success.btn-lg.btn-block(type="submit") Register  
+        .row 
+            .col.text-center 
+                                  

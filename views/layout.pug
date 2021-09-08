@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/fonts.css')
+  body
+    header
+        nav(class=["navbar navbar-expand-lg navbar-light"])
+            div(class="container-fluid")
+                a.navbar-brand(href="/") 
+                    img(src="images/logo.png", width="130px")
+                button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarNav"
+                    aria-controls="navbarNav", aria-expanded=false, aria-label="Toggle navigation")
+                    span.navbar-toggler-icon
+                
+                div(class=["collapse navbar-collapse float-right"])#navbarNav
+                    ul.navbar-nav.ms-auto
+                        li.nav-item
+                            a.nav-link.mx-3(aria-current="page" href="#") Home
+                        li.nav-item
+                            a.nav-link.mx-3(href="./about") About
+                        li.nav-item
+                            a.nav-link.mx-3(href="#") Investment Guide
+                        li.nav-item
+                            a.nav-link.mx-3(href="#") Services
+                        li.nav-item
+                            a.nav-link.mx-3(href="./how-it-works.html") How it Works
+                        li.nav-item
+                            a.nav-link.mx-3(href="#") Our Farms
+                        li.nav-item
+                            a.nav-link.mx-3(href="#") Contact
+                        li.nav-item
+                            a.btn.btn-success.mx-3(href="/login") Login
+    block content
