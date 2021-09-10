@@ -20,15 +20,15 @@ html
                 div(class=["collapse navbar-collapse float-right"])#navbarNav
                     ul.navbar-nav.ms-auto
                         li.nav-item
-                            a.nav-link.mx-3(aria-current="page" href="#") Home
+                            a.nav-link.mx-3(aria-current="page" href="/") Home
                         li.nav-item
-                            a.nav-link.mx-3(href="./about") About
+                            a.nav-link.mx-3(href="#/about") About
                         li.nav-item
                             a.nav-link.mx-3(href="#") Investment Guide
                         li.nav-item
                             a.nav-link.mx-3(href="#") Services
                         li.nav-item
-                            a.nav-link.mx-3(href="./how-it-works.html") How it Works
+                            a.nav-link.mx-3(href="#/how-it-works.html") How it Works
                         li.nav-item
                             a.nav-link.mx-3(href="#") Our Farms
                         li.nav-item
@@ -36,3 +36,16 @@ html
                         li.nav-item
                             a.btn.btn-success.mx-3(href="/login") Login
     block content
+
+    footer.primary-bg.py-4
+        div.container
+            .row.text-white
+                div.col
+                    p 497 Evergreen Rd. Roseville, CA 95673<br>+44 345 678 903
+                div.col.text-end
+                    i.fab.fa-instagram
+                    i.fab.fa-twitter.mx-3
+                    i.fab.fa-facebook-f
+
+    script(src="https://kit.fontawesome.com/8f93d1598d.js")
+    script(src="/javascripts/bootstrap.bundle.min.js")                

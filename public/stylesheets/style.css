@@ -6,12 +6,28 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Gilroy-ExtraBold ☞';
 }
 
-.btn {
-    border-radius: 17px;
+.navbar-light .navbar-nav .nav-link {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.btn-success {
+    background-color: #143C2F;
+    border-color: #143C2F ;
 }
 
 .primary-bg {
-    background: #007f4b;
+    background: #329337;
+}
+
+.primary-bg a:link {
+    color: #fff;
+}
+
+.primary-bg a:visited {
+    color: #fff;
 }
 
 .secondary-bg {
@@ -33,12 +49,14 @@ h1, h2, h3, h4, h5, h6 {
 .feature-text {
     position: absolute;
     left: 40%;
-    top: 50%;
-    transform: translate(-30%, -50%);
+    /* top: 50%; */
+    transform: translate(-30%, 38%);
+    z-index: 20;
 }
 
 .feature h1 {
-    margin-top: 200px;
+    margin-top: 140px;
+    font-size: 55px;
 }
 
 .feature-image {
@@ -51,25 +69,58 @@ video {
 }
 
 .how-it-works {
-    background-image: url(../images/how-it-works.png);
+    background-image: url(../images/sec1.png);
     background-size: cover;
     padding: 70px 60px 30px;
 }
 
-.how-it-works .icon {
+.how-it-works .caption {
+    font-weight: bold;
     position: relative;
-    border-radius: 50%; 
-    width: 60px; 
-    height: 60px;
+    top: 90px;
     color: #fff;
-    font-size: larger;
+    z-index: 10;
 }
 
-.how-it-works .icon i {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.triangle {
+    position: relative;
+    top: 55px;
+    display: inline-block;
+    border-style: solid;
+    border-width: 78px 72px 0 72px;
+    border-color: #329337 transparent transparent transparent;
+}
+
+.button-right {
+    float: left;
+    width: 0; 
+    height: 0; 
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    cursor: pointer;
+    border-left: 30px solid #329337;
+}
+
+.button-left {
+    float: right;
+    width: 0; 
+    height: 0; 
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent; 
+    cursor: pointer;
+    border-right:30px solid #fff; 
+}
+
+.inner-text {
+    background: #fff;
+    padding: 50px 20px;
+    padding-top: 70px;
+    height: 300px
+}
+
+.about-features {
+    background-image: url(../images/tractor.png);
+    background-size: cover;
 }
 
 .risks img {
@@ -114,6 +165,21 @@ video {
 
 }
 
+.why-invest {
+    border: 3px solid #329337;
+    color: #329337;
+    padding: 40px;
+    transition: transform .2s ease-out;
+}
+
+.why-invest span {
+    color: #333;
+}
+
+.why-invest:hover {
+    transform: scale(1.1);
+}
+
 .details {
     padding: 15px;
     text-align: left;
@@ -121,7 +187,12 @@ video {
 }
 
 .testimony {
-    background-color: #fff;
+   background-image: url(../images/blackwoman.png);
+   background-repeat: no-repeat; 
+   background-position: 98% -20px;
+   background-color: #329337;
+   opacity: 1;
+   color:#fff;
 }
 
 .team-photo {
@@ -129,7 +200,8 @@ video {
 }
 
 .team-photo img {
-    width: 100%
+    width: 100%;
+    opacity: 0.5
 }
 
 .team-details {
@@ -138,4 +210,42 @@ video {
     text-align: center;
     padding: 10px;
     background: #007f4b;
+}
+
+.faq {
+    background-image: url(../images/wheat.png);
+}
+
+.auth_bg {
+    background: #adb1ad;
+    color: #fff;
+}
+
+.signup-bg {
+    background-image: url(../images/tractor.png);
+    background-size: cover;
+}
+
+.accordion-item, .accordion-button {
+    background-color: transparent;
+    border: none;
+}
+
+.accordion-button:not(.collapsed) {
+    color: inherit;
+}
+
+#slide2 {
+    opacity: 0;
+    animation: fade-in 0.5s ease-in;
+}
+
+@keyframes fade-in {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+@keyframes fade-out {
+	0% { opacity: 1; }
+	100% { opacity: 0; }
 }

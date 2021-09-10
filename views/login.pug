@@ -1,40 +1,41 @@
 extends layout 
 
 block content
-    div.container
+    div.container-fluid.primary-bg.text-white
         div.row
             div.col.text-center
-                h1 Login to Your Account
+                h1.pt-4 Login to Your Account
                 p Choose from over 20 investment portfolios with high ROI
-                br
                 p.title 
                     a(href="/signup") New Here? Sign up
         div.row 
-            div.col.auth-bg
-                .row 
-                    .col 
-                        form.row(action="/login", method="post")
-                            div.row.gx-5.gy-3
-                                div.col
-                                    input.form-control.form-control-lg(type="email", name="email", placeholder="Email" aria-label="Email")
-                            div.row.gx-5.gy-3
-                                div.col        
-                                    input.form-control.form-control-lg(type="password", name="password", placeholder="Password", aria-label="Password", required=true)
+            div.col
+                .container.px-5
+                    .row.px-3 
+                        .col-md-6.col-sm-12.col-xs-12 
+                            form.row(action="/login", method="post")
+                                div.row.gx-5.gy-3
+                                    div.col
+                                        input.form-control.form-control-lg(type="email", name="email", placeholder="Email" aria-label="Email")
+                                div.row.gx-5.gy-2
+                                    div.col        
+                                        input.form-control.form-control-lg(type="password", name="password", placeholder="Password", aria-label="Password", required=true)
+                                .row.gy-2.gx-5
+                                    .col.d-grid 
+                                        button.btn.btn-success.btn-lg.btn-block(type="submit") Login to Your Account  
+                        .col-md-6.col-sm-12.col-xs-12.mt-4     
+                            .row.gy-3
+                                .col.d-grid 
+                                    button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Sign in With Google 
                             .row.gy-3.gx-5
                                 .col.d-grid 
-                                    button.btn.btn-success.btn-lg.btn-block(type="submit") Login to Your Account  
-                    .col      
-                        .row.gy-3.gx-5
-                            .col.d-grid 
-                                button.btn.btn-success.btn-lg.btn-block(type="submit") Login to Your Account 
-                        .row.gy-3.gx-5
-                            .col.d-grid 
-                                button.btn.btn-success.btn-lg.btn-block(type="submit") Login to Your Account 
-                        .row.gy-3.gx-5
-                            .col.d-grid 
-                                button.btn.btn-success.btn-lg.btn-block(type="submit") Login to Your Account                  
-                .row 
-                    .col.text-center 
-                        p.title 
-                            a(href="/reset-password") Forgot Password?
+                                    button.btn.btn-success.btn-lg.btn-block.mt-3(type="button") Sign in With Facebook 
+                            .row.gy-3.gx-5
+                                .col.d-grid 
+                                    button.btn.btn-success.btn-lg.btn-block.mt-3(type="submit") Sign in With Apple Account                  
+                    .row 
+                        .col.text-center 
+                            br/ <br>
+                            p.title 
+                                a(href="#/reset-password") Forgot Password?
                                   
