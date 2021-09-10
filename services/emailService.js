@@ -17,14 +17,14 @@ let transporter = nodemailer.createTransport({
     pool: true,
     rateLimit: 20,
     auth: {
-        user: 'noreply@getqualified.work',
-        pass: 'GQ+18#n3w@pzwd&'
+        user: 'noreply@dumena.com.ng',
+        pass: 'change+this'
     }
 });
 transporter.use('compile', hbs(options));
 
 const BASE_URL = process.env.BASE_URL;
-const SENT_FROM = 'noreply@farmninvest.com';
+const SENT_FROM = 'noreply@dumena.com.ng';
 
 const sendMail = (to, subject, template, data) => {
     let mailOptions = {
