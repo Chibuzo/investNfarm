@@ -5,10 +5,16 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 var hbs = require('nodemailer-express-handlebars');
 
-var options = {
-    viewEngine: 'express-handlebars',
+const options = {
+    viewEngine: {
+        extName: '.hbs',
+        partialsDir: '/views/emails/',
+        layoutsDir: '',
+        defaultLayout: '',
+    },
     viewPath: path.join(__dirname, '../views/emails/')
 };
+
 let transporter = nodemailer.createTransport({
     //host: 'email-smtp.us-east-1.amazonaws.com',
     host: 'smtp.zoho.com',
