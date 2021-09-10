@@ -9,6 +9,10 @@ const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
+// sync all tables
+(async function () {
+    await sequelize.sync({ alter: true });
+})();
 
 fs
     .readdirSync(__dirname)
