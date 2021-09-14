@@ -10,28 +10,30 @@ block content
                     a(href="/signup") New Here? Sign up
         div.row 
             div.col
-                .container.px-5
-                    .row.px-3 
-                        .col-md-6.col-sm-12.col-xs-12 
-                            form.row(action="/login", method="post")
-                                div.row.gx-5.gy-3
-                                    div.col
+                .container
+                    .row 
+                        .col-md-6.col-sm-12.col-xs-12.mt-4
+                            form(action="/login", method="post")
+                                div.row
+                                    div.col.mb-3.pe-md-4.ps-md-5
                                         input.form-control.form-control-lg(type="email", name="email", placeholder="Email" aria-label="Email")
-                                div.row.gx-5.gy-2
-                                    div.col        
+                                div.row
+                                    div.col.mb-3.pe-md-4.ps-md-5    
                                         input.form-control.form-control-lg(type="password", name="password", placeholder="Password", aria-label="Password", required=true)
-                                .row.gy-2.gx-5
-                                    .col.d-grid 
+                                .row.gy-2
+                                    .col.d-grid.pe-md-4.ps-md-5
                                         button.btn.btn-success.btn-lg.btn-block(type="submit") Login to Your Account  
-                        .col-md-6.col-sm-12.col-xs-12.mt-4     
+                        .col-md-6.col-sm-12.col-xs-12.mt-3
                             .row.gy-3
-                                .col.d-grid 
+                                .col-md-12.mt-5.d-block.d-sm-none
+                                    h2.text-center OR
+                                .col.d-grid.pe-md-5.ps-md-4
                                     button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Sign in With Google 
-                            .row.gy-3.gx-5
-                                .col.d-grid 
+                            .row.gy-3
+                                .col.d-grid.pe-md-5.ps-md-4
                                     button.btn.btn-success.btn-lg.btn-block.mt-3(type="button") Sign in With Facebook 
-                            .row.gy-3.gx-5
-                                .col.d-grid 
+                            .row.gy-3
+                                .col.d-grid.pe-md-5.ps-md-4
                                     button.btn.btn-success.btn-lg.btn-block.mt-3(type="submit") Sign in With Apple Account                  
                     .row 
                         .col.text-center 
