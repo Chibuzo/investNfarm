@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 20;
 }
 
-.feature h1 {
+.feature-text h1 {
     margin-top: 140px;
     font-size: 55px;
 }
@@ -89,6 +89,7 @@ video {
     border-style: solid;
     border-width: 78px 72px 0 72px;
     border-color: #329337 transparent transparent transparent;
+    z-index: 8;
 }
 
 .button-right {
@@ -115,7 +116,12 @@ video {
     background: #fff;
     padding: 50px 20px;
     padding-top: 70px;
-    height: 300px
+    height: 300px;
+    transition: transform .2s ease-out;
+}
+
+.inner-text:hover {
+    transform: scale(1.05);
 }
 
 .about-features {
@@ -177,7 +183,7 @@ video {
 }
 
 .why-invest:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .details {
@@ -197,6 +203,11 @@ video {
 
 .team-photo {
     padding: 10px;
+    transition: transform .2s ease-out;
+}
+
+.team-photo:hover {
+    transform: scale(1.05);
 }
 
 .team-photo img {
@@ -248,4 +259,23 @@ video {
 @keyframes fade-out {
 	0% { opacity: 1; }
 	100% { opacity: 0; }
+}
+
+/***
+    Tablets
+*/
+@media (min-width: 768px) { 
+    .feature-text h1 {
+        margin-top: 0;
+    }
+}
+
+/***
+    Mobile
+*/
+@media (max-width: 576px) {
+    .feature-text h1 {
+        font-size: 26px;
+        margin-top: -22px;
+    }
 }

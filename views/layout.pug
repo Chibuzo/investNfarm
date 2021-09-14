@@ -3,10 +3,11 @@ html
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title= title
+    title InvestNFarm - #{title}
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/fonts.css')
+    block styleBlock
   body
     header
         nav(class=["navbar navbar-expand-lg navbar-light"])
@@ -48,4 +49,5 @@ html
                     i.fab.fa-facebook-f
 
     script(src="https://kit.fontawesome.com/8f93d1598d.js")
-    script(src="/javascripts/bootstrap.bundle.min.js")                
+    script(src="/javascripts/bootstrap.bundle.min.js")  
+    block scriptBlock              

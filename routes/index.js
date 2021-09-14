@@ -4,7 +4,7 @@ const userService = require('../services/userService');
 
 
 router.get('/', function (req, res) {
-    res.render('index', { title: 'Express' });
+    res.render('index', { title: 'Welcome' });
 });
 
 router.get('/signup', (req, res) => {

@@ -1,5 +1,9 @@
 extends layout
 
+block styleBlock 
+    link(rel='stylesheet', href='/stylesheets/owl.carousel.min.css')
+    link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
+
 block content
     div.container-fluid.feature
         div.row.feature-text
@@ -55,12 +59,12 @@ block content
             .col.text-center
                 h2.mb-5 WHY INVEST"N"FARM?
         .row.gx-5 
-            .col 
+            .col-md-3.col-sm-12.col-xs-12 
                 .why-invest.text-center.mt-5
                     h3 YOU
                     p   
                         i.fa.fa.lg.fa-caret-right &nbsp; <span>INVEST</span>
-            .col-6 
+            .col-md-6.col-sm-12.col-xs-12
                 .why-invest 
                     h3.text-center.mt-3 WE
                     .row 
@@ -72,8 +76,8 @@ block content
                                 i.fa.fa.lg.fa-caret-right &nbsp; <span>PROCESS</span>
                             p    
                                 i.fa.fa.lg.fa-caret-right &nbsp; <span>SELL</span>
-            .col
-                .why-invest.text-center.mt-5 
+            .col-md-3.col-sm-12.col-xs-12
+                .why-invest.text-center.mt-md-5 
                     h3 YOU
                     p   
                         i.fa.fa.lg.fa-caret-right &nbsp; <span>PROFIT</span>
@@ -84,34 +88,33 @@ block content
                 .button-left.mr-1#show-slide1
             .col
                 .button-right.ml-1#show-slide2
-        .container#slide1      
+        .container#slide1   
             .row       
-                .col 
+                .col-md-6.col-sm-12.col-xs-12 
                     h5 ADD VALUE TO HUMANITY
                     p Millions of people are starving in Africa and the world at large because the demand for foods has overshot the supply. Invest”N”Farm is an AgriTech product that bridges the gap between the demand for food and its supply by partnering with farmers and landowners in Africa to create more farming opportunities. As a result, job opportunities are created, food production is increased and Return On Investment (ROI) is certain where supply is at par with demand.
-                .col                        
+                .col-md-6.col-sm-12.col-xs-12                      
                     h5 EASE OF USE
                     P As an AgriTech product, Invest”N”Farm makes it extremely easy for you to venture into the agricultural business terrain by using your mobile phone or PC. Being a digital agricultural investor opens you up to tremendous opportunities on a global scale all from the comfort of your home and digital devices.
-            .row.mb-5    
-                .col 
+             
+                .col-md-6.col-sm-12.col-xs-12 
                     h5 DIVERSIFIED PORTFOLIO
                     p Invest”N”Farm does not limit your investment opportunities to only a few products. Our list of investment portfolios includes all cash crops and livestock. Moreover, our agricultural settlements are not limited to only one geographical area. We have plantations in different parts of the continent which creates more global opportunities to have a diversified portfolio in the Agricultural marketplace.
-                .col 
+                .col-md-6.col-sm-12.col-xs-12 
                     h5 START WITH LITTLE FUNDS
                     p Invest”N”Farm has no minimum investment amount to get started. Start with what you have and watch your investment grow. All you have to do is fund your wallet and choose from any of our investment portfolios.    
         .container.d-none#slide2      
             .row   
-                .col 
+                .col-md-6.col-sm-12.col-xs-12 
                     h5 WITHDRAW FROM YOUR WALLET
                     p Funding your wallet does not mean that you cannot withdraw from your wallet at your will. Your wallet with us only provides a temporary place where you can keep funds to use for investment in any of our investment portfolios.    
-                .col 
+                .col-md-6.col-sm-12.col-xs-12
                     h5 ANALYTICAL DASHBOARD
                     p Funding your wallet does not mean that you cannot withdraw from your wallet at your will. Your wallet with us only provides a temporary place where you can keep funds to use for investment in any of our investment portfolios.
-            .row.mb-5     
-                .col                        
+                .col-md-6.col-sm-12.col-xs-12                       
                     h5 INVESTMENT CALCULATOR
                     P Make informed choices about investment opportunities with Invest”N”Farm by using the in-built Return On Investment (ROI) Calculator.   
-                .col 
+                .col-md-6.col-sm-12.col-xs-12 
                     h5 SECURE & SAFE
                     p Invest”N”Farm runs on a Secure Socket Layer (SSL) that ensures that all messages transmitted from the site are encrypted. For mobile payments, Invest”N”Farm has integrated the Flutterwave payment gateway, which is highly secure. With Invest”N”Farm, your funds stay safe as our farms are insured and secured as a strategy for risk management.
 
@@ -119,24 +122,24 @@ block content
         .row    
             .col
                 h2.text-center.mb-5 ALL OUR PROJECTS
-        .row.mb-5.px-4 
+        .row.mb-5.px-4#add-slide 
             div.col-md-3.col-xs-12.mt-2.text-center 
-                strong GOAT FARMING
+                strong GOAT FARMING 1
                 div.team-photo
                     img(src="./images/coming-soon-placeholder.png")
                     div.team-details Read more   
             div.col-md-3.col-xs-12.mt-2.text-center 
-                strong GOAT FARMING
+                strong GOAT FARMING 2
                 div.team-photo
                     img(src="./images/coming-soon-placeholder.png")
                     div.team-details Read more   
             div.col-md-3.col-xs-12.mt-2.text-center 
-                strong GOAT FARMING
+                strong GOAT FARMING 3
                 div.team-photo
                     img(src="./images/coming-soon-placeholder.png")
                     div.team-details Read more   
             div.col-md-3.col-xs-12.mt-2.text-center 
-                strong GOAT FARMING
+                strong GOAT FARMING 4
                 div.team-photo
                     img(src="./images/coming-soon-placeholder.png")
                     div.team-details Read more                   
@@ -144,15 +147,15 @@ block content
     .container-fluid.testimony.py-5 
         .row 
             .col-1
-            .col-4
+            .col-md-4.col-sm-12.col-xs-12
                 h2.mt-5 “Invest “N” Farm has earned me high yielding profits in such a little while, I am glad that I have invested in this platform.” 
                 h5.mt-5 Sandra, Hair Dresser, USA   
 
     .container-fluid.faq
         .row 
-            .col-6 
-                img(src="./images/FAQ.png" style="opacity: 0.3; margin-top: 183px")
-            .col.py-5
+            .col-md-6.col-sm-12.col-xs-12
+                img(src="./images/FAQ.png" style="opacity: 0.3; margin-top: 183px; width: 100%")
+            .col-md-5.col-sm-12.col-xs-12.py-5
                 h4.mt-5 Questions?   
                 
                 .accordion#accordionExample
@@ -175,6 +178,11 @@ block content
                         #collapseThree.accordion-collapse.collapse(aria-labelledby='headingThree' data-bs-parent='#accordionExample')
                             .accordion-body Every investment portfolio has it's own tenure
             .col-1  
+
+block scriptBlock
+    script(src="/javascripts/jquery.min.js")
+    script(src="/javascripts/owl.carousel.min.js")  
+
     script. 
         const slide1 = document.querySelector('#slide1');
         const slide2 = document.querySelector('#slide2');
@@ -205,4 +213,31 @@ block content
             slide1.style.opacity = "1";
             this.style.borderRightColor = "#fff";
             document.querySelector('#show-slide2').style.borderLeftColor = "#329337";
+        });
+
+        if (window.innerWidth <= 576) {
+            document.querySelector('#add-slide').classList.add('owl-carousel');
+        }
+
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                loop:true,
+                margin:10,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                        nav:false
+                    },
+                    600:{
+                        items:3,
+                        nav:false
+                    },
+                    1000:{
+                        items:5,
+                        nav:false,
+                        loop:false
+                    }
+                }
+            })
         });

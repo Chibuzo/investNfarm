@@ -7,7 +7,6 @@ module.exports = {
         "database": process.env.DEV_DB_NAME,
         "host": '127.0.0.1',
         "dialect": "mysql",
-        //"operatorsAliases": false
     },
     "production": {
         "username": process.env.DB_USER,
@@ -15,6 +14,5 @@ module.exports = {
         "database": process.env.DB_NAME,
         "host": process.env.DB_HOST,
         "dialect": "mysql",
-        //"operatorsAliases": false
     }
 }
