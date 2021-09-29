@@ -1,0 +1,91 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  title AdminLTE 2 | Starter
+  // Tell the browser to be responsive to screen width
+  meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport')
+  link(rel='stylesheet' href='/css/bootstrap.min.css')
+  // Font Awesome
+  link(rel='stylesheet' href='/css/font-awesome.min.css')
+  // Ionicons
+  link(rel='stylesheet' href='/css/ionicons.min.css')
+  // Theme style
+  link(rel='stylesheet' href='/css/AdminLTE.min.css')
+  link(rel='stylesheet' href='/css/skin-green.min.css')
+  //if lt IE 9
+    script(src='https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')
+    script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+  // Google Font
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic')
+
+body.hold-transition.skin-green.sidebar-mini
+    .wrapper
+        // Main Header
+        header.main-header
+            // Logo
+            a.logo(href='/admin/dashboard')
+                // mini logo for sidebar mini 50x50 pixels
+                span.logo-mini
+                    b A
+                    | LT
+                // logo for regular state and mobile devices
+                span.logo-lg
+                    b Admin
+                    | LTE
+                // Header Navbar
+            nav.navbar.navbar-static-top(role='navigation')
+                // Sidebar toggle button
+                a.sidebar-toggle(href='#' data-toggle='push-menu' role='button')
+                    span.sr-only Toggle navigation
+
+        aside.main-sidebar
+            // sidebar: style can be found in sidebar.less
+            section.sidebar
+                // Sidebar user panel (optional)
+                .user-panel
+                    .pull-left.image
+                        img.img-circle(src='/img/user2-160x160.jpg' alt='User Image')
+                    .pull-left.info
+                        p #{admin.fullname}
+                        // Status
+                        a(href='#')
+                            i.fa.fa-circle.text-success
+                            |  Online
+            
+                // Sidebar Menu
+                ul.sidebar-menu(data-widget='tree')
+                    li.header HEADER
+                    // Optionally, you can add icons to the links
+                    li.active
+                        a(href='./dashboard')
+                            i.fa.fa-dashboard
+                            span Dashboard
+                    li
+                        a(href='./portfolios')
+                            i.fa.fa-briefcase
+                            span Portfolios
+                    li
+                        a(href='./transactions')
+                            i.fa.fa-credit-card
+                            span Transactions
+                    li
+                        a(href='./investors')
+                            i.fa.fa-users
+                            span Investors                                
+               
+        .content-wrapper      
+            block content
+
+        // Main Footer
+        footer.main-footer
+           
+   
+    // ./wrapper
+// REQUIRED JS SCRIPTS
+// jQuery 3
+script(src='/js/jquery.min.js')
+// Bootstrap 3.3.7
+script(src='/js/bootstrap.min.js')
+// AdminLTE App
+script(src='/js/adminlte.min.js')

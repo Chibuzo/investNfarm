@@ -1,0 +1,23 @@
+extends layout 
+
+block content
+    section.content-header
+        h1
+            | Pending Requests
+            small Needs your approval
+        
+    // Main content
+    section.content
+        .row
+            .col-md-6
+                .box
+                    .box-header.with-border
+                        h3.box-title Pending Investment Request
+                    .box-body
+                        table.table.table-bordered
+                            tr
+                                th(style='width: 10px') #
+                                th Task
+                                th Progress
+                                th(style='width: 40px') Label
+
