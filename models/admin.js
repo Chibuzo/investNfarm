@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
         },
         email: {
             type: DataTypes.STRING,
-            unique: true,
             allowNull: false
         },
         type: {
@@ -20,7 +19,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             defaultValue: true
         }
-    }, {});
+    }, {
+        indexes: [
+            { unique: true, fields: ['email'] }
+        ]
+    });
 
     return Admin;
 }

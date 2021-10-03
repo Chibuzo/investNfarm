@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const adminService = require('../services/adminService');
 const authenticateAdmin = require('../middlewares/authenticateAdmin');
+const investmentService = require('../services/investmentService');
+
 
 router.get('/', function (req, res) {
     res.render('admin/login', { title: 'Admin Login' });
@@ -30,14 +32,29 @@ router.post('/login', async (req, res, next) => {
 });
 
 router.get('/dashboard', authenticateAdmin, async (req, res, next) => {
-    res.render('admin/dashboard', { admin: req.session.admin });
+    res.render('admin/dashboard', {});
 });
 
-router.get('/portfolio', authenticateAdmin, async (req, res) => {
+router.get('/portfolio', authenticateAdmin, async (req, res, next) => {
     try {
-
+        const investments = await investmentService.list();
+        res.render('admin/portfolio', { investments });
     } catch (err) {
         next(err);
     }
 });
+
+router.get('/portfolio/new', authenticateAdmin, async (req, res) => {
+    res.render('admin/new-portfolio');
+});
+
+router.post('/portfolio', authenticateAdmin, async (req, res, next) => {
+    try {
+        await investmentService.create(req.body);
+        res.redirect('/admin/portfolio');
+    } catch (err) {
+        next(err);
+    }
+})
+
 module.exports = router;

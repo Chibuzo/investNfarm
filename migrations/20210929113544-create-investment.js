@@ -13,6 +13,10 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false
             },
+            unit_cost: {
+                type: Sequelize.INTEGER,
+                allowNull: false
+            },
             country: Sequelize.STRING,
             period: Sequelize.INTEGER,
             units: Sequelize.INTEGER,

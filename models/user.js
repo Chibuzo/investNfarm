@@ -9,12 +9,10 @@ module.exports = (sequelize, DataTypes) => {
         gender: DataTypes.STRING,
         email: {
             type: DataTypes.STRING,
-            unique: true,
             allowNull: false
         },
         phone: {
             type: DataTypes.STRING,
-            unique: true
         },
         country: DataTypes.STRING,
         password: DataTypes.STRING,
@@ -22,9 +20,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         }
-    }, {});
+    }, {
+        indexes: [
+            { unique: true, fields: ['email'] },
+            { unique: true, fields: ['phone'] }
+        ]
+    });
+
     User.associate = function (models) {
-        // associations can be defined here
+        User.hasMany(models.UserInvestments);
     };
 
     return User;

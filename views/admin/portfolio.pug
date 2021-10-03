@@ -7,21 +7,38 @@ block content
             small Needs your approval
         
     // Main content
-    section.content
-         .row 
-            .col 
-                button.btn.btn-danger.btn.lg.pull-right 
-                    .fa.fa-plus New Portfolio   
+    section.content  
         .row
-            .col-md-6
+            .col-md-12
                 .box
                     .box-header.with-border
                         h3.box-title Pending Investment Request
+                        a.btn.btn-danger.btn.lg.pull-right(href="/admin/portfolio/new")
+                            .fa.fa-plus 
+                            |  New Portfolio 
                     .box-body
-                        table.table.table-bordered
-                            tr
-                                th(style='width: 10px') #
-                                th Task
-                                th Progress
-                                th(style='width: 40px') Label
+                        if investments.length
+                            table.table.table-striped
+                                thead
+                                    tr
+                                        th Investment
+                                        th Country
+                                        th Unit Cost
+                                        th Period
+                                        th Units 
+                                        th ROI
+                                        th Investors / Sold Units 
+                                        th Remaining Units
+                                tbody
+                                    each inv in investments 
+                                        tr 
+                                            td= inv.investment_name 
+                                            td= inv.country 
+                                            td= inv.unit_cost 
+                                            td= inv.period 
+                                            td= inv.units 
+                                            td= inv.roi + '%'
+                                            td= inv.investorCount + ' / ' + inv.soldUnitCount
+                                            td= inv.units - inv.soldUnitCount      
+
 

@@ -6,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        unit_cost: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         country: {
             type: DataTypes.STRING,
             allowNull: false
@@ -20,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: true
         }
     }, {});
+
+    Investment.associate = function (models) {
+        Investment.hasMany(models.UserInvestments, { as: 'investors' });
+    };
 
     return Investment;
 }
