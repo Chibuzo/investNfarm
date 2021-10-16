@@ -6,6 +6,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        about: {
+            type: DataTypes.TEXT
+        },
         unit_cost: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -19,6 +22,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         units: DataTypes.INTEGER,
         roi: DataTypes.INTEGER,
+        photo_url: {
+            type: DataTypes.STRING
+        },
         active: {
             type: DataTypes.BOOLEAN,
             defaultValue: true

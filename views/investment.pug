@@ -1,0 +1,70 @@
+extends layout
+
+block content
+    #loginModal.modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+            .modal-header
+                h5#exampleModalLabel.modal-title Modal title
+                button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+            .modal-body
+                | ...
+            .modal-footer
+                button.btn.btn-secondary(type='button', data-bs-dismiss='modal') Close
+                button.btn.btn-primary(type='button') Save changes
+    .container-fluid 
+        .row 
+            .col 
+                .page-header-title
+    .container 
+        .row 
+            .col-md-8 
+                .content.py-5.px-4
+                    h1= investment.investment_name
+                    - const available_units = investment.units - investment.sold_unit_count
+                    .row 
+                        .col #[strong Unit Cost]: #{investment.unit_cost}
+                        .col #[strong Total Units]: #{investment.units}
+                        .col #[strong Available Unit]: #{available_units}
+                    .row.mt-4 
+                        .col #[strong Location]: #{investment.country}
+                        .col #[strong Duration]: #{investment.period} Months 
+                        .col #[strong ROI]: #{investment.roi}%
+
+                    div= investment.about 
+                    if user   
+                        button.btn.btn-lg.btn-success(type="button" onClick=`payWithPaystack('${user.email}', ${investment.unit_cost * 100}, ${investment.id})`) Invest Now  
+                    else
+                        button.btn.btn-lg.btn-success(type="button" data-bs-toggle="modal" data-bs-target="#loginModal") Invest Now
+            .col-md-4 
+                h5 Similar Investments    
+
+
+    block scriptBlock 
+    script(src="https://js.paystack.co/v1/inline.js")
+    script.
+
+
+        function payWithPaystack(email, amount, investment_id) {
+            const handler = PaystackPop.setup({
+                // key: 'pk_live_b3743bc7dcaf617dbc44185234fd260f237d3846',
+                key: "pk_test_1af52eb927ab26800c2a1fd2a705f9823375333b",
+                email,
+                amount,
+                currency: "NGN",
+                callback: function(response){
+                    const { reference, status } = response;
+
+                    // ajax call to send email
+                    $.post('/confirmpayment', { reference, status, amount }, function(d) {
+                        if (d.status.trim() === 'success') {
+                            location.replace(`/user/investment/${investment_id}`);
+                        }
+                    }, 'JSON');
+                },
+                onClose: function(){
+                    alert('Payment cancelled');
+                }
+            });
+            handler.openIframe();
+        }

@@ -123,26 +123,14 @@ block content
             .col
                 h2.text-center.mb-5 ALL OUR PROJECTS
         .row.mb-5.px-4#add-slide 
-            div.col-md-3.col-xs-12.mt-2.text-center 
-                strong GOAT FARMING 1
-                div.team-photo
-                    img(src="./images/coming-soon-placeholder.png")
-                    div.team-details Read more   
-            div.col-md-3.col-xs-12.mt-2.text-center 
-                strong GOAT FARMING 2
-                div.team-photo
-                    img(src="./images/coming-soon-placeholder.png")
-                    div.team-details Read more   
-            div.col-md-3.col-xs-12.mt-2.text-center 
-                strong GOAT FARMING 3
-                div.team-photo
-                    img(src="./images/coming-soon-placeholder.png")
-                    div.team-details Read more   
-            div.col-md-3.col-xs-12.mt-2.text-center 
-                strong GOAT FARMING 4
-                div.team-photo
-                    img(src="./images/coming-soon-placeholder.png")
-                    div.team-details Read more                   
+            each inv in investments
+                - const url_path = inv.investment_name.split(' ').join('-')
+                div.col-md-3.col-xs-12.mt-2.text-center 
+                    strong= inv.investment_name
+                    div.team-photo
+                        img(src="./images/coming-soon-placeholder.png")
+                        div.team-details 
+                            a(href=`/investment/${inv.id}/${url_path}`) Read more                
 
     .container-fluid.testimony.py-5 
         .row 

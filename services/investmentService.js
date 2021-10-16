@@ -1,15 +1,15 @@
 const Investment = require('../models').Investment;
 const { ErrorHandler } = require('../helpers/errorHandler');
+const { uploadFile } = require('../helpers/fileUpload');
 
-const create = async investmentData => {
-    return Investment.create(investmentData);
+const create = async ({ body: investmentData, files }) => {
+    const photo_url = await uploadFile(files);
+    return Investment.create({ ...investmentData, photo_url });
 }
 
 const view = async id => {
-    const investment = await Investment.findOne({ where: { id }, include: 'UserInvestments' });
-    const investorsCount = investment.UserInvestments.length;
-    const soldUnitCount = investment.UserInvestments.reduce((totalUnits, user) => totalUnits + user.units, 0);
-    return { ...investment, investorsCount, soldUnitCount };
+    const investment = await Investment.findOne({ where: { id }, include: 'investors' });
+    return sanitize(investment);
 }
 
 const list = async (criteria = {}) => {
@@ -18,10 +18,7 @@ const list = async (criteria = {}) => {
         include: 'investors',
     });
 
-    return investments.map(investment => {
-        const soldUnitCount = investment.investors.reduce((totalUnits, user) => totalUnits + user.units, 0);
-        return { ...investment.toJSON(), investorCount: investment.investors.length, soldUnitCount };
-    });
+    return investments.map(investment => sanitize(investment));
 }
 
 const invest = async ({ userId, investmentId, units = 0 }) => {
@@ -29,6 +26,14 @@ const invest = async ({ userId, investmentId, units = 0 }) => {
     if (!investment) throw new ErrorHandler(404, 'Investment not found');
 
     return investment.createUserInvestments({ userId, investmentId, units });
+}
+
+const sanitize = investment => {
+    return {
+        ...investment.toJSON(),
+        investor_count: investment.investors.length,
+        sold_unit_count: investment.investors.reduce((totalUnits, user) => totalUnits + user.units, 0)
+    };
 }
 
 module.exports = {

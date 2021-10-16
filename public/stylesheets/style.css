@@ -68,6 +68,12 @@ video {
     width: 100%;
 }
 
+.page-header-title {
+    height: 20vh;
+    background-image: url(../images/sec1.png);
+    background-size: cover;
+}
+
 .how-it-works {
     background-image: url(../images/sec1.png);
     background-size: cover;
@@ -244,6 +250,10 @@ video {
 
 .accordion-button:not(.collapsed) {
     color: inherit;
+}
+
+.content {
+    
 }
 
 #slide2 {

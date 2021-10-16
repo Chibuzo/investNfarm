@@ -50,7 +50,7 @@ router.get('/portfolio/new', authenticateAdmin, async (req, res) => {
 
 router.post('/portfolio', authenticateAdmin, async (req, res, next) => {
     try {
-        await investmentService.create(req.body);
+        await investmentService.create(req);
         res.redirect('/admin/portfolio');
     } catch (err) {
         next(err);

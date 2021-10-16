@@ -1,5 +1,7 @@
 'use strict';
 
+const { sequelize } = require("../models");
+
 module.exports = {
     up: async (queryInterface, Sequelize) => {
         return queryInterface.createTable('investments', {
@@ -13,6 +15,9 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false
             },
+            about: {
+                type: sequelize.TEXT
+            },
             unit_cost: {
                 type: Sequelize.INTEGER,
                 allowNull: false
@@ -21,6 +26,7 @@ module.exports = {
             period: Sequelize.INTEGER,
             units: Sequelize.INTEGER,
             roi: Sequelize.INTEGER,
+            photo_url: Sequelize.STRING,
             active: Sequelize.BOOLEAN,
             createdAt: {
                 allowNull: false,
