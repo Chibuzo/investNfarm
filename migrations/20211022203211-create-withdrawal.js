@@ -1,27 +1,38 @@
 'use strict';
 
+const { sequelize } = require("../models");
+
 module.exports = {
     up: async (queryInterface, Sequelize) => {
-        return queryInterface.createTable('userInvestments', {
+        return queryInterface.createTable('withdrawals', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            UserId: {
+            user_id: {
                 type: Sequelize.INTEGER,
+                allowNull: false
             },
-            InvestmentId: {
+            bank: {
+                type: Sequelize.STRING,
+                allowNull: false
+            },
+            account_name: {
+                type: Sequelize.STRING,
+                allowNull: false
+            },
+            account_number: {
+                type: Sequelize.STRING,
+                allowNull: false
+            },
+            amount: {
                 type: Sequelize.INTEGER,
+                allowNull: false
             },
-            units: {
-                type: Sequelize.INTEGER,
-                defaultValue: 1
-            },
-            active: {
-                type: Sequelize.BOOLEAN,
-                defaultValue: true
+            status: {
+                type: Sequelize.STRING,
             },
             createdAt: {
                 allowNull: false,
@@ -35,6 +46,6 @@ module.exports = {
     },
 
     down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable('userInvestments');
+        await queryInterface.dropTable('withdrawals');
     }
 };

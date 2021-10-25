@@ -1,0 +1,134 @@
+extends layout 
+
+block styleBlock 
+    link(rel='stylesheet', href='/stylesheets/owl.carousel.min.css')
+    link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
+
+block content
+    section.content-header
+        h1 Virtual Wallet
+        
+    // Main content
+    section.content
+        .row
+            .col-md-9
+                .box
+                    .box-header
+                        h3.box-title Transactions
+                    .box-body
+                        .row 
+                            .col-md-12.table-responsive
+                                table.table.table-striped(style="margin-top: 10px")
+                                    thead
+                                        tr
+                                            th Date
+                                            th Description
+                                            th Amount
+                                            th Status
+                                            th Details
+                                    tbody
+                                        each trnx in transactions 
+                                            - let row = trnx.type === 'C' ? 'success' : 'danger'
+                                            - if (trnx.status === 'pending') row = 'active'
+                                            tr(class=`${row}`)
+                                                td= view.formatDate(trnx.createdAt)
+                                                td= trnx.description 
+                                                td= '₦' + view.formatCurrency(trnx.amount) 
+                                                td= trnx.status
+                                                td
+                                                    a(href="/investment") View Details         
+            .col-md-3 
+                h3 Wallet Balance: ₦#{view.formatCurrency(balance)}
+                hr
+                p #[strong TOP UP WALLET]
+                .row
+                    .col-md-12
+                        .input-group
+                            input.form-control#amount(type="text", name="amount", placeholder="Amount" aria-label="Amount")
+                            .input-group-btn
+                                button.btn.btn-danger#topup Top Up
+                .row(style="margin-top: 40px")      
+                    .col-md-12 
+                        P #[strong WITHDRAW FROM YOUR WALLET]
+                        p Note that your withdrawal request will take about 48 hours to process    
+                        button.btn.btn-success(data-toggle="modal" data-target="#withdrawal-modal") Request Withdrawal       
+
+block Modals 
+    #withdrawal-modal.modal.fade
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                        span(aria-hidden='true') &times;
+                    h4.modal-title Withdrawal Form
+                .modal-body
+                    form#account-form(action="/account/add-account" method="post")
+                        .form-group 
+                            label Bank 
+                            select.form-control#bank(name="bank" required)
+                                option(value="") -- Select Bank --
+                                option(value="Access Bank Nigeria Plc") Access Bank Nigeria Plc
+                                option(value="ACCION Microfinance bank") ACCION Microfinance bank
+                                option(value="Aso Savings") Aso Savings
+                                option(value="Diamond Bank Plc") Diamond Bank Plc
+                                option(value="Ecobank Nigeria") Ecobank Nigeria
+                                option(value="Ekondo MFB") Ekondo MFB
+                                option(value="Enterprise Bank Plc") Enterprise Bank Plc
+                                option(value="Fidelity Bank Plc") Fidelity Bank Plc
+                                option(value="First Bank of Nigeria Plc") First Bank of Nigeria Plc
+                                option(value="First City Monument Bank") First City Monument Bank
+                                option(value="Guaranty Trust Bank Plc") Guaranty Trust Bank Plc
+                                option(value="Heritage Bank") Heritage Bank
+                                option(value="Jaiz Bank PLC") Jaiz Bank PLC
+                                option(value="Keystone Bank Ltd") Keystone Bank Ltd
+                                option(value="Mainstreet Bank Plc") Mainstreet Bank Plc
+                                option(value="Skye Bank Plc") Skye Bank Plc
+                                option(value="Stanbic IBTC Plc") Stanbic IBTC Plc
+                                option(value="Sterling Bank Plc") Sterling Bank Plc
+                                option(value="Union Bank Nigeria Plc") Union Bank Nigeria Plc
+                                option(value="United Bank for Africa Plc") United Bank for Africa Plc
+                                option(value="Unity Bank Plc") Unity Bank Plc
+                                option(value="WEMA Bank Plc") WEMA Bank Plc
+                                option(value="Zenith Bank International") Zenith Bank International
+                        .form-group 
+                            label Account Number 
+                            input.form-control(name="account_number" type="text" required)
+                        .form-group 
+                            label Account Name 
+                            input.form-control(name="account_name" type="text" required)
+                        .form-group 
+                            label Amount 
+                            input.form-control(name="amount" type="text" required)    
+                .modal-footer
+                    button.btn.btn-default.pull-left(type='button' data-dismiss='modal') Close
+                    button.btn.btn-primary#withdrawal-btn(type='button') Send Request
+
+
+block scriptBlock
+    script. 
+        $(document).ready(function() {
+            $("#topup").click(function() {
+                const amount = $("#amount").val();
+                if (!amount) return;
+
+                $.post('/wallet/topup', { amount }, function(d) {
+                    if (d.status.trim() === 'success') {
+                        location.reload();
+                        return;
+                    }
+                    alert('Topup not successful')
+                });
+            });
+
+            $("#withdrawal-btn").click(function() { $("#account-form").submit() });
+
+            $("#account-form").submit(function(e) {
+                e.preventDefault();
+
+                $.post('/request-withdrawal', $(this).serialize(), function(d) {
+                    if (d.status.trim() === 'success') {
+                        location.reload();
+                    }
+                })
+            });
+        });

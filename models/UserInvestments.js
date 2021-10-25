@@ -2,6 +2,12 @@
 
 module.exports = (sequelize, DataTypes) => {
     const UserInvestments = sequelize.define('UserInvestments', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+            allowNull: false
+        },
         UserId: {
             type: DataTypes.INTEGER,
             references: {

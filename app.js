@@ -5,6 +5,8 @@ const session = require('express-session');
 const fileUpload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const authenticate = require('./middlewares/authenticate');
+const formatView = require('./middlewares/formatView');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -31,8 +33,9 @@ app.use(session({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(formatView);
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users', authenticate, usersRouter);
 app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler

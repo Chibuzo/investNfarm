@@ -1,0 +1,79 @@
+extends layout 
+
+block styleBlock 
+    link(rel='stylesheet', href='/stylesheets/owl.carousel.min.css')
+    link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
+
+block content
+    section.content-header
+        h1
+            | Portfolio
+        
+    // Main content
+    section.content
+        .row
+            .col-md-12
+                .box
+                    .box-header.with-border
+                        h3.box-title Pending Investment Request
+                    .box-body
+                        .owl-carousel 
+                            each inv in investments
+                                .item= inv.investment_name 
+
+                        .row 
+                            .col-md-12.text-center Click above & view below 
+                        .row 
+                            .col-md-12 
+                                .bg-photo
+                        .row 
+                            .col-md-5.col-md-offset-4    
+                                .portfolio-details 
+                                    - const [investment] = investments
+                                    .row 
+                                        .col-md-6 #[strong Investment Name:]
+                                        .col-md-5 #{investment.investment_name}
+                                    .row 
+                                        .col-md-6 #[strong Unit Cost:]
+                                        .col-md-5 ₦#{view.formatCurrency(investment.unit_cost)} 
+                                    .row 
+                                        .col-md-6 #[strong Country:]
+                                        .col-md-5 #{investment.country}    
+                                    .row 
+                                        .col-md-6 #[strong Investment Period:]
+                                        .col-md-5 #{investment.period} Months
+                                    .row 
+                                        .col-md-6 #[strong Units Left:]
+                                        .col-md-5= investment.units - investment.sold_unit_count
+                                    .row 
+                                        .col-md-6 #[strong Return on investment:]
+                                        .col-md-5 #{investment.roi}   
+                                    .row.text-center
+                                        button.btn.btn-lg.btn-success INVEST
+
+block scriptBlock
+    script(src="/javascripts/owl.carousel.min.js")  
+
+    script. 
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                loop:true,
+                margin:13,
+                responsiveClass:true,
+                nav: true,
+                responsive:{
+                    0:{
+                        items:1,
+                        nav:true
+                    },
+                    600:{
+                        items:3,
+                        nav:false
+                    },
+                    1000:{
+                        items:4,
+                        nav:true,
+                    }
+                }
+            })
+        });                                    

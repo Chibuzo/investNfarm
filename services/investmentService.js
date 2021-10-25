@@ -21,11 +21,11 @@ const list = async (criteria = {}) => {
     return investments.map(investment => sanitize(investment));
 }
 
-const invest = async ({ userId, investmentId, units = 0 }) => {
-    const investment = await Investment.findOne(investmentId);
+const invest = async ({ userId: UserId, investmentId: InvestmentId, units = 1 }) => {
+    const investment = await Investment.findByPk(InvestmentId);
     if (!investment) throw new ErrorHandler(404, 'Investment not found');
 
-    return investment.createUserInvestments({ userId, investmentId, units });
+    return investment.createInvestor({ UserId, InvestmentId, units });
 }
 
 const sanitize = investment => {

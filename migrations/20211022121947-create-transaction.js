@@ -2,26 +2,35 @@
 
 module.exports = {
     up: async (queryInterface, Sequelize) => {
-        return queryInterface.createTable('userInvestments', {
+        return queryInterface.createTable('transactions', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            UserId: {
+            user_id: {
                 type: Sequelize.INTEGER,
             },
-            InvestmentId: {
+            investment_id: {
                 type: Sequelize.INTEGER,
             },
-            units: {
-                type: Sequelize.INTEGER,
-                defaultValue: 1
+            payment_id: {
+                type: Sequelize.INTEGER
             },
-            active: {
-                type: Sequelize.BOOLEAN,
-                defaultValue: true
+            withdrawal_id: {
+                type: Sequelize.INTEGER
+            },
+            type: {
+                type: Sequelize.STRING,
+                allowNull: false
+            },
+            amount: {
+                type: Sequelize.INTEGER,
+                allowNull: false
+            },
+            status: {
+                type: Sequelize.STRING,
             },
             createdAt: {
                 allowNull: false,
@@ -35,6 +44,6 @@ module.exports = {
     },
 
     down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable('userInvestments');
+        await queryInterface.dropTable('transactions');
     }
 };
