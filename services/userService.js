@@ -22,7 +22,7 @@ const create = async ({ fname, lname, email, phone, country, gender, password })
     };
     const newUser = await User.create(data);
     emailService.sendConfirmationEmail(newUser);
-    return newUser;
+    return sanitize(newUser);
 }
 
 const login = async ({ email, password }) => {
@@ -42,7 +42,21 @@ const login = async ({ email, password }) => {
     return user;
 }
 
+const find = async (criteria = {}) => {
+    const users = await User.findAll(criteria);
+    return users.map(user => sanitize(user));
+}
+
+const sanitize = user => {
+    delete user.password;
+    return {
+        ...user.toJSON(),
+        investment_count: user.UserInvestments ? user.UserInvestments.length : null
+    };
+}
+
 module.exports = {
     create,
-    login
+    login,
+    find
 }

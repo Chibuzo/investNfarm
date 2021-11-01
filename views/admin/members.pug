@@ -1,0 +1,40 @@
+extends layout 
+
+block content
+    section.content-header
+        h1 Members Listing
+        
+    // Main content
+    section.content
+        .row
+            .col-md-12
+                .box
+                    .box-header
+                        h3.box-title Investors
+                    .box-body
+                        .row 
+                            .col-md-12.table-responsive
+                                table.table.table-striped(style="margin-top: 10px")
+                                    thead
+                                        tr
+                                            th Date Joined
+                                            th Name
+                                            th Email
+                                            th Phone
+                                            th Country
+                                            th Active Investments
+                                            th Status
+                                            th Action
+                                    tbody
+                                        each user in users 
+                                            - let row = user.status === 'inactive' ? 'active' : ''
+                                            tr(class=`${row}`)
+                                                td= view.formatDate(user.createdAt)
+                                                td= user.fullname 
+                                                td= user.email
+                                                td= user.phone 
+                                                td= user.country
+                                                td= user.investment_count
+                                                td= user.status
+                                                td
+                                                    a(href="/investment") View Details         

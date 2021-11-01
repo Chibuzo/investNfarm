@@ -9,15 +9,69 @@ block content
     // Main content
     section.content
         .row
+            .col-lg-3.col-xs-6
+                .small-box.bg-aqua
+                    .inner
+                        h3 150
+                        p Total Received
+                    .icon
+                        i.ion.ion-bag
+                    a.small-box-footer(href='#')
+                        | More info 
+                        i.fa.fa-arrow-circle-right
+            .col-lg-3.col-xs-6
+                .small-box.bg-green
+                    .inner
+                        h3 53
+                            sup(style='font-size: 20px') %
+                        p Total Paid Out
+                    .icon
+                        i.ion.ion-stats-bars
+                    a.small-box-footer(href='#')
+                        | More info 
+                        i.fa.fa-arrow-circle-right
+            .col-lg-3.col-xs-6
+                .small-box.bg-yellow
+                    .inner
+                        h3 44
+                        p Total Comsissions Earned
+                    .icon
+                        i.ion.ion-person-add
+                    a.small-box-footer(href='#')
+                        | More info 
+                        i.fa.fa-arrow-circle-right
+            .col-lg-3.col-xs-6
+                .small-box.bg-red
+                    .inner
+                        h3 65
+                        p Active Portfolios
+                    .icon
+                        i.ion.ion-pie-graph
+                    a.small-box-footer(href='#')
+                        | More info 
+                        i.fa.fa-arrow-circle-right
+
+        .row
             .col-md-6
                 .box
                     .box-header.with-border
-                        h3.box-title Pending Investment Request
+                        h3.box-title Pending Withdrawal Request
                     .box-body
-                        table.table.table-bordered
-                            tr
-                                th(style='width: 10px') #
-                                th Task
-                                th Progress
-                                th(style='width: 40px') Label
+                        table.table.table-striped
+                            thead
+                                tr
+                                    th Date
+                                    th Investor
+                                    th Amount
+                                    th Status
+                                    th Details
+                            tbody
+                                each trnx in withdrawals 
+                                    tr
+                                        td= view.formatDate(trnx.createdAt)
+                                        td= trnx.User.fullname
+                                        td= '₦' + view.formatCurrency(trnx.amount) 
+                                        td= trnx.status
+                                        td
+                                            a(href="/investment") View Details    
 

@@ -3,6 +3,10 @@ var router = express.Router();
 const adminService = require('../services/adminService');
 const authenticateAdmin = require('../middlewares/authenticateAdmin');
 const investmentService = require('../services/investmentService');
+const walletService = require('../services/walletService');
+const userService = require('../services/userService');
+const User = require('../models').User;
+const Investment = require('../models').Investment;
 
 
 router.get('/', function (req, res) {
@@ -32,7 +36,18 @@ router.post('/login', async (req, res, next) => {
 });
 
 router.get('/dashboard', authenticateAdmin, async (req, res, next) => {
-    res.render('admin/dashboard', {});
+    const criteria = {
+        where: {
+            description: 'withdrawal', status: 'pending'
+        },
+        attributes: ['id', 'amount', 'status', 'createdAt'],
+        include: {
+            model: User,
+            attributes: ['id', 'fullname']
+        }
+    };
+    const { transactions: withdrawals } = await walletService.fetchTransactions(criteria);
+    res.render('admin/dashboard', { withdrawals });
 });
 
 router.get('/portfolio', authenticateAdmin, async (req, res, next) => {
@@ -55,6 +70,56 @@ router.post('/portfolio', authenticateAdmin, async (req, res, next) => {
     } catch (err) {
         next(err);
     }
-})
+});
+
+router.get('/transactions', authenticateAdmin, async (req, res, next) => {
+    const criteria = {
+        attributes: ['id', 'description', 'amount', 'status', 'createdAt'],
+        include: [
+            {
+                model: User,
+                attributes: ['id', 'fullname']
+            },
+            {
+                model: Investment,
+                attributes: ['id', 'investment_name']
+            }
+        ]
+    };
+    try {
+        const { transactions } = await walletService.fetchTransactions(criteria);
+        res.render('admin/transactions', { transactions });
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.get('/investors', authenticateAdmin, async (req, res, next) => {
+    try {
+        const users = await userService.find({ include: 'UserInvestments' });
+        res.render('admin/members', { users });
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.get('/payouts', authenticateAdmin, async (req, res, next) => {
+    try {
+        const criteria = {
+            where: {
+                description: 'withdrawal'
+            },
+            attributes: ['id', 'amount', 'status', 'createdAt'],
+            include: {
+                model: User,
+                attributes: ['id', 'fullname']
+            }
+        };
+        const { transactions: withdrawals } = await walletService.fetchTransactions(criteria);
+        res.render('admin/payouts', { withdrawals });
+    } catch (err) {
+        next(err);
+    }
+});
 
 module.exports = router;

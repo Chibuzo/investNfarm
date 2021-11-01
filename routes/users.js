@@ -26,7 +26,10 @@ router.get('/dashboard', async (req, res, next) => {
 router.get('/portfolio', async (req, res, next) => {
     try {
         const investments = await investmentService.list();
-        res.render('user/portfolio', { investments });
+        const id = req.query.active;
+        const selectedInvestment = investments.find(inv => inv.id == id);
+        console.log({ selectedInvestment })
+        res.render('user/portfolio', { investments, selectedInvestment: selectedInvestment || investments[0] });
     } catch (err) {
         next(err);
     }
@@ -40,6 +43,11 @@ router.get('/wallet', async (req, res, next) => {
     } catch (err) {
         next(err);
     }
+});
+
+router.get('/logout', (req, res, next) => {
+    req.session.destroy();
+    res.redirect('/');
 });
 
 module.exports = router;

@@ -31,5 +31,10 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, {});
 
+    Transaction.associate = function (models) {
+        Transaction.belongsTo(models.User, { foreignKey: 'user_id' });
+        Transaction.belongsTo(models.Investment, { foreignKey: 'investment_id' });
+    };
+
     return Transaction;
 }

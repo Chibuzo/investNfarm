@@ -1,0 +1,37 @@
+extends layout 
+
+block content
+    section.content-header
+        h1 Transactions
+        
+    // Main content
+    section.content
+        .row
+            .col-md-12
+                .box
+                    .box-header
+                       
+                    .box-body
+                        .row 
+                            .col-md-12.table-responsive
+                                table.table.table-striped(style="margin-top: 10px")
+                                    thead
+                                        tr
+                                            th Date
+                                            th Description
+                                            th Product
+                                            th Amount
+                                            th Status
+                                            th Details
+                                    tbody
+                                        each trnx in transactions 
+                                            - let row = trnx.type === 'C' ? 'success' : 'danger'
+                                            - if (trnx.status === 'pending') row = 'active'
+                                            tr(class=`${row}`)
+                                                td= view.formatDate(trnx.createdAt)
+                                                td= trnx.description 
+                                                td= trnx.Investment && trnx.Investment.investment_name
+                                                td= '₦' + view.formatCurrency(trnx.amount) 
+                                                td= trnx.status
+                                                td
+                                                    a(href="/investment") View Details         

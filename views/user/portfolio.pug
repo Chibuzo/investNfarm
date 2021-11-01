@@ -14,40 +14,43 @@ block content
         .row
             .col-md-12
                 .box
-                    .box-header.with-border
+                    .box-header
                         h3.box-title Pending Investment Request
                     .box-body
                         .owl-carousel 
                             each inv in investments
-                                .item= inv.investment_name 
+                                a(href=`?active=${inv.id}`)
+                                    .item(style=`background-image: url(/${inv.photo_url})` data-)
+                                        p.text-center= inv.investment_name 
 
                         .row 
-                            .col-md-12.text-center Click above & view below 
+                            .col-md-12.text-center(style="margin: 20px") Click above & view below 
                         .row 
                             .col-md-12 
                                 .bg-photo
                         .row 
+                            .col-md-12
+                                img(src=`/${selectedInvestment.photo_url}`)
                             .col-md-5.col-md-offset-4    
                                 .portfolio-details 
-                                    - const [investment] = investments
                                     .row 
                                         .col-md-6 #[strong Investment Name:]
-                                        .col-md-5 #{investment.investment_name}
+                                        .col-md-5 #{selectedInvestment.investment_name}
                                     .row 
                                         .col-md-6 #[strong Unit Cost:]
-                                        .col-md-5 ₦#{view.formatCurrency(investment.unit_cost)} 
+                                        .col-md-5 ₦#{view.formatCurrency(selectedInvestment.unit_cost)} 
                                     .row 
                                         .col-md-6 #[strong Country:]
-                                        .col-md-5 #{investment.country}    
+                                        .col-md-5 #{selectedInvestment.country}    
                                     .row 
                                         .col-md-6 #[strong Investment Period:]
-                                        .col-md-5 #{investment.period} Months
+                                        .col-md-5 #{selectedInvestment.period} Months
                                     .row 
                                         .col-md-6 #[strong Units Left:]
-                                        .col-md-5= investment.units - investment.sold_unit_count
+                                        .col-md-5= selectedInvestment.units - selectedInvestment.sold_unit_count
                                     .row 
                                         .col-md-6 #[strong Return on investment:]
-                                        .col-md-5 #{investment.roi}   
+                                        .col-md-5 #{selectedInvestment.roi}   
                                     .row.text-center
                                         button.btn.btn-lg.btn-success INVEST
 

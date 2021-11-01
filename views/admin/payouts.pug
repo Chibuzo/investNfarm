@@ -1,0 +1,31 @@
+extends layout 
+
+block content
+    section.content-header
+        h1 Withdrawal Listing
+        
+    // Main content
+    section.content
+        .row
+            .col-md-12
+                .box
+                    .box-header.with-border
+                        h3.box-title Pay Outs
+                    .box-body
+                        table.table.table-striped
+                            thead
+                                tr
+                                    th Date
+                                    th Investor
+                                    th Amount
+                                    th Status
+                                    th Details
+                            tbody
+                                each trnx in withdrawals 
+                                    tr
+                                        td= view.formatDate(trnx.createdAt)
+                                        td= trnx.User.fullname
+                                        td= '₦' + view.formatCurrency(trnx.amount) 
+                                        td= trnx.status
+                                        td
+                                            a(href="/investment") View Details    
