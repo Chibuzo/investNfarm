@@ -10,3 +10,8 @@
     line-height: 38px;
     font-size: 18px
 }
+
+.owl-carousel a {
+    text-decoration: none;
+    font-weight: bold;
+}

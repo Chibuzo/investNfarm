@@ -1,0 +1,86 @@
+extends layout 
+
+block styleBlock 
+    link(rel="stylesheet", href='/css/style.css')
+    link(rel='stylesheet', href='/stylesheets/owl.carousel.min.css')
+    link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
+
+block content        
+    .feature-image(style="background-image: url(/images/money.jpg); background-position: bottom")
+        div.row.feature-text
+            div.col.text-center
+                h1.mb-4 Our Products yield high interests
+    .container
+        .row.mt-5
+            .col-md-12
+                .owl-carousel 
+                    each inv in investments
+                        - const url_path = inv.investment_name.split(' ').join('-')
+                        a.text-green(href=`/investment/${inv.id}/${url_path}`)
+                            .item(style=`background-image: url(/${inv.photo_url})`)
+                                p.text-center= inv.investment_name 
+
+        .row 
+            .col-md-12.text-center(style="margin: 20px") Click above & view below 
+        .row 
+            .col-md-12 
+                .bg-photo
+        .row 
+            .col-md-12
+                img(src=`/${selectedInvestment.photo_url}`)
+    .container-fluid.mt-5.pb-5(style="background-image: url(/images/wheat.jpg); background-size: cover; background-position: center")
+        .row.justify-content-md-center(style="padding-top: 90px") 
+            .col-md-5.col-md-offset-4    
+                .portfolio-details 
+                    .row 
+                        .col-md-6 #[strong Investment Name:]
+                        .col-md-5 #{selectedInvestment.investment_name}
+                    .row 
+                        .col-md-6 #[strong Unit Cost:]
+                        .col-md-5 ₦#{view.formatCurrency(selectedInvestment.unit_cost)} 
+                    .row 
+                        .col-md-6 #[strong Country:]
+                        .col-md-5 #{selectedInvestment.country}    
+                    .row 
+                        .col-md-6 #[strong Investment Period:]
+                        .col-md-5 #{selectedInvestment.period} Months
+                    .row 
+                        .col-md-6 #[strong Units Left:]
+                        .col-md-5= selectedInvestment.units - selectedInvestment.sold_unit_count
+                    .row 
+                        .col-md-6 #[strong Return on investment:]
+                        .col-md-5 #{selectedInvestment.roi}   
+                    .row.mt-5.justify-content-md-center
+                        .col-md-4
+                            .input-group
+                                input.form-control.input-lg(type="number" id="units" value="1")
+                                span.input-group-text Unit(s)
+                        .col-md-6
+                            button.btn.btnlg.btn-success INVEST NOW
+
+block scriptBlock
+    script(src="/javascripts/owl.carousel.min.js")  
+
+    script. 
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                loop:true,
+                margin:13,
+                responsiveClass:true,
+                nav: true,
+                responsive:{
+                    0:{
+                        items:1,
+                        nav:true
+                    },
+                    600:{
+                        items:3,
+                        nav:false
+                    },
+                    1000:{
+                        items:4,
+                        nav:true,
+                    }
+                }
+            })
+        });                                    

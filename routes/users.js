@@ -28,7 +28,6 @@ router.get('/portfolio', async (req, res, next) => {
         const investments = await investmentService.list();
         const id = req.query.active;
         const selectedInvestment = investments.find(inv => inv.id == id);
-        console.log({ selectedInvestment })
         res.render('user/portfolio', { investments, selectedInvestment: selectedInvestment || investments[0] });
     } catch (err) {
         next(err);

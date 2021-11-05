@@ -44,8 +44,10 @@ router.post('/login', async (req, res, next) => {
 
 router.get('/investment/:id/*', async (req, res, next) => {
     try {
-        const investment = await investmentService.view(req.params.id);
-        res.render('investment', { investment, title: investment.investment_name });
+        const investments = await investmentService.list();
+        const id = req.params.id;
+        const selectedInvestment = investments.find(inv => inv.id == id);
+        res.render('portfolio', { investments, selectedInvestment: selectedInvestment || investments[0], title: selectedInvestment.investment_name });
     } catch (err) {
         next(err);
     }
