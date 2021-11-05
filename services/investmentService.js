@@ -25,7 +25,7 @@ const invest = async ({ userId: UserId, investmentId: InvestmentId, units = 1 })
     const investment = await Investment.findByPk(InvestmentId);
     if (!investment) throw new ErrorHandler(404, 'Investment not found');
 
-    return investment.createInvestor({ UserId, InvestmentId, units });
+    return investment.createUserInvestment({ UserId, InvestmentId, units });
 }
 
 const sanitize = investment => {

@@ -31,32 +31,55 @@ block content
     .container-fluid.mt-5.pb-5(style="background-image: url(/images/wheat.jpg); background-size: cover; background-position: center")
         .row.justify-content-md-center(style="padding-top: 90px") 
             .col-md-5.col-md-offset-4    
-                .portfolio-details 
-                    .row 
-                        .col-md-6 #[strong Investment Name:]
-                        .col-md-5 #{selectedInvestment.investment_name}
-                    .row 
-                        .col-md-6 #[strong Unit Cost:]
-                        .col-md-5 ₦#{view.formatCurrency(selectedInvestment.unit_cost)} 
-                    .row 
-                        .col-md-6 #[strong Country:]
-                        .col-md-5 #{selectedInvestment.country}    
-                    .row 
-                        .col-md-6 #[strong Investment Period:]
-                        .col-md-5 #{selectedInvestment.period} Months
-                    .row 
-                        .col-md-6 #[strong Units Left:]
-                        .col-md-5= selectedInvestment.units - selectedInvestment.sold_unit_count
-                    .row 
-                        .col-md-6 #[strong Return on investment:]
-                        .col-md-5 #{selectedInvestment.roi}   
-                    .row.mt-5.justify-content-md-center
-                        .col-md-4
-                            .input-group
-                                input.form-control.input-lg(type="number" id="units" value="1")
-                                span.input-group-text Unit(s)
-                        .col-md-6
-                            button.btn.btnlg.btn-success INVEST NOW
+                form(method="post" action="/invest")
+                    input(type="hidden" name="investmentId" value=`${selectedInvestment.id}`)
+                    .portfolio-details 
+                        .row 
+                            .col-md-6 #[strong Investment Name:]
+                            .col-md-5 #{selectedInvestment.investment_name}
+                        .row 
+                            .col-md-6 #[strong Unit Cost:]
+                            .col-md-5 ₦#{view.formatCurrency(selectedInvestment.unit_cost)} 
+                        .row 
+                            .col-md-6 #[strong Country:]
+                            .col-md-5 #{selectedInvestment.country}    
+                        .row 
+                            .col-md-6 #[strong Investment Period:]
+                            .col-md-5 #{selectedInvestment.period} Months
+                        .row 
+                            .col-md-6 #[strong Units Left:]
+                            .col-md-5= selectedInvestment.units - selectedInvestment.sold_unit_count
+                        .row 
+                            .col-md-6 #[strong Return on investment:]
+                            .col-md-5 #{selectedInvestment.roi}%   
+                        .row.mt-5.justify-content-md-center
+                            .col-md-4
+                                .input-group
+                                    span.input-group-text #[strong Unit(s)]
+                                    input.form-control.input-lg(type="number" name="units" value="1")
+                            .col-md-6
+                                if user
+                                    button.btn.btn-success(type="submit") INVEST NOW
+                                else
+                                    button.btn.btn-success(type="button" data-bs-toggle="modal" data-bs-target="#loginModal") INVEST NOW   
+
+    #loginModal.modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                form#form-login(action="/login", method="post")
+                    .modal-header
+                        h5#exampleModalLabel.modal-title Login to Continue
+                        button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+                    .modal-body
+                        .mb-3 
+                            label Email
+                            input.form-control.form-control-lg(type="email", name="email", placeholder="Email" aria-label="Email")
+                        .mb-3
+                            label Password
+                            input.form-control.form-control-lg(type="password", name="password", placeholder="Password", aria-label="Password", required=true)
+                    .modal-footer
+                        button.btn.btn-secondary(type='button', data-bs-dismiss='modal') Close
+                        button.btn.btn-success(type='submit') Login 
 
 block scriptBlock
     script(src="/javascripts/owl.carousel.min.js")  
@@ -82,5 +105,17 @@ block scriptBlock
                         nav:true,
                     }
                 }
-            })
+            });
+
+
+            $("#form-login").submit(function(e) {
+                e.preventDefault();
+
+                $.post('/login?json=true', $(this).serialize(), function(d) {
+                    console.log(d)
+                    if (d.status === true) {
+                        location.reload();
+                    }
+                });
+            });
         });                                    

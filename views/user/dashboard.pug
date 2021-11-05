@@ -39,6 +39,7 @@ block content
                                         tr
                                             th Date
                                             th Product
+                                            th Units
                                             th Amount Invested
                                             th Duration
                                             th ROI
@@ -48,6 +49,7 @@ block content
                                             tr 
                                                 td= view.formatDate(invt.UserInvestments.createdAt)
                                                 td= invt.investment_name 
+                                                td= invt.UserInvestments.units
                                                 td= '₦' + view.formatCurrency(invt.unit_cost * invt.UserInvestments.units) 
                                                 td= invt.period + ' Weeks'
                                                 td= '₦' + view.formatCurrency((invt.unit_cost * invt.UserInvestments.units) + (invt.unit_cost * invt.UserInvestments.units * (invt.roi / 100)))
