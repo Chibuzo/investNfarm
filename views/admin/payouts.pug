@@ -2,7 +2,7 @@ extends layout
 
 block content
     section.content-header
-        h1 Withdrawal Listing
+        h1 Withdrawals
         
     // Main content
     section.content
@@ -17,15 +17,23 @@ block content
                                 tr
                                     th Date
                                     th Investor
+                                    th Balance
+                                    th Bank 
+                                    th Account #
                                     th Amount
                                     th Status
-                                    th Details
+                                    th Action
                             tbody
                                 each trnx in withdrawals 
                                     tr
                                         td= view.formatDate(trnx.createdAt)
                                         td= trnx.User.fullname
+                                        td= '₦' + view.formatCurrency(trnx.balance)
+                                        td= trnx.bank 
+                                        td= trnx.account_number
                                         td= '₦' + view.formatCurrency(trnx.amount) 
                                         td= trnx.status
                                         td
-                                            a(href="/investment") View Details    
+                                            a(title="Cancel" data-toggle="tooltip")
+                                                i.fa.fa-check.fa-lg(style="margin-right: 7px" title="Approve")
+                                            i.fa.fa-times.fa-lg(title="Cancel" data-toggle="tooltip")    

@@ -27,5 +27,9 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, {});
 
+    Withdrawal.associate = function (models) {
+        Withdrawal.belongsTo(models.User, { foreignKey: 'user_id' });
+    };
+
     return Withdrawal;
 }

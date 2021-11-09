@@ -17,6 +17,18 @@ router.get('/', async (req, res, next) => {
     }
 });
 
+router.get('/about', async (req, res, next) => {
+    res.render('about', { title: 'About InvestNFarm' });
+});
+
+router.get('/team', (req, res, next) => {
+    res.render('team', { title: 'Our People' });
+});
+
+router.get('/contact', async (req, res, next) => {
+    res.render('contact', { title: 'Contact InvestNFarm' });
+});
+
 router.get('/signup', (req, res) => {
     res.render('signup', { title: 'Sign Up' });
 });

@@ -106,16 +106,12 @@ router.get('/investors', authenticateAdmin, async (req, res, next) => {
 router.get('/payouts', authenticateAdmin, async (req, res, next) => {
     try {
         const criteria = {
-            where: {
-                description: 'withdrawal'
-            },
-            attributes: ['id', 'amount', 'status', 'createdAt'],
             include: {
                 model: User,
                 attributes: ['id', 'fullname']
             }
         };
-        const { transactions: withdrawals } = await walletService.fetchTransactions(criteria);
+        const withdrawals = await walletService.listWithdrawals(criteria);
         res.render('admin/payouts', { withdrawals });
     } catch (err) {
         next(err);

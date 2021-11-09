@@ -14,24 +14,25 @@ block content
                     .box-body
                         .row 
                             .col-md-12.table-responsive
-                                table.table.table-striped(style="margin-top: 10px")
+                                table.table.table-striped.table-hover(style="margin-top: 10px")
                                     thead
                                         tr
                                             th Date
+                                            th Investor
                                             th Description
-                                            th Product
+                                            th Payment Reference
                                             th Amount
                                             th Status
-                                            th Details
                                     tbody
                                         each trnx in transactions 
-                                            - let row = trnx.type === 'C' ? 'success' : 'danger'
-                                            - if (trnx.status === 'pending') row = 'active'
+                                            - let row = ''
+                                            - if (trnx.status === 'pending') row = 'warning'
+                                            - if (trnx.status === 'cancelled') row = 'danger'
                                             tr(class=`${row}`)
                                                 td= view.formatDate(trnx.createdAt)
+                                                td= trnx.User.fullname
                                                 td= trnx.description 
-                                                td= trnx.Investment && trnx.Investment.investment_name
+                                                td= trnx.reference
                                                 td= '₦' + view.formatCurrency(trnx.amount) 
                                                 td= trnx.status
-                                                td
-                                                    a(href="/investment") View Details         
+                                                   

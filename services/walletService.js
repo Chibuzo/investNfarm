@@ -42,8 +42,20 @@ const requestWithdrawal = async ({ bank, account_name, account_number, amount, u
     });
 }
 
+const listWithdrawals = async criteria => {
+    const withdrawals = await Withdrawal.findAll(criteria);
+    return await Promise.all(withdrawals.map(async withdrawal => {
+        const { balance } = await fetchTransactions({ where: { user_id: withdrawal.user_id } });
+        return {
+            ...withdrawal.toJSON(),
+            balance
+        };
+    }));
+}
+
 module.exports = {
     fetchTransactions,
     topUpWallet,
-    requestWithdrawal
+    requestWithdrawal,
+    listWithdrawals
 }

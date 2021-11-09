@@ -23,7 +23,7 @@ block content
                                             th Phone
                                             th Country
                                             th Active Investments
-                                            th Status
+                                            th Active
                                             th Action
                                     tbody
                                         each user in users 
@@ -35,6 +35,8 @@ block content
                                                 td= user.phone 
                                                 td= user.country
                                                 td= user.investment_count
-                                                td= user.status
+                                                td= user.active
                                                 td
-                                                    a(href="/investment") View Details         
+                                                    i.fa.fa-edit.fa-lg(style="margin-right: 7px" title="Edit")
+                                                    i.fa.fa-trash.fa-lg(title="Delete" data-toggle="tooltip")
+                                                           

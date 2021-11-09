@@ -18,6 +18,9 @@ module.exports = {
             payment_id: {
                 type: Sequelize.INTEGER
             },
+            reference: {
+                type: Sequelize.STRING
+            },
             withdrawal_id: {
                 type: Sequelize.INTEGER
             },
