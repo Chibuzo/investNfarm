@@ -126,4 +126,9 @@ router.post('/update-investment', authenticateAdmin, async (req, res, next) => {
     }
 });
 
+router.get('/logout', (req, res, next) => {
+    req.session.destroy();
+    res.redirect('/');
+});
+
 module.exports = router;

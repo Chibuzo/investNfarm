@@ -36,7 +36,7 @@ const sanitize = investment => {
     return {
         ...investment.toJSON(),
         investor_count: investment.investors.length,
-        sold_unit_count: investment.investors.reduce((totalUnits, user) => totalUnits + user.units, 0)
+        sold_unit_count: investment.investors.reduce((totalUnits, user) => totalUnits + user.UserInvestments.units, 0)
     };
 }
 
