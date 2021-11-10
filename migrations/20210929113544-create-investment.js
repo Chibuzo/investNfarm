@@ -28,6 +28,7 @@ module.exports = {
             roi: Sequelize.INTEGER,
             photo_url: Sequelize.STRING,
             active: Sequelize.BOOLEAN,
+            deleted: Sequelize.BOOLEAN,
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE

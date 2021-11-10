@@ -128,7 +128,7 @@ block content
                 div.col-md-3.col-xs-12.mt-2.text-center 
                     strong= inv.investment_name
                     div.team-photo
-                        img(src="./images/coming-soon-placeholder.png")
+                        img(src=`${inv.photo_url}`)
                         div.team-details 
                             a(href=`/investment/${inv.id}/${url_path}`) Read more                
 

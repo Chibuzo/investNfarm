@@ -63,6 +63,15 @@ router.get('/portfolio/new', authenticateAdmin, async (req, res) => {
     res.render('admin/new-portfolio');
 });
 
+router.get('/edit-portfolio/:id', authenticateAdmin, async (req, res, next) => {
+    try {
+        const investment = await investmentService.view(req.params.id);
+        res.render('admin/new-portfolio', { investment });
+    } catch (err) {
+        next(err);
+    }
+});
+
 router.post('/portfolio', authenticateAdmin, async (req, res, next) => {
     try {
         await investmentService.create(req);

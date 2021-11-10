@@ -44,7 +44,7 @@ const requestWithdrawal = async ({ bank, account_name, account_number, amount, u
 
 const listWithdrawals = async criteria => {
     const withdrawals = await Withdrawal.findAll(criteria);
-    return await Promise.all(withdrawals.map(async withdrawal => {
+    return Promise.all(withdrawals.map(async withdrawal => {
         const { balance } = await fetchTransactions({ where: { user_id: withdrawal.user_id } });
         return {
             ...withdrawal.toJSON(),
@@ -53,9 +53,15 @@ const listWithdrawals = async criteria => {
     }));
 }
 
+const updateWithdrawal = async ({ id, status }) => {
+    const valid_status = ['Approved', 'Cancelled'];
+    return valid_status.includes(status) ? Withdrawal.update({ status }, { where: { id } }) : null;
+}
+
 module.exports = {
     fetchTransactions,
     topUpWallet,
     requestWithdrawal,
-    listWithdrawals
+    listWithdrawals,
+    updateWithdrawal
 }

@@ -233,7 +233,12 @@ video {
     font-weight: bold;
     text-align: center;
     padding: 10px;
-    /* background: #007f4b; */
+    background: #007f4b;
+}
+
+.team-details a {
+    text-decoration: none;
+    color: #fff;
 }
 
 .faq {

@@ -4,7 +4,6 @@ block content
     section.content-header
         h1
             | Investment Portfolios
-            small Needs your approval
         
     // Main content
     section.content  
@@ -29,6 +28,7 @@ block content
                                         th ROI
                                         th Investors / Sold Units 
                                         th Remaining Units
+                                        th Action
                                 tbody
                                     each inv in investments 
                                         tr 
@@ -39,6 +39,28 @@ block content
                                             td= inv.units 
                                             td= inv.roi + '%'
                                             td= inv.investor_count + ' / ' + inv.sold_unit_count
-                                            td= inv.units - inv.sold_unit_count      
+                                            td= inv.units - inv.sold_unit_count   
+                                            td
+                                                a(href=`/admin/edit-portfolio/${inv.id}` title="Edit Investment" data-toggle="tooltip")
+                                                    i.fa.fa-edit.fa-lg(style="margin-right: 7px")
+                                                a.delete(title="Delete Investment" data-toggle="tooltip")
+                                                    i.fa.fa-trash.fa-lg
+
+block scriptBlock 
+    script.
+        $(document).ready(function() {
+            $(".delete").click(function(e) {
+                e.preventDefault();
+
+                if (confirm("Are you sure you want to delete this investment portfolio?")) {
+                    const id = $(this).parents('tr').attr('id');
+                    $.post('/update-investment', { id, data: { deleted: true }}, function(d) {
+                        if (d.status === true) {
+                            location.reload();
+                        }
+                    });
+                }
+            });
+        }); 
 
 

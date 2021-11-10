@@ -28,6 +28,10 @@ const invest = async ({ userId: UserId, investmentId: InvestmentId, units = 1 })
     return investment.createUserInvestment({ UserId, InvestmentId, units });
 }
 
+const updateInvestment = async ({ id, data }) => {
+    return Investment.update(data, { where: { id } });
+}
+
 const sanitize = investment => {
     return {
         ...investment.toJSON(),
@@ -40,5 +44,6 @@ module.exports = {
     create,
     view,
     list,
-    invest
+    invest,
+    updateInvestment
 }

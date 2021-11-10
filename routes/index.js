@@ -6,6 +6,7 @@ const userService = require('../services/userService');
 const investmentService = require('../services/investmentService');
 const paymentService = require('../services/PaymentService');
 const walletService = require('../services/walletService');
+const authenticateAdmin = require('../middlewares/authenticateAdmin');
 
 
 router.get('/', async (req, res, next) => {
@@ -105,6 +106,24 @@ router.post('/request-withdrawal', authenticate, async (req, res, next) => {
     } catch (err) {
         next(err);
     }
-})
+});
+
+router.post('/change-payout-status', authenticateAdmin, async (req, res, next) => {
+    try {
+        await walletService.updateWithdrawal(req.body);
+        res.json({ status: true });
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.post('/update-investment', authenticateAdmin, async (req, res, next) => {
+    try {
+        await investmentService.updateInvestment(req.body);
+        res.json({ status: true });
+    } catch (err) {
+        next(err);
+    }
+});
 
 module.exports = router;

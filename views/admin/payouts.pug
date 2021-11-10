@@ -25,7 +25,7 @@ block content
                                     th Action
                             tbody
                                 each trnx in withdrawals 
-                                    tr
+                                    tr(id=`${trnx.id}`)
                                         td= view.formatDate(trnx.createdAt)
                                         td= trnx.User.fullname
                                         td= '₦' + view.formatCurrency(trnx.balance)
@@ -34,6 +34,38 @@ block content
                                         td= '₦' + view.formatCurrency(trnx.amount) 
                                         td= trnx.status
                                         td
-                                            a(title="Cancel" data-toggle="tooltip")
-                                                i.fa.fa-check.fa-lg(style="margin-right: 7px" title="Approve")
-                                            i.fa.fa-times.fa-lg(title="Cancel" data-toggle="tooltip")    
+                                            a.approve(title="Approve withdrawal" data-toggle="tooltip")
+                                                i.fa.fa-check.fa-lg(style="margin-right: 7px")
+                                            a.cancel(title="Cancel" data-toggle="tooltip")    
+                                                i.fa.fa-times.fa-lg   
+
+block scriptBlock 
+    script.
+        $(document).ready(function() {
+            $(".approve").click(function(e) {
+                e.preventDefault();
+
+                if (confirm("Are you sure you want to approve the payout request?")) {
+                    const id = $(this).parents('tr').attr('id');
+                    $.post('/change-payout-status', { id, status: 'Approved' }, function(d) {
+                        if (d.status === true) {
+                            location.reload();
+                        }
+                    });
+                }
+            });
+
+
+            $(".cancel").click(function(e) {
+                e.preventDefault();
+
+                if (confirm("Are you sure you want to cancel this payout request?")) {
+                    const id = $(this).parents('tr').attr('id');
+                    $.post('/change-payout-status', { id, status: 'Cancelled' }, function(d) {
+                        if (d.status === true) {
+                            location.reload();
+                        }
+                    });
+                }
+            });
+        });
