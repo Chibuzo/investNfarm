@@ -1,7 +1,7 @@
-const Investment = require('../models').Investment;
+const { Investment, Transaction, User } = require('../models');
 const { ErrorHandler } = require('../helpers/errorHandler');
 const { uploadFile } = require('../helpers/fileUpload');
-const User = require('../models').User;
+const walletService = require('../services/walletService');
 
 const save = async ({ body: investmentData, files }) => {
     const photo_url = await uploadFile(files);
@@ -43,6 +43,22 @@ const getUserInvestments = async user_id => {
 const invest = async ({ userId: UserId, investmentId: InvestmentId, units = 1 }) => {
     const investment = await Investment.findByPk(InvestmentId);
     if (!investment) throw new ErrorHandler(404, 'Investment not found');
+
+    // check for sufficient balance
+    const { balance } = await walletService.fetchTransactions({ where: { user_id: UserId } });
+    if (balance < investment.unit_cost * units) {
+        throw new ErrorHandler(400, 'You don\'t sufficient balance for this transaction');
+    }
+
+    // debit wallet
+    await Transaction.create({
+        description: 'Investment',
+        amount,
+        user_id,
+        investment_id: investment.id,
+        type: 'D',
+        status: 'success'
+    });
 
     return investment.createUserInvestment({ UserId, InvestmentId, units });
 }

@@ -59,7 +59,7 @@ router.post('/login', async (req, res, next) => {
 
 router.get('/investment/:id/*', isAuthenticated, async (req, res, next) => {
     try {
-        const investments = await investmentService.list();
+        const investments = await investmentService.list({ include: 'investors' });
         const id = req.params.id;
         const selectedInvestment = investments.find(inv => inv.id == id) || investments[0];
         res.render('portfolio', { investments, selectedInvestment: selectedInvestment, title: selectedInvestment.investment_name });
