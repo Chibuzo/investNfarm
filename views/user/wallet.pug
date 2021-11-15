@@ -25,7 +25,7 @@ block content
                                             th Description
                                             th Amount
                                             th Status
-                                            th Details
+                                            
                                     tbody
                                         each trnx in transactions 
                                             - let row = trnx.type === 'C' ? 'success' : 'danger'
@@ -35,8 +35,7 @@ block content
                                                 td= trnx.description 
                                                 td= '₦' + view.formatCurrency(trnx.amount) 
                                                 td= trnx.status
-                                                td
-                                                    a(href="/investment") View Details         
+                                                       
             .col-md-3 
                 h3 Wallet Balance: ₦#{view.formatCurrency(balance)}
                 hr
@@ -46,7 +45,7 @@ block content
                         .input-group
                             input.form-control#amount(type="text", name="amount", placeholder="Amount" aria-label="Amount")
                             .input-group-btn
-                                button.btn.btn-danger#topup Top Up
+                                button.btn.btn-danger#topup(onClick=`makePayment('${user.email}', '${user.phone}', '${user.fullname}')`) Top Up
                 .row(style="margin-top: 40px")      
                     .col-md-12 
                         P #[strong WITHDRAW FROM YOUR WALLET]
@@ -105,20 +104,22 @@ block Modals
 
 
 block scriptBlock
+    script(src="https://checkout.flutterwave.com/v3.js")
+    
     script. 
         $(document).ready(function() {
-            $("#topup").click(function() {
-                const amount = $("#amount").val();
-                if (!amount) return;
+            //- $("#topup").click(function() {
+            //-     const amount = $("#amount").val();
+            //-     if (!amount) return;
 
-                $.post('/wallet/topup', { amount }, function(d) {
-                    if (d.status.trim() === 'success') {
-                        location.reload();
-                        return;
-                    }
-                    alert('Topup not successful')
-                });
-            });
+            //-     $.post('/wallet/topup', { amount }, function(d) {
+            //-         if (d.status.trim() === 'success') {
+            //-             location.reload();
+            //-             return;
+            //-         }
+            //-         alert('Topup not successful')
+            //-     });
+            //- });
 
             $("#withdrawal-btn").click(function() { $("#account-form").submit() });
 
@@ -132,3 +133,41 @@ block scriptBlock
                 })
             });
         });
+
+
+        function makePayment(email, phone_number, name) {
+            const amount = $("#amount").val();
+            if (!amount) {
+                alert("Enter topup amount to continue");
+                return;
+            }
+
+            FlutterwaveCheckout({
+                public_key: "FLWPUBK_TEST-1e39ec87d96dc02f0b3e2fb3a6b60d9b-X",
+                amount,
+                tx_ref: "RX4",
+                currency: "NGN",
+                country: "NG",
+                customer: {
+                    email,
+                    phone_number,
+                    name,
+                },
+                callback: function (payment_data) { // specified callback function
+                    const { amount, status, flw_ref, transaction_id } = payment_data;
+                    
+                    $.post('/wallet/topup', { amount, status, flw_ref, transaction_id }, function(d) {
+                        if (d.status.trim() === 'success') {
+                            location.reload();
+                            return;
+                        }
+                        alert('Topup not successful')
+                    });
+                },
+                customizations: {
+                    title: "Topup My Wallet",
+                    description: "Adds funds to wallet",
+                    logo: "https://investnfarm.com/imageslogo.png",
+                },
+            });
+        }

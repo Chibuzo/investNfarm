@@ -31,6 +31,8 @@ module.exports = {
             country: Sequelize.STRING,
             password: Sequelize.STRING,
             active: Sequelize.BOOLEAN,
+            status: Sequelize.STRING,
+            deleted: Sequelize.BOOLEAN,
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE

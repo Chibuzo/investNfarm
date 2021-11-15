@@ -63,7 +63,6 @@ block content
                                     th Investor
                                     th Amount
                                     th Status
-                                    th Details
                             tbody
                                 each trnx in withdrawals 
                                     tr
@@ -71,6 +70,5 @@ block content
                                         td= trnx.User.fullname
                                         td= '₦' + view.formatCurrency(trnx.amount) 
                                         td= trnx.status
-                                        td
-                                            a(href="/investment") View Details    
+                                           
 

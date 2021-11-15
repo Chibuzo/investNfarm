@@ -1,0 +1,61 @@
+extends layout 
+
+block content
+    section.content-header
+        h1
+            | Edit Investment Portfolios
+        
+    // Main content
+    section.content  
+        .row
+            .col-md-12
+                .box
+                    .box-header(style="padding: 0")
+                        
+                    .box-body
+                        .row 
+                            .col-md-12
+                                a.btn.btn-default.btn.lg.pull-right(href="/admin/portfolio")
+                                    .fa.fa-caret-left 
+                                    |  Go Back 
+                        .row 
+                            .col-md-6.col-md-offset-3
+                                h3 Create New Investment Portfolio
+                                br/
+                                form(method="post" action="/admin/portfolio" encType="multipart/form-data")
+                                    .form-group
+                                        .row 
+                                            .col-md-12     
+                                                label Investment Name  
+                                                input.form-control.input-lg(type="text" name="investment_name" value=`${investment.investment_name}`)
+                                    .form-group 
+                                        .row 
+                                            .col-md-12    
+                                                label Country
+                                                input.form-control.input-lg(type="text" name="country" value=`${investment.country}`)
+                                       
+                                    .form-group 
+                                        .row 
+                                            .col-md-6 
+                                                label Unit Cost (N)
+                                                input.form-control.input-lg(type="text" name="unit_cost" value=`${investment.unit_cost}`)
+                                            .col-md-6 
+                                                label Avaliable Units 
+                                                input.form-control.input-lg(type="number" name="units" value=`${investment.units}`)
+                                    .form-group 
+                                        .row 
+                                            .col-md-6 
+                                                label Investment Duration 
+                                                input.form-control.input-lg(type="number" name="period" placeholder="Number of months..." value=`${investment.period}`)
+                                            .col-md-6 
+                                                label ROI (In percentage)
+                                                input.form-control.input-lg(type="number" name="roi" placeholder="In Percentage. Eg. 15%" value=`${investment.roi}`)  
+                                                input(type="hidden", name="id" value=`${investment.id}`)          
+                                    .form-group 
+                                        .row 
+                                            .col-md-12 
+                                                label Portfolio Photo 
+                                                input.form-control.input.lg(type="file" name="portfolio_photo")
+                                    .form-group.text-center 
+                                        br/
+                                        input.btn.btn-success.btn-lg(type="submit" value="Publish Investment")

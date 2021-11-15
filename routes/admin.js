@@ -44,7 +44,10 @@ router.get('/dashboard', authenticateAdmin, async (req, res, next) => {
         include: {
             model: User,
             attributes: ['id', 'fullname']
-        }
+        },
+        order: [
+            ['createdAt', 'DESC']
+        ]
     };
     const { transactions: withdrawals } = await walletService.fetchTransactions(criteria);
     res.render('admin/dashboard', { withdrawals });
@@ -52,7 +55,7 @@ router.get('/dashboard', authenticateAdmin, async (req, res, next) => {
 
 router.get('/portfolio', authenticateAdmin, async (req, res, next) => {
     try {
-        const investments = await investmentService.list();
+        const investments = await investmentService.list({ include: 'investors' });
         res.render('admin/portfolio', { investments });
     } catch (err) {
         next(err);
@@ -66,7 +69,7 @@ router.get('/portfolio/new', authenticateAdmin, async (req, res) => {
 router.get('/edit-portfolio/:id', authenticateAdmin, async (req, res, next) => {
     try {
         const investment = await investmentService.view(req.params.id);
-        res.render('admin/new-portfolio', { investment });
+        res.render('admin/edit-portfolio', { investment, title: 'Edit Portfolio' });
     } catch (err) {
         next(err);
     }
@@ -74,7 +77,7 @@ router.get('/edit-portfolio/:id', authenticateAdmin, async (req, res, next) => {
 
 router.post('/portfolio', authenticateAdmin, async (req, res, next) => {
     try {
-        await investmentService.create(req);
+        await investmentService.save(req);
         res.redirect('/admin/portfolio');
     } catch (err) {
         next(err);
@@ -83,7 +86,7 @@ router.post('/portfolio', authenticateAdmin, async (req, res, next) => {
 
 router.get('/transactions', authenticateAdmin, async (req, res, next) => {
     const criteria = {
-        attributes: ['id', 'description', 'amount', 'status', 'createdAt'],
+        attributes: ['id', 'description', 'amount', 'reference', 'status', 'createdAt'],
         include: [
             {
                 model: User,
@@ -93,6 +96,9 @@ router.get('/transactions', authenticateAdmin, async (req, res, next) => {
                 model: Investment,
                 attributes: ['id', 'investment_name']
             }
+        ],
+        order: [
+            ['createdAt', 'DESC']
         ]
     };
     try {
@@ -105,7 +111,12 @@ router.get('/transactions', authenticateAdmin, async (req, res, next) => {
 
 router.get('/investors', authenticateAdmin, async (req, res, next) => {
     try {
-        const users = await userService.find({ include: 'UserInvestments' });
+        const users = await userService.find({
+            include: 'UserInvestments',
+            order: [
+                ['createdAt', 'DESC']
+            ]
+        });
         res.render('admin/members', { users });
     } catch (err) {
         next(err);
@@ -118,7 +129,10 @@ router.get('/payouts', authenticateAdmin, async (req, res, next) => {
             include: {
                 model: User,
                 attributes: ['id', 'fullname']
-            }
+            },
+            order: [
+                ['createdAt', 'DESC']
+            ]
         };
         const withdrawals = await walletService.listWithdrawals(criteria);
         res.render('admin/payouts', { withdrawals });

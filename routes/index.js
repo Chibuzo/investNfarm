@@ -126,6 +126,15 @@ router.post('/update-investment', authenticateAdmin, async (req, res, next) => {
     }
 });
 
+router.post('/update-investor', authenticateAdmin, async (req, res, next) => {
+    try {
+        await userService.updateUser(req.body);
+        res.json({ status: true });
+    } catch (err) {
+        next(err);
+    }
+});
+
 router.get('/logout', (req, res, next) => {
     req.session.destroy();
     res.redirect('/');

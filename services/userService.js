@@ -43,8 +43,23 @@ const login = async ({ email, password }) => {
 }
 
 const find = async (criteria = {}) => {
-    const users = await User.findAll(criteria);
+    const { where = {} } = criteria;
+    delete criteria.where;
+    where.deleted = false;
+    const users = await User.findAll({
+        where,
+        order: [
+            ['createdAt', 'DESC']
+        ],
+        criteria
+    });
     return users.map(user => sanitize(user));
+}
+
+const updateUser = async userData => {
+    const id = userData.id
+    delete userData.id;
+    return User.update(userData, { where: { id } });
 }
 
 const sanitize = user => {
@@ -58,5 +73,6 @@ const sanitize = user => {
 module.exports = {
     create,
     login,
-    find
+    find,
+    updateUser
 }

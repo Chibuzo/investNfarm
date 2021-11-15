@@ -1,8 +1,6 @@
-const { ErrorHandler } = require('./errorHandler');
-
 const uploadFile = async files => {
     if (!files || Object.keys(files).length === 0) {
-        throw new ErrorHandler(400, 'No files were uploaded.');
+        return null;
     }
 
     // check file type

@@ -31,7 +31,10 @@ html
                         li.nav-item
                             a.nav-link.mx-3(href="#") Contact Us
                         li.nav-item
-                            a.btn.btn-success.mx-3(href="/login") Login
+                            if user
+                                a.btn.btn-white.mx-3(href="/users/dashboard") My Dashboard
+                            else
+                                a.btn.btn-success.mx-3(href="/login") Login
     block content
 
     footer.primary-bg.py-4

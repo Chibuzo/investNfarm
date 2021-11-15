@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models').User;
 const investmentService = require('../services/investmentService');
 const walletService = require('../services/walletService');
 
@@ -11,10 +10,10 @@ router.get('/', function (req, res) {
 
 router.get('/dashboard', async (req, res, next) => {
     try {
-        const user = await User.findByPk(req.session.user.id);
+        const user_id = req.session.user.id;
         const [investments, userInvestments] = await Promise.all([
             investmentService.list(),
-            user.getInvestments({ joinTableAttributes: ['units', 'createdAt'], raw: true, nest: true })
+            investmentService.getUserInvestments(user_id)
         ]);
 
         res.render('user/dashboard', { investments, userInvestments });
@@ -25,10 +24,12 @@ router.get('/dashboard', async (req, res, next) => {
 
 router.get('/portfolio', async (req, res, next) => {
     try {
-        const investments = await investmentService.list();
-        const id = req.query.active;
-        const selectedInvestment = investments.find(inv => inv.id == id);
-        res.render('user/portfolio', { investments, selectedInvestment: selectedInvestment || investments[0] });
+        const user_id = req.session.user.id;
+        const [investments, userInvestments] = await Promise.all([
+            investmentService.list(),
+            investmentService.getUserInvestments(user_id)
+        ]);
+        res.render('user/portfolio', { investments, userInvestments });
     } catch (err) {
         next(err);
     }
@@ -37,7 +38,7 @@ router.get('/portfolio', async (req, res, next) => {
 router.get('/wallet', async (req, res, next) => {
     try {
         const user_id = req.session.user.id;
-        const { transactions, balance } = await walletService.fetchTransactions({ user_id });
+        const { transactions, balance } = await walletService.fetchTransactions({ where: { user_id } });
         res.render('user/wallet', { transactions, balance });
     } catch (err) {
         next(err);

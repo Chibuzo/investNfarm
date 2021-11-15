@@ -17,20 +17,20 @@ const options = {
 
 let transporter = nodemailer.createTransport({
     //host: 'email-smtp.us-east-1.amazonaws.com',
-    host: 'smtp.zoho.com',
-    port: 465,
+    host: 'smtp.google.com',
+    port: 587,
     secure: true, // true for 465, false for other ports,
     pool: true,
     rateLimit: 20,
     auth: {
-        user: 'noreply@dumena.com.ng',
-        pass: 'change+this'
+        user: 'uzo.systems@gmail.com',
+        pass: 'uzooyibo'
     }
 });
 transporter.use('compile', hbs(options));
 
 const BASE_URL = process.env.BASE_URL;
-const SENT_FROM = 'noreply@dumena.com.ng';
+const SENT_FROM = 'uzo.systems@gmail.com';
 
 const sendMail = (to, subject, template, data) => {
     let mailOptions = {
@@ -57,7 +57,7 @@ module.exports = {
 
         const data = {
             user: user.fullname,
-            url: BASE_URL + 'user/activate/' + email_b64 + '/' + hash,
+            url: BASE_URL + 'users/activate/' + email_b64 + '/' + hash,
             base_url: BASE_URL
         };
         const subject = "Confirm your email address";

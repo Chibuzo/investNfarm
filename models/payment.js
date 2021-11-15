@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'id'
             }
         },
+        gateway: {
+            type: DataTypes.STRING,
+            defaultValue: 'Flutterwave'
+        },
         reference: {
             type: DataTypes.STRING,
             allowNull: false
@@ -24,8 +28,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false
         },
+        transaction_id: {
+            type: DataTypes.STRING
+        },
         status: {
             type: DataTypes.STRING,
+            defaultValue: 'pending'
         }
     }, {});
 

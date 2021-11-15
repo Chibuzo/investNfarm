@@ -43,7 +43,7 @@ block content
                                             th Amount Invested
                                             th Duration
                                             th ROI
-                                            th Details
+                                            //- th Details
                                     tbody
                                         each invt in userInvestments 
                                             tr 
@@ -53,8 +53,8 @@ block content
                                                 td= '₦' + view.formatCurrency(invt.unit_cost * invt.UserInvestments.units) 
                                                 td= invt.period + ' Weeks'
                                                 td= '₦' + view.formatCurrency((invt.unit_cost * invt.UserInvestments.units) + (invt.unit_cost * invt.UserInvestments.units * (invt.roi / 100)))
-                                                td
-                                                    a(href="/investment") View Details         
+                                                //- td
+                                                //-     a(href="/investment") View Details         
 
 
 

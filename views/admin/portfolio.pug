@@ -31,7 +31,7 @@ block content
                                         th Action
                                 tbody
                                     each inv in investments 
-                                        tr 
+                                        tr(id=`${inv.id}`)
                                             td= inv.investment_name 
                                             td= inv.country 
                                             td= inv.unit_cost 
@@ -54,7 +54,7 @@ block scriptBlock
 
                 if (confirm("Are you sure you want to delete this investment portfolio?")) {
                     const id = $(this).parents('tr').attr('id');
-                    $.post('/update-investment', { id, data: { deleted: true }}, function(d) {
+                    $.post('/update-investment', { id, deleted: true }, function(d) {
                         if (d.status === true) {
                             location.reload();
                         }

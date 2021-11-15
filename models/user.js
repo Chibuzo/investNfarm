@@ -19,6 +19,14 @@ module.exports = (sequelize, DataTypes) => {
         active: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
+        },
+        status: {
+            type: DataTypes.STRING,
+            defaultValue: 'Inactive'
+        },
+        deleted: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     }, {
         indexes: [
