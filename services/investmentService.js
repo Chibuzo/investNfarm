@@ -49,7 +49,6 @@ const invest = async ({ userId: UserId, investmentId: InvestmentId, units = 1 })
     if (balance < investment.unit_cost * units) {
         throw new ErrorHandler(400, 'You don\'t sufficient balance for this transaction');
     }
-    console.log(investment.id)
     // debit wallet
     await Transaction.create({
         description: 'Investment',
