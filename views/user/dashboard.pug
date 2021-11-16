@@ -14,26 +14,11 @@ block content
             .col-md-12
                 .box
                     .box-header.with-border
-                        h3.box-title Pending Investment Request
-                    .box-body
-                        .owl-carousel 
-                            each inv in investments
-                                a(href=`/users/portfolio?active=${inv.id}`)
-                                    .item(style=`background-image: url(/${inv.photo_url})` data-)
-                                        p.text-center= inv.investment_name  
-
-                        .row.text-center(style="margin-top: 40px") 
-                            each inv in userInvestments 
-                                .col-md-4 
-                                    - const days = +inv.period * 7
-                                    - const days_diff = Math.round((Date.now() - new Date(inv.UserInvestments.createdAt).getTime()) / (1000 * 3600 * 24))
-                                    - const percentage = Math.round((days_diff / 100) * days)
-                                    input.dial(type="text" value=`${percentage}` data-min="0" data-max="100")
-                                    p= inv.investment_name
+                        h3.box-title Your Portfolio At a Glance
                         
                         .row 
                             .col-md-12
-                                h3 Your Portfolio At a Glance
+                                h3 
                                 table.table.table-striped(style="margin-top: 15px")
                                     thead
                                         tr

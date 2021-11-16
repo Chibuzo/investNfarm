@@ -27,7 +27,7 @@ block content
                                 | in farms and trading commodities. We make it very simple for our investors in Nigeria and all over the world to 
                                 | invest with as little as possible and watch their investment grow. Our investors do not need to own a farm or be 
                                 | experienced in catering for the animals or crops. We take the burden off our investors and let them sit back and 
-                                | watch their money grow. Our investments are 100% safe and risk free as we are fully insured by NAIC.
+                                | watch their money grow. Our investments are 100% safe and risk free.
 
     .container-fluid.how-it-works.mb-5
         .row
@@ -37,19 +37,19 @@ block content
                     .col 
                         div.caption SIGN UP
                         div.triangle
-                        div.inner-text Sign up for a complimentary Invest”N”Farm account to again full access though profit farmland investment opportunities in our user friendly portal.
+                        div.inner-text.bounce Sign up for a complimentary Invest”N”Farm account to gain full access through profitable farmland investment opportunities in our user friendly portal.
                     .col 
                         div.caption INVEST
                         div.triangle
-                        div.inner-text Determine what best models fits your investment portfolio and invest Al opportunities have been carefully selected and offer high return possibilities.
+                        div.inner-text Determine what best models fits your investment portfolio and invest. All opportunities have been carefully selected and offer high return possibilities.
                     .col 
                         div.caption TRACK
                         div.triangle
-                        div.inner-text Congratulations you’re an investor! Invest”N”Farm manages all aspects fo the farmland, from planting to harvesting to selling while you simple track your farm’s progress online.
+                        div.inner-text Congratulations you’re an investor! Invest”N”Farm manages all aspects of the farmland, from planting to harvesting to selling while you simply track your farm’s progress online.
                     .col   
                         div.caption RECEIVE
                         div.triangle
-                        div.inner-text Profits from crop or animal sales are distributed to investors after they are harvested and sold. At the end of the holding period, investors will receive their share from the sale of the the land.       
+                        div.inner-text Profits from crop or animal sales are distributed to investors after they are harvested and sold. At the end of the holding period, investors will receive their share from the sale of the land.       
         .row
             .col.text-center.my-5
                 a.btn.btn-success.btn-lg.mt-3(href="/signup") Sign Up
@@ -125,12 +125,30 @@ block content
         .row.mb-5.px-4#add-slide 
             each inv in investments
                 - const url_path = inv.investment_name.split(' ').join('-')
-                div.col-md-3.col-xs-12.mt-2.text-center 
-                    strong= inv.investment_name
-                    div.team-photo
-                        img(src=`${inv.photo_url}`)
-                        div.team-details 
-                            a(href=`/investment/${inv.id}/${url_path}`) Read more                
+                .col-md-3.col-xs-12.mt-2 
+                    .project
+                        .team-photo(style=`background-image:url(${inv.photo_url});`)
+                        .project-details 
+                            .row 
+                                .col-md-4 #[strong Title:]
+                                .col-md-7 #{inv.investment_name}
+                            .row 
+                                .col-md-4 #[strong Unit Cost:]
+                                .col-md-5 ₦#{view.formatCurrency(inv.unit_cost)} 
+                            .row 
+                                .col-md-4 #[strong Country:]
+                                .col-md-5 #{inv.country}    
+                            .row 
+                                .col-md-4 #[strong Period:]
+                                .col-md-5 #{inv.period} Months
+                            .row 
+                                .col-md-4 #[strong Units Left:]
+                                .col-md-5= inv.units - inv.sold_unit_count
+                            .row 
+                                .col-md-4 #[strong ROI:]
+                                .col-md-5 #{inv.roi}%
+                        .team-details 
+                            a(href=`/investment/${inv.id}/${url_path}#loc`) Read more                
 
     .container-fluid.testimony.py-5 
         .row 

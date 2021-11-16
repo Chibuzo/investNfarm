@@ -11,7 +11,13 @@ const authenticateAdmin = require('../middlewares/authenticateAdmin');
 
 router.get('/', async (req, res, next) => {
     try {
-        const investments = await investmentService.list();
+        const investments = await investmentService.list({
+            include: 'investors',
+            order: [
+                ['createdAt', 'DESC']
+            ],
+            limit: 4
+        });
         res.render('index', { title: 'Welcome', investments });
     } catch (err) {
         next(err);
