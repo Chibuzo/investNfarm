@@ -35,7 +35,10 @@ block content
                                         div.col-md-6.col-sm-12.col-xs-12.mb-3
                                             input.form-control.form-control-lg(type="email" name="email" placeholder="Email" aria-label="Email" required=true)
                                         div.col-md-6.col-sm-12.col-xs-12.mb-3
-                                            input.form-control.form-control-lg(type="text" name="country" placeholder="Country" aria-label="Country")
+                                            select.form-control.form-control-lg(name="country" placeholder="Country" aria-label="Country" required)
+                                                option(value="") -- Select Country --
+                                                each country in countries 
+                                                    option(value=`${country.country}`)= country.country
                                     div.row.gx-5
                                         div.col-md-6.col-sm-12.col-xs-12.mb-3
                                             input.form-control.form-control-lg#password(type="password" name="password" placeholder="Password" aria-label="Password" required=true)
@@ -52,9 +55,9 @@ block content
                         br
                         h3 OR 
                         br
-                        button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Sign in With Google
-                        button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Sign in With Facebook
-                        button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Sign in With Apple Account
+                        button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Login With Google
+                        button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Login With Facebook
+                        button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Login With Apple Account
 
     script. 
         document.querySelector("#signupForm").addEventListener("submit", function(e) {

@@ -7,6 +7,7 @@ const investmentService = require('../services/investmentService');
 const paymentService = require('../services/PaymentService');
 const walletService = require('../services/walletService');
 const authenticateAdmin = require('../middlewares/authenticateAdmin');
+const Country = require('../models').Country;
 
 
 router.get('/', async (req, res, next) => {
@@ -36,8 +37,14 @@ router.get('/contact', async (req, res, next) => {
     res.render('contact', { title: 'Contact InvestNFarm' });
 });
 
-router.get('/signup', (req, res) => {
-    res.render('signup', { title: 'Sign Up' });
+router.get('/signup', async (req, res, next) => {
+    try {
+        const countries = await Country.findAll({ order: [['country', 'ASC']] });
+        console.log({ countries })
+        res.render('signup', { title: 'Sign Up', countries: countries.map(country => country.toJSON()) });
+    } catch (err) {
+        next(err);
+    }
 });
 
 router.get('/login', (req, res) => {

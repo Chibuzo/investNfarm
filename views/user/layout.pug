@@ -26,7 +26,7 @@ body.hold-transition.skin-green.sidebar-mini
         // Main Header
         header.main-header
             // Logo
-            a.logo(href='/admin/dashboard')
+            a.logo(href='/users/dashboard')
                 // mini logo for sidebar mini 50x50 pixels
                 span.logo-mini
                     b InvestNFarm
@@ -57,16 +57,16 @@ body.hold-transition.skin-green.sidebar-mini
                 ul.sidebar-menu(data-widget='tree')
                     li.header HEADER
                     // Optionally, you can add icons to the links
-                    li
-                        a(href='/users/dashboard')
+                    li#link-dashboard
+                        a(href='/users/dashboard#dashboard')
                             i.fa.fa-dashboard
                             span Dashboard
-                    li
-                        a(href='/users/wallet')
+                    li#link-wallet
+                        a(href='/users/wallet#wallet')
                             i.fa.fa-credit-card
                             span Wallet
-                    li
-                        a(href='/users/portfolio')
+                    li#link-portfolio
+                        a(href='/users/portfolio#portfolio')
                             i.fa.fa-briefcase
                             span Portfolios
                     li
@@ -92,3 +92,9 @@ script(src='/js/bootstrap.min.js')
 // AdminLTE App
 script(src='/js/adminlte.min.js')
 block scriptBlock
+
+script. 
+    $(document).ready(function() {
+        const link = location.href.split('#')[1];
+        $('#link-' + link).addClass('active');
+    });

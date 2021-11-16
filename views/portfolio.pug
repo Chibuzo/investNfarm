@@ -38,6 +38,7 @@ block content
             .row.justify-content-md-center(style="padding-top: 90px") 
                 .col-md-5.col-md-offset-4    
                     form(method="post" action="/invest")
+                        - const remaining_units = selectedInvestment.units - selectedInvestment.sold_unit_count
                         input(type="hidden" name="investmentId" value=`${selectedInvestment.id}`)
                         .portfolio-details 
                             .row 
@@ -54,7 +55,7 @@ block content
                                 .col-md-5 #{selectedInvestment.period} Months
                             .row 
                                 .col-md-6 #[strong Units Left:]
-                                .col-md-5= selectedInvestment.units - selectedInvestment.sold_unit_count
+                                .col-md-5= remaining_units
                             .row 
                                 .col-md-6 #[strong Return on investment:]
                                 .col-md-5 #{selectedInvestment.roi}%   
@@ -62,7 +63,7 @@ block content
                                 .col-md-4
                                     .input-group
                                         span.input-group-text #[strong Unit(s)]
-                                        input.form-control.input-lg(type="number" name="units" value="1")
+                                        input.form-control.input-lg(type="number" name="units" value="1" min="1" max=`${remaining_units}`)
                                 .col-md-6
                                     if user
                                         button.btn.btn-success(type="submit") INVEST NOW
