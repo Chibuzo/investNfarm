@@ -16,7 +16,7 @@ module.exports = {
                 allowNull: false
             },
             about: {
-                type: sequelize.TEXT
+                type: Sequelize.TEXT
             },
             unit_cost: {
                 type: Sequelize.INTEGER,
