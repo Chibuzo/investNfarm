@@ -108,6 +108,14 @@ block scriptBlock
     
     script. 
         $(document).ready(function() {
+            toastr.options = {
+                timeOut: 0,
+                closeButton: true,
+                positionClass: "toast-bottom-full-width",
+                onCloseClick: function() {
+                    location.reload()
+                }
+            }
             //- $("#topup").click(function() {
             //-     const amount = $("#amount").val();
             //-     if (!amount) return;
@@ -128,7 +136,7 @@ block scriptBlock
 
                 $.post('/request-withdrawal', $(this).serialize(), function(d) {
                     if (d.status.trim() === 'success') {
-                        location.reload();
+                        toastr.success('Your withdrawal request has been reveived. It will take about 48 hours to process', 'Request Sent');
                     }
                 })
             });

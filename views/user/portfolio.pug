@@ -20,7 +20,7 @@ block content
                         .owl-carousel 
                             each inv in investments
                                 - const url_path = inv.investment_name.split(' ').join('-')
-                                a(href=`/investment/${inv.id}/${url_path}`)
+                                a(href=`/investment/${inv.id}/${url_path}#loc`)
                                     .item(style=`background-image: url(/${inv.photo_url})` data-)
                                         p.text-center= inv.investment_name 
 

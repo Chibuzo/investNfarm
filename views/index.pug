@@ -34,19 +34,19 @@ block content
             .col
                 h2.text-center HOW IT WORKS 
                 .row.text-center 
-                    .col 
+                    .col.bounce
                         div.caption SIGN UP
                         div.triangle
-                        div.inner-text.bounce Sign up for a complimentary Invest”N”Farm account to gain full access through profitable farmland investment opportunities in our user friendly portal.
-                    .col 
+                        div.inner-text Sign up for a complimentary Invest”N”Farm account to gain full access through profitable farmland investment opportunities in our user friendly portal.
+                    .col.bounce
                         div.caption INVEST
                         div.triangle
                         div.inner-text Determine what best models fits your investment portfolio and invest. All opportunities have been carefully selected and offer high return possibilities.
-                    .col 
+                    .col.bounce
                         div.caption TRACK
                         div.triangle
                         div.inner-text Congratulations you’re an investor! Invest”N”Farm manages all aspects of the farmland, from planting to harvesting to selling while you simply track your farm’s progress online.
-                    .col   
+                    .col.bounce  
                         div.caption RECEIVE
                         div.triangle
                         div.inner-text Profits from crop or animal sales are distributed to investors after they are harvested and sold. At the end of the holding period, investors will receive their share from the sale of the land.       
@@ -127,7 +127,7 @@ block content
                 - const url_path = inv.investment_name.split(' ').join('-')
                 .col-md-3.col-xs-12.mt-2 
                     .project
-                        .team-photo(style=`background-image:url(${inv.photo_url});`)
+                        .project-photo(style=`background-image:url(${inv.photo_url});`)
                         .project-details 
                             .row 
                                 .col-md-4 #[strong Title:]

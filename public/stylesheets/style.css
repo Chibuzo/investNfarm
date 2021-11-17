@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Gilroy-Light ☞';
 }
@@ -222,7 +226,7 @@ video {
     transition: transform .2s ease-out;
 }
 
-.team-photo {
+.project-photo {
     background-size: cover;
     height: 160px;
 }
@@ -235,6 +239,10 @@ video {
     padding: 10px;
     font-size: 15px;
     line-height: 26px;
+}
+
+.team-photo {
+    margin-top: 20px;
 }
 
 .team-photo img {
