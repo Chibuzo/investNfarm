@@ -1,0 +1,57 @@
+extends layout 
+
+block content
+    section.content-header
+        h1
+            | New Farm Category
+
+    // Main content
+    section.content  
+        .row
+            .col-md-12
+                .box
+                    .box-header(style="padding: 0")
+
+                    .box-body
+                        .row 
+                            .col-md-12
+                                a.btn.btn-default.btn.lg.pull-right(href="/admin/farms")
+                                    .fa.fa-caret-left 
+                                    |  Go Back 
+                        .row 
+                            .col-md-6.col-md-offset-3
+                                h3 Edit Farm Category
+                                br/
+                                form(method="post" action="/admin/farms" encType="multipart/form-data")
+                                    .form-group
+                                        .row 
+                                            .col-md-12     
+                                                label Farm Name  
+                                                input.form-control.input-lg(type="text" name="category_name" value=`${farm.category_name}`)
+                                    .form-group 
+                                        .row 
+                                            .col-md-12 
+                                                label Description 
+                                                textarea.form-control(name="about" rows="10")
+                                                    | #{farm.about}             
+                                    .form-group 
+                                        .row 
+                                            .col-md-12
+                                                label Model
+                                                textarea.form-control(name="model" rows="10")  
+                                                    | #{farm.model}  
+                                    .form-group 
+                                        .row 
+                                            .col-md-12
+                                                label Benefits 
+                                                each benefit in farm.benefits
+                                                    input.form-control.input-lg(type="text" name="benefit[]" value=`${benefit}` placeholder="Benefit...")        
+                                    .form-group 
+                                        .row 
+                                            .col-md-12 
+                                                label Farm Photo 
+                                                input.form-control.input.lg(type="file" name="portfolio_photo")
+                                                input(type="hidden" name="id" value=`${farm.id}`)
+                                    .form-group.text-center 
+                                        br/
+                                        input.btn.btn-success.btn-lg(type="submit" value="Publish Farm")

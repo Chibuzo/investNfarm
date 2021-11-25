@@ -62,6 +62,37 @@ router.get('/portfolio', authenticateAdmin, async (req, res, next) => {
     }
 });
 
+router.get('/farms', authenticateAdmin, async (req, res, next) => {
+    try {
+        const farms = await investmentService.getFarms({ include: 'investments' });
+        res.render('admin/farms', { farms });
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.get('/farms/new', authenticateAdmin, async (req, res) => {
+    res.render('admin/new-farm');
+});
+
+router.post('/farms', authenticateAdmin, async (req, res, next) => {
+    try {
+        await investmentService.saveFarm(req);
+        res.redirect('/admin/farms');
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.get('/edit-farm/:id', authenticateAdmin, async (req, res, next) => {
+    try {
+        const farm = await investmentService.viewFarm(req.params.id);
+        res.render('admin/edit-farm', { farm, title: 'Edit Farm' });
+    } catch (err) {
+        next(err);
+    }
+});
+
 router.get('/portfolio/new', authenticateAdmin, async (req, res) => {
     res.render('admin/new-portfolio');
 });

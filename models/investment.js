@@ -6,9 +6,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        about: {
-            type: DataTypes.TEXT
-        },
         unit_cost: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -37,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Investment.associate = function (models) {
         Investment.belongsToMany(models.User, { through: 'UserInvestments', as: 'investors' });
+        Investment.belongsTo(models.InvestmentCategory);
         Investment.hasMany(models.UserInvestments, { as: 'userInvestment' });
     };
 

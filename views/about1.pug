@@ -1,0 +1,55 @@
+extends layout
+
+block content 
+    .container-fluid.feature
+        .row.feature-text
+            .col.text-center
+                h1.mb-4.text-white INVEST IN FARMS….TRADE IN COMMODITIES
+        .row
+            .col(style="padding: 0")
+                video(width="100%", autoPlay muted loop)
+                    source(src="images/Tractor.mp4" type="video/mp4")
+
+    .container-fluid.secondary-bg.pt-5.mb-5(style="margin-top: -7px")  
+        .container 
+            .row
+                .col-md-6.col-xs-12.mt-5.text-white
+                    h2 About Us 
+                    p Invest”N”farm is an innovative digital agritech crowdfunding platform focused on arable, pastoral farming and other agricultural operations in Africa. 
+                    p We are registered in Nigeria as Invest”N”farm limited, RC:1607086. We believe strongly that Agriculture is one of the most secured and profitable businesses to invest in as we provide opportunities to everyone to engage in Agribusiness anytime and on the go by investing in farms and trading in commodities. 
+                    p We make it very simple for our investors in Nigeria and all over the world to be able to invest in as little as possible and watch your investment grow. 
+                    p Our investments are 100% safe and risk free as we are fully insured. Join us on this journey as we build the economy together and make you smile to the bank. Welcome to a world of great Agricultural experience with Invest”N”farm!
+                .col-md-6.col-xs-12.text-end
+                    img(src="images/partner.png" style="width: 100%")
+
+    section.why-choose-us-sec.why-choose-inner.section-padding.section-bg-v2
+        .container
+            .row
+                .col-lg-9.wow.fadeInUp(data-wow-duration='1.5s' data-wow-delay='400ms' style='visibility: visible; animation-duration: 1.5s; animation-delay: 400ms; animation-name: fadeInUp;')
+                    .why-choose-content
+                        h2.column-title2.column-title Our Four Step Model
+                        .row
+                            .col-md-6
+                                .single-why-choose-list
+                                    i.icon-why-choose-1
+                                    h3 Invest In A Farming Project
+                                    p Choose from our carefully curated and affordable farm projects. Sign up, create an account, and select the numbers of units you want to invest in and make payment.
+                            .col-md-6
+                                .single-why-choose-list
+                                    i.icon-why-choose-2
+                                    h3 Status & Updates
+                                    p On your personal dashboard,you would monitor you investments portfolio and also get real time updates.
+                            .col-md-6
+                                .single-why-choose-list
+                                    i.icon-why-choose-3
+                                    h3 Let Your Investment Grow 
+                                    p Once the farming project is fully funded, we start farming and support our farmers with agronomy training and supervision, farming inputs and technical equipment.
+                            .col-md-6
+                                .single-why-choose-list
+                                    i.icon-why-choose-4
+                                    h3 Receive Returns Plus initial Investment
+                                    p After the investment period, when the produce has been harvested and sold, your investment will be paid back to you together with the returns. this will be visible and accessible from your wallet on your dashboard.
+                .col-lg-3.align-self-center.wow.fadeInUp(data-wow-duration='1.5s' data-wow-delay='500ms' style='visibility: visible; animation-duration: 1.5s; animation-delay: 500ms; animation-name: fadeInUp;')
+                    .why-choose-inner-img
+                    img(src='/images/why-choose-us-inner.png' alt='')
+

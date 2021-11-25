@@ -12,21 +12,15 @@ const Country = require('../models').Country;
 
 router.get('/', async (req, res, next) => {
     try {
-        const investments = await investmentService.list({
-            include: 'investors',
-            order: [
-                ['createdAt', 'DESC']
-            ],
-            limit: 4
-        });
-        res.render('index', { title: 'Welcome', investments });
+        const farms = await investmentService.getFarms();
+        res.render('new', { title: 'Welcome', farms });
     } catch (err) {
         next(err);
     }
 });
 
 router.get('/about', async (req, res, next) => {
-    res.render('about', { title: 'About InvestNFarm' });
+    res.render('about1', { title: 'About InvestNFarm' });
 });
 
 router.get('/team', (req, res, next) => {

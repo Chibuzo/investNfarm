@@ -1,0 +1,55 @@
+extends layout 
+
+block content
+    section.content-header
+        h1
+            | Farm Category
+
+    // Main content
+    section.content  
+        .row
+            .col-md-12
+                .box
+                    .box-header.with-border
+                        a.btn.btn-danger.btn.lg.pull-right(href="/admin/farms/new")
+                            .fa.fa-plus 
+                            |  New Farm 
+                    .box-body
+                        if farms.length
+                            table.table.table-striped
+                                thead
+                                    tr
+                                        th Farm Category
+                                        th About 
+                                        th Number of Farms
+                                        th Action
+                                tbody
+                                    each farm in farms 
+                                        tr(id=`${farm.id}`)
+                                            td= farm.category_name 
+                                            td= farm.about 
+                                            td= farm.investments.length   
+                                            td
+                                                a(href=`/admin/edit-farm/${farm.id}` title="Edit Farm" data-toggle="tooltip")
+                                                    i.fa.fa-edit.fa-lg(style="margin-right: 7px")
+                                                a.delete(title="Delete Farm" data-toggle="tooltip")
+                                                    i.fa.fa-trash.fa-lg
+
+block scriptBlock 
+    script.
+        $(document).ready(function() {
+            $(".delete").click(function(e) {
+                e.preventDefault();
+
+                if (confirm("Are you sure you want to delete this farm category?")) {
+                    const id = $(this).parents('tr').attr('id');
+                    $.post('/update-farm', { id, deleted: true }, function(d) {
+                        if (d.status === true) {
+                            location.reload();
+                        }
+                    });
+                }
+            });
+        }); 
+
+

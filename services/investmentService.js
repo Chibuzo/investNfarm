@@ -1,4 +1,4 @@
-const { Investment, Transaction, User } = require('../models');
+const { Investment, Transaction, User, InvestmentCategory } = require('../models');
 const { ErrorHandler } = require('../helpers/errorHandler');
 const { uploadFile } = require('../helpers/fileUpload');
 const walletService = require('../services/walletService');
@@ -68,6 +68,30 @@ const updateInvestment = async (data) => {
     return Investment.update(data, { where: { id } });
 }
 
+const getFarms = async () => {
+    const farms = await InvestmentCategory.findAll({ include: 'investments' });
+    return farms.map(farm => sanitizeFarm(farm));
+}
+
+const viewFarm = async id => {
+    const farm = await InvestmentCategory.findByPk(id);
+    return sanitizeFarm(farm);
+}
+
+const saveFarm = async ({ body: farmData, files }) => {
+    const photo_url = await uploadFile(files);
+    const benefits = JSON.stringify(farmData['benefit[]']);
+    delete farmData['benefit[]'];
+    farmData.benefits = benefits;
+    if (farmData.id) {
+        const id = farmData.id;
+        delete farmData.id;
+        if (photo_url) farmData.photo_url = photo_url;
+        return InvestmentCategory.update(farmData, { where: { id } });
+    }
+    return InvestmentCategory.create({ ...farmData, photo_url });
+}
+
 const sanitize = rawInvestment => {
     const investment = { ...rawInvestment.toJSON() };
     if (investment.investors) {
@@ -77,11 +101,20 @@ const sanitize = rawInvestment => {
     return investment;
 }
 
+const sanitizeFarm = rawFarm => {
+    const farm = { ...rawFarm.toJSON() };
+    console.log(JSON.parse(farm.benefits))
+    return { ...farm, benefits: JSON.parse(farm.benefits) };
+}
+
 module.exports = {
     save,
     view,
     list,
     getUserInvestments,
     invest,
-    updateInvestment
+    updateInvestment,
+    getFarms,
+    saveFarm,
+    viewFarm
 }

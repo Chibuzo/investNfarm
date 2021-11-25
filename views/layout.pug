@@ -1,56 +1,205 @@
 doctype html
-html#top
-  head
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    title InvestNFarm - #{title}
-    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/stylesheets/fonts.css')
-    block styleBlock
-  body
-    header
-        nav(class=["navbar navbar-expand-lg navbar-light"])
-            div(class="container-fluid")
-                a.navbar-brand(href="/") 
-                    img(src="/images/logo.png", width="130px")
-                button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarNav"
-                    aria-controls="navbarNav", aria-expanded=false, aria-label="Toggle navigation")
-                    span.navbar-toggler-icon
-                
-                div(class=["collapse navbar-collapse float-right"])#navbarNav
-                    ul.navbar-nav.ms-auto
-                        li.nav-item
-                            a.nav-link.mx-3(aria-current="page" href="/") Home
-                        li.nav-item
-                            a.nav-link.mx-3(href="/about") About Us
-                        li.nav-item
-                            a.nav-link.mx-3(href="/investment/1/") Products
-                        li.nav-item
-                            a.nav-link.mx-3(href="/team") Our People    
-                        li.nav-item
-                            a.nav-link.mx-3(href="#") Contact Us
-                        li.nav-item
-                            if user
-                                a.btn.btn-white.mx-3(href="/users/dashboard") My Dashboard
-                            else
-                                a.btn.btn-success.mx-3(href="/login") Login
-    block content
+head
+  meta(charset='utf-8')
+  meta(http-equiv='x-ua-compatible' content='ie=edge')
+  title bagan - Home One
+  meta(name='description' content='')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  link(href='https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
+  link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i' rel='stylesheet')
+  link(rel='icon' type='image/png' href='favicon.ico')
+  link(rel='apple-touch-icon' href='apple-touch-icon.png')
+  link(rel='stylesheet' href='/style/fontawesome-min.css')
+  link(rel='stylesheet' href='/style/bootstrap.min.css')
+  link(rel='stylesheet' href='/style/xsIcon.css')
+  link(rel='stylesheet' href='/style/iconmoon.css')
+  link(rel='stylesheet' href='/style/isotope.css')
+  link(rel='stylesheet' href='/style/magnific-popup.css')
+  link(rel='stylesheet' href='/style/owl.carousel.min.css')
+  link(rel='stylesheet' href='/style/owl.theme.default.min.css')
+  link(rel='stylesheet' href='/style/navigation.css')
+  link(rel='stylesheet' href='/style/animate.css')
+  link(rel='stylesheet' href='/style/style.css')
+  link(rel='stylesheet' href='/style/responsive.css')
+//if lt IE 10
+  p.browserupgrade
+    | You are using an 
+    strong outdated
+    |  browser. Please 
+    a(href='http://browsehappy.com/')
+      | upgrade
+      | your browser
+    |  to improve your experience.
+#preloader
+  .preloader-wrapper
+    .la-ball-clip-rotate-pulse.la-2x
+      div
+      div
+  a.cancel-preloader(href='') Cancel Preloader
+section.xs-header-top
+  .container
+    .row
+      .col-lg-6.col-md-8
+        .header-top-info
+          ul
+            li
+              i.icon.icon-map-marker2
+              |  497 Evergreen Rd. Roseville, CA 95673
+            li
+              i.icon.icon-envelope
+              a.__cf_email__(href='/cdn-cgi/l/email-protection' data-cfemail='204558414d504c4560474d41494c0e434f4d') investnfarm@gmail.com
+      .col-lg-6.align-self-center.col-md-4
+        .header-top-social
+          ul
+            li
+              a(href='#')
+                i.fa.fa-facebook-f
+            li
+              a(href='#')
+                i.fa.fa-twitter
+            li
+              a(href='#')
+                i.fa.fa-google-plus
+            li
+              a(href='#')
+                i.fa.fa-instagram
+section.xs-header-middle
+  .container
+    .row
+      .col-md-3.align-self-center
+        .logo
+          a(href='/')
+            img(src='/images/logo.png' alt='')
+      .align-self-center.col-md-9
+        .header-middle-info.float-right
+          ul 
+            li
+              i.icon-number_1
+              label Best Agric Investing
+              p Service provider of 2021
+header.xs-header-nav
+  .container
+    .row.menu-item
+      .col-lg-12
+        nav#navigation1.navigation.header-nav.clearfix
+          .nav-header
+            a.mobile-logo(href='/index')
+              img(src='/images/mobile_logo.png' alt='')
+            .nav-toggle
+          .nav-menus-wrapper.clearfix
+            ul.nav-menu
+              li.active
+                a(href='/') Home
+              li
+                a(href='/about') About us
+              li
+                a(href='/products') Our Products
+              li
+                a(href='/contact') Contact Us
+            .header-nav-right-info.align-to-right
+              label
+                i.icon.icon-phone3
+                |  +44 345 678 903
 
-    footer.primary-bg.py-4
-        div.container
-            .row.text-white
-                div.col
-                    p 497 Evergreen Rd. Roseville, CA 95673<br>+44 345 678 903
-                div.col.text-end
-                    i.fab.fa-instagram
-                    i.fab.fa-twitter.mx-3
-                    i.fab.fa-facebook-f
-                    br
-                    br
-                    a(href="#top") Top
+block content 
 
-    script(src='/js/jquery.min.js')
-    script(src="https://kit.fontawesome.com/8f93d1598d.js")
-    script(src="/javascripts/bootstrap.bundle.min.js")  
-    block scriptBlock              
+footer.xs-footer-sec
+  .container
+    .footer-top-item
+      .xs-back-to-top
+        a.BackTo(href='#')
+          i.fa.fa-angle-double-up
+    .footer-item
+      .row
+        .col-lg-3
+          .widgets
+            .footer-logo
+              a(href='/')
+                img(src='/images/logo.png' alt='')
+            p
+              | Invest”N”Farm is an innovative digital agritech crowdfunding platform focused on arable and pastoral farming and other operations in Nigeria.
+            ul.footer-social
+              li
+                a(href='#')
+                  i.fa.fa-facebook-f
+              li
+                a(href='#')
+                  i.fa.fa-twitter
+              li
+                a(href='#')
+                  i.fa.fa-google-plus
+              li
+                a(href='#')
+                  i.fa.fa-pinterest
+              li
+                a(href='#')
+                  i.fa.fa-instagram
+        .col-md-3
+          .widgets
+            h3.widget-title InvestNfarm
+            ul
+              li
+                a(href='/index') Home
+              li
+                a(href='/about') About Us
+              li
+                a(href='/products') Products
+              li    
+                a(href='/contact') Contact  
+              li
+                a(href='faq.html') Faq
+        .col-md-3
+          .widgets
+            h3.widget-title Our Services
+            ul.service-link
+              li
+                a(href='#') Design &amp; Planing
+              li
+                a(href='#') Garden care
+              li
+                a(href='#') Snow removal
+              li
+                a(href='#') Preparing landscape
+              li
+                a(href='#') Forest planing
+              li
+                a(href='#') Fence grate
+        .col-md-3
+          .widgets
+            h3.widget-title Contact Us
+            ul.footer-contact-list
+              li
+                i.icon.icon-map-marker2
+                | #[strong Visit our office]
+                br/ 497 Evergreen Rd. Roseville, CA 95673
+              li
+                i.icon.icon-phone3
+                |                                     +44 345 678 903
+              li
+                i.icon.icon-envelope
+                a.__cf_email__(href='/cdn-cgi/l/email-protection' data-cfemail='ceabb6afa3bea2ab8ea9a3afa7a2e0ada1a3') [email&nbsp;protected]
+    .copyright-content
+      .row
+        .col-md-6
+          p
+            | Copyright #{new Date().getFullYear()}, 
+            a(href='https://investnfarm.com') InvestNfarm
+            | . All
+            |                             Rights Reserved.
+        .col-md-6
+          ul.footer-bottom-menu
+            li
+              a(href='#') Terms of Service 
+            li
+              a(href='#') Privacy Policy
+script(data-cfasync='false' src='/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')
+script(src='/javascripts/jquery.min.js')
+script(src='/javascripts/bootstrap.min.js')
+script(src='/javascripts/jquery-mixtub.js')
+script(src='/javascripts/jquery.magnific-popup.min.js')
+script(src='/javascripts/owl.carousel.min.js')
+script(src='/javascripts/navigation.js')
+script(src='/javascripts/jquery.appear.min.js')
+script(src='/javascripts/isotope.js')
+script(src='/javascripts/wow.min.js')
+script(src='/javascripts/main.js')
