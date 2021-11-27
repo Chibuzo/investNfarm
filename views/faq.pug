@@ -1,0 +1,131 @@
+extends layout 
+
+block content
+    section.banner-inner-sec(style="background-image:url('/images/faq-banner.jpg')")
+        .banner-table
+            .banner-table-cell
+                .container
+                    .banner-inner-content
+                        h2.banner-inner-title FAQ
+                        ul.xs-breadcumb
+                            li
+                                a(href='/')  Home / 
+                                |  faq
+    section.xs-faq-sec.section-padding  
+        .container
+            .row
+                .col-lg-8
+                    .faq-content
+                        .faq-content-item
+                            h3.faq-title
+                                span.light-text Common
+                                |  questions
+                            p
+                            | Pharetra auctor libero suscipit rhoncus vivamus tempor nascetur Nisi platea euismod,
+                            | aliquam ac feugiat donec commodo aenean volutpat
+                        #accordion.faq-item
+                            .faq-single-item
+                                h4#headingOne
+                                    button.btn.btn-link(data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne')
+                                        span.icon.icon-question-circle
+                                        | Is InvestNfarm Registered?
+                                #collapseOne.collapse(aria-labelledby='headingOne' data-parent='#accordion')
+                                    .card-body
+                                        p Yes, InvestNfarm is a registered with the CAC in Nigeria with registration number xxxxxxx
+                            .faq-single-item
+                                h4#headingOne
+                                    button.btn.btn-link(data-toggle='collapse' data-target='#collapse2' aria-expanded='true' aria-controls='collapse2')
+                                        span.icon.icon-question-circle
+                                        | Where is InvestNfarm located?
+                                #collapse2.collapse(aria-labelledby='headingOne' data-parent='#accordion')
+                                    .card-body
+                                        p InvestNfarm is located in Western part of Nigeria
+                            .faq-single-item
+                                h4#headingOne
+                                    button.btn.btn-link(data-toggle='collapse' data-target='#collapse3' aria-expanded='true' aria-controls='collapse3')
+                                        span.icon.icon-question-circle
+                                        | Are farms and trades insured?
+                                #collapse3.collapse(aria-labelledby='headingOne' data-parent='#accordion')
+                                    .card-body
+                                        p Yes, both farms and commodities are comprehensively insured. The farms are insured to alleviate any form of crop losses such as fire, lightning, windstorm damage, flood, outbreak of pests and diseases etc. For commodity trades, we have comprehensive insurance for Goods in transit and warehouses for burglary, fire or other unforeseen events. 
+                            .faq-single-item
+                                h4#headingOne
+                                    button.btn.btn-link(data-toggle='collapse' data-target='#collapse4' aria-expanded='true' aria-controls='collapse4')
+                                        span.icon.icon-question-circle
+                                        | How safe and secured is my investment?
+                                #collapse4.collapse(aria-labelledby='headingOne' data-parent='#accordion')
+                                    .card-body
+                                        p All of our crops are well kept in a safe storage facility and our birds are well taken care of physically and medically by our experienced team of professionals. They are also kept in a Safe and Conducive Environment far away from predators and they are all insured by Leadway Insurance.
+                            .faq-single-item
+                                h4#headingOne
+                                    button.btn.btn-link(data-toggle='collapse' data-target='#collapse5' aria-expanded='true' aria-controls='collapse5')
+                                        span.icon.icon-question-circle
+                                        | What is the minimum amount that I can invest?
+                                #collapse5.collapse(aria-labelledby='headingOne' data-parent='#accordion')
+                                    .card-body
+                                        p A minimum investment is stipulated for each project, which will generally range from xxxxx to xxxxx, depending on the product.
+                            .faq-single-item
+                                h4#headingOne
+                                    button.btn.btn-link(data-toggle='collapse' data-target='#collapse6' aria-expanded='true' aria-controls='collapse6')
+                                        span.icon.icon-question-circle
+                                        | How do I invest?
+                                #collapse6.collapse(aria-labelledby='headingOne' data-parent='#accordion')
+                                    .card-body
+                                        p You can check us online at InvestNfarm. Just sign up, login and invest. Alternatively, you can click on the menu, select "Invest Now", complete the online form, submit the form and make payment. You can either pay directly to the bank or make an online transfer. Please be aware that we do not accept cash payment.
+                            .faq-single-item
+                                h4#headingOne
+                                    button.btn.btn-link(data-toggle='collapse' data-target='#collapse7' aria-expanded='true' aria-controls='collapse7')
+                                        span.icon.icon-question-circle
+                                        | How long does my investment take to mature?
+                                #collapse7.collapse(aria-labelledby='headingOne' data-parent='#accordion')
+                                    .card-body
+                                        p Capital: ₦3,000,000 , Duration: 4 months ROI: 20% Capital: ₦1,000,000 and below, Duration: 8 months ROI: 27% Capital: ₦1,000,000 - ₦2,999,999, Duration: 8 months ROI: 30% Capital: ₦1,000,000 and below, Duration: 12 months ROI: 37% Capital: ₦1,000,000 and above, Duration: 12 months ROI: 40%
+                            .faq-single-item
+                                h4#headingOne
+                                    button.btn.btn-link(data-toggle='collapse' data-target='#collapse8' aria-expanded='true' aria-controls='collapse8')
+                                        span.icon.icon-question-circle
+                                        | How much is a unit and what does it cover?
+                                #collapse8.collapse(aria-labelledby='headingOne' data-parent='#accordion')
+                                    .card-body
+                                        p For farms, the returns are calculated by multiplying the projected yield per unit by the predetermined price per KG of the crop type. For commodity trades, the returns are calculated by a sharing formula that assigns a percentage of predetermined profit projections
+                            .faq-single-item
+                                h4#headingOne
+                                    button.btn.btn-link(data-toggle='collapse' data-target='#collapse9' aria-expanded='true' aria-controls='collapse9')
+                                        span.icon.icon-question-circle
+                                        | How do I follow up on my Investment?
+                                #collapse9.collapse(aria-labelledby='headingOne' data-parent='#accordion')
+                                    .card-body
+                                        p You can monitor how your investment grows on a daily basis at any time and anywhere. We will also send you updates as requested by you at least once in every two months via email and text messages respectively.
+                            .faq-single-item
+                                h4#headingOne
+                                    button.btn.btn-link(data-toggle='collapse' data-target='#collapse10' aria-expanded='true' aria-controls='collapse10')
+                                        span.icon.icon-question-circle
+                                        | How do I get my fund after Investment Maturity?
+                                #collapse10.collapse(aria-labelledby='headingOne' data-parent='#accordion')
+                                    .card-body
+                                        p At the point of investment maturity, you can either withdraw your fund into your bank account or roll the investment over. However, if you invest through our investment form, Your investment officially becomes valid 48 hours from your payment date and on the same day 8 or 12 months later, depending on your package, your principal and returns shall be transferred into your account.
+                            .faq-single-item
+                                h4#headingOne
+                                    button.btn.btn-link(data-toggle='collapse' data-target='#collapse11' aria-expanded='true' aria-controls='collapse11')
+                                        span.icon.icon-question-circle
+                                        | Can I Terminate My Investment before Maturity?
+                                #collapse11.collapse(aria-labelledby='headingOne' data-parent='#accordion')
+                                    .card-body
+                                        p In cases where our Investors no longer want to continue their partnership with us, and would require the invested money back before the Investment Maturity period, he/she must inform us two weeks before Investment Maturity. And only the Principal will be paid, forfeiting the returns.
+                            .faq-single-item
+                                h4#headingOne
+                                    button.btn.btn-link(data-toggle='collapse' data-target='#collapse12' aria-expanded='true' aria-controls='collapse12')
+                                        span.icon.icon-question-circle
+                                        | How do I join?
+                                #collapse12.collapse(aria-labelledby='headingOne' data-parent='#accordion')
+                                    .card-body
+                                        p Simply create an account using the sign up, select any number of units in farms or commodity trades you are interested in, make payments and we would get you started.                                                                                   
+                .col-lg-4
+                    .sidebar-widgets.faq-sidebar
+                        .widget.widget-faq
+                            form#xs-contact-form.xs-form(action='#' method='POST')
+                                input#xs_contact_name.form-control(type='text' name='name' placeholder='Your name')
+                                input#xs_contact_email.form-control(type='email' name='email' placeholder='Your email')
+                                textarea#x_contact_massage.form-control.message-box(name='massage' placeholder='Your Question' cols='30' rows='10')
+                                .xs-btn-wraper
+                                    input#xs_contact_submit.xs-btn.sm-btn(type='submit' value='SEND QUESTION')

@@ -94,13 +94,21 @@ router.get('/edit-farm/:id', authenticateAdmin, async (req, res, next) => {
 });
 
 router.get('/portfolio/new', authenticateAdmin, async (req, res) => {
-    res.render('admin/new-portfolio');
+    try {
+        const farms = await investmentService.getFarms();
+        res.render('admin/new-portfolio', { farms });
+    } catch (err) {
+        next(err);
+    }
 });
 
 router.get('/edit-portfolio/:id', authenticateAdmin, async (req, res, next) => {
     try {
-        const investment = await investmentService.view(req.params.id);
-        res.render('admin/edit-portfolio', { investment, title: 'Edit Portfolio' });
+        const [investment, farms] = await Promise.all([
+            investmentService.view(req.params.id),
+            investmentService.getFarms()
+        ]);
+        res.render('admin/edit-portfolio', { investment, farms, title: 'Edit Portfolio' });
     } catch (err) {
         next(err);
     }

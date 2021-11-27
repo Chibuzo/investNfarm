@@ -4356,3 +4356,46 @@ h6 {
 .text-green {
     color: #007f4b;
 }
+
+.project-photo {
+    background-size: cover;
+    height: 240px;
+}
+
+.xs-popup-right-content p {
+  white-space: pre-line;
+  display: -webkit-box;
+  -webkit-line-clamp: 12;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.feature {
+    position: relative;
+}
+
+.feature-text {
+    position: absolute;
+    left: 40%;
+    /* top: 50%; */
+    transform: translate(-30%, 38%);
+    z-index: 20;
+}
+
+.feature-text h1 {
+    margin-top: 40px;
+    font-size: 55px;
+}
+
+.feature-text p {
+  font-size: 20px;
+}
+
+.feature-image {
+    height: 80vh;
+    background-size: cover;
+}

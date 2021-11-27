@@ -1,0 +1,49 @@
+#mixcontent.row
+    each inv in investments
+        .col-lg-4.mix.col-sm-6
+            a.xs-image-popup(data-effect='mfp-zoom-in' href=`#popup_${inv.id}`)
+                .single-recent-work
+                    .project-photo(style=`background-image:url(${inv.photo_url});`)
+                    .recet-work-footer
+                        i.icon-Our_service_3
+                        h3= inv.investment_name
+            .container.xs-gallery-popup-item.mfp-hide(id=`popup_${inv.id}`)
+                .row
+                    .col-lg-5.xs-padding-0
+                        .xs-popup-img
+                            img(src='/images/our-project/project_1.jpg' alt='')
+                    .col-lg-7
+                        .xs-popup-content
+                            h2.hidden-title Project info
+                            h3= inv.investment_name
+                            .row
+                                .col-lg-5
+                                    ul.xs-popup-left-content
+                                        li
+                                            i.icon.icon-tags
+                                            label Project Category
+                                            span #{inv.InvestmentCategory.category_name}
+                                        li
+                                            i.icon.icon-invest
+                                            label Unit Cost
+                                            span  ₦#{view.formatCurrency(inv.unit_cost)} 
+                                        li
+                                            i.icon.icon-invest
+                                            label Project Duration
+                                            span #{inv.period} Months
+                                        li 
+                                            label Units Left 
+                                            span #{inv.units - inv.sold_unit_count}
+                                        li 
+                                            label ROI 
+                                            span #{inv.roi}%	
+                                        li
+                                            i.icon.icon-map-marker2
+                                            label Location
+                                            span
+                                                | #{inv.country},
+
+                                .col-lg-7
+                                    .xs-popup-right-content
+                                        p= inv.InvestmentCategory.about
+                                        a.xs-btn(href='#') VIEW MORE

@@ -26,6 +26,17 @@ block content
                                     .form-group
                                         .row 
                                             .col-md-12     
+                                                label Farm Category 
+                                                select.form-control.input-lg(name="InvestmentCategoryId" required)
+                                                    option(value="") -- Select Farm Category 
+                                                    each farm in farms 
+                                                        if farm.id == investment.InvestmentCategoryId
+                                                            option(value=`${farm.id}` selected)= farm.category_name
+                                                        else
+                                                            option(value=`${farm.id}`)= farm.category_name
+                                    .form-group
+                                        .row 
+                                            .col-md-12     
                                                 label Investment Name  
                                                 input.form-control.input-lg(type="text" name="investment_name" value=`${investment.investment_name}`)
                                     .form-group 

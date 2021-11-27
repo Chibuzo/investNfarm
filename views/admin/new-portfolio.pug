@@ -4,14 +4,14 @@ block content
     section.content-header
         h1
             | New Investment Portfolios
-        
+
     // Main content
     section.content  
         .row
             .col-md-12
                 .box
                     .box-header(style="padding: 0")
-                        
+
                     .box-body
                         .row 
                             .col-md-12
@@ -26,6 +26,14 @@ block content
                                     .form-group
                                         .row 
                                             .col-md-12     
+                                                label Farm Category 
+                                                select.form-control.input-lg(name="InvestmentCategoryId" required)
+                                                    option(value="") -- Select Farm Category 
+                                                    each farm in farms 
+                                                        option(value=`${farm.id}`)= farm.category_name
+                                    .form-group
+                                        .row 
+                                            .col-md-12     
                                                 label Investment Name  
                                                 input.form-control.input-lg(type="text" name="investment_name")
                                     .form-group 
@@ -37,7 +45,7 @@ block content
                                     //-     .row 
                                     //-         .col-md-12 
                                     //-             label Description 
-                                    //-             textarea.form-control(name="about", rows="10")             
+                                    //-             textarea.form-control(name="about" rows="10")             
                                     .form-group 
                                         .row 
                                             .col-md-6 

@@ -1,0 +1,85 @@
+extends layout
+
+block content 
+
+    section.banner-inner-sec(style="background-image:url('/images/contact-banner.jpg')")
+        .banner-table
+            .banner-table-cell
+                .container
+                    .banner-inner-content
+                        h2.banner-inner-title Contact us
+                        ul.xs-breadcumb
+                            li
+                                a(href='/')  Home / 
+                                |  contact
+    section.xs-get-in-touch
+        .container
+            .row
+                .col-lg-8.mx-auto
+                    .get-in-touch-cont.text-center
+                        h3
+                            span.light-text Get
+                            |  in touch
+                        p
+                            | Contact Investnfarm today on whatever query you have. Chat online with an investnfarm support,
+                            br
+                            |  or find our addresses and phone numbers to contact us. 
+    section.xs-contact-infomation.xs-contact-infomation-v2
+        .container
+            .row
+                .col-lg-3.col-md-6.align-self-center
+                    .contact-info-group
+                        i.icon-address
+                        h4 Visit our office
+                        span 36/A, Lake cercus, Monali
+                        span.text-color Newyork, NY, US
+                .col-lg-3.col-md-6.align-self-center
+                    .contact-info-group
+                        i.icon-mail
+                        h4 Mail us
+                        | investnfarm@gmail.com
+                        br
+                        | investnfarm@gmail.co.uk
+
+                .col-lg-3.col-md-6.align-self-center
+                    .contact-info-group
+                        i.icon-call
+                        h4 Call us
+                        span 01-35426723, +234 8555522262
+                        br
+                        | +234 8555522262
+                        br
+                        | +237 7044442222
+                        span.text-color (Mon- tue) at 9.am to 6pm
+                .col-lg-3.col-md-6.align-self-center
+                    .contact-info-group
+                        i.icon-call
+                        h4 Working hour
+                        span Mon - Fri : 9am to 5pm
+                        span.text-color Sunday : Closed
+    section.xs-contact-sec.xs-contact-v2-sec
+        .container
+            .row
+                .col-lg-8.mx-auto
+                    .xs-form-group
+                        h4.xs-single-title.text-center
+                            span.light-text Drop
+                            |  your massege
+                        form#xs-contact-form.xs-form(action='#' method='POST')
+                            .row
+                                .col-lg-6
+                                    input#xs_contact_name.form-control(type='text' name='name' placeholder='Your name')
+                                .col-lg-6
+                                    input#xs_contact_email.form-control(type='email' name='email' placeholder='Your email')
+                            .row
+                                .col-lg-6
+                                    input#xs_contact_phone.form-control(type='number' name='phone-number' placeholder='Your phone number')
+                                .col-lg-6
+                                    input#xs_contact_subject.form-control(type='text' name='Subject' placeholder='Subject')
+                            textarea#x_contact_massage.form-control.message-box(name='massage' placeholder='Message' cols='30' rows='10')
+                            .xs-btn-wraper
+                                input#xs_contact_submit.xs-btn(type='submit' value='SEND MESSAGE')
+    .xs-map-sec
+        .xs-maps-wraper
+            .map
+                iframe(src='https://maps.google.com/maps?width=100&height=600&hl=en&q=New%20York%2C%20USA+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed')

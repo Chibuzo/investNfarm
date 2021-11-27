@@ -1,20 +1,30 @@
 extends layout
 
 block content
-	section.xs-banner-sec.owl-carousel.banner-slider
-		.banner-slider-item.banner-item1(style='background-image: url(/images/banner-slider/banner_slider_1.jpg);')
-			.slider-table
-				.slider-table-cell
-					.container
-						.row.align-items-center
-							.col-lg-10.offset-lg-1
-								.banner-content.text-center
-									h2(style="font-size: 53px") A DIGITAL PLATFORM FOR AGRIBUSINESS
-									p
-										| Invest”N”farm is an innovative digital agritech crowdfunding platform focused on arable, pastoral farming and other agricultural operations in Africa
-									.xs-btn-wraper
-										a.xs-btn(href='/signup')
-											| Sign Up
+	//- section.xs-banner-sec.owl-carousel.banner-slider
+	//- 	.banner-slider-item.banner-item1(style='background-image: url(/images/banner-slider/banner_slider_1.jpg);')
+	//- 		.slider-table
+	//- 			.slider-table-cell
+	//- 				.container
+	//- 					.row.align-items-center
+	//- 						.col-lg-10.offset-lg-1
+	//- 							.banner-content.text-center
+	//- 								h2(style="font-size: 53px") A DIGITAL PLATFORM FOR AGRIBUSINESS
+	//- 								p
+	//- 									| Invest”N”farm is an innovative digital agritech crowdfunding platform focused on arable, pastoral farming and other agricultural operations in Africa
+	//- 								.xs-btn-wraper
+	//- 									a.xs-btn(href='/signup')
+	//- 										| Sign Up
+	.container-fluid.feature
+		.row.feature-text
+			.col.text-center
+				h1.mb-4.text-white A DIGITAL PLATFORM FOR AGRIBUSINESS
+				p.text-white Invest”N”farm is an innovative digital agritech crowdfunding platform focused on arable, pastoral farming and other agricultural operations in Africa
+				a.btn.btn-success.btn-lg(href="/signup") SIGN UP
+		.row
+			.col(style="padding: 0")
+				video(width="100%", autoPlay muted loop)
+					source(src="images/green_vid.mp4" type="video/mp4")
 
 	//- section.promo-area-sec
 	//- 	.container
@@ -45,29 +55,6 @@ block content
 	//- 						h3.xs-service-title RECEIVE
 	//- 						p
 	//- 							| Profits from crop or animal sales are distributed to investors after they are harvested and sold. At the end of the holding period, investors will receive their share from the sales of the farm produce.
-	section.promo-area-sec
-		.container
-			.promo-content-item
-				.row
-					.col-md-4.wow.fadeInUp(data-wow-delay='300ms' data-wow-duration='1.5s')
-						.single-promo-content
-							i.icon-service_1
-							h3.xs-service-title YOU
-							p INVEST
-
-					.col-md-4.wow.fadeInUp(data-wow-delay='400ms' data-wow-duration='1.5s')
-						.single-promo-content
-							i.icon-service_2
-							h3.xs-service-title WE
-							p FARM 
-							p PROCESS 
-							p SELL
-
-					.col-md-4.wow.fadeInUp(data-wow-delay='500ms' data-wow-duration='1.5s')
-						.single-promo-content
-							i.icon-service_3
-							h3.xs-service-title YOU
-							p PROFIT
 
 	section.about-sec.section-padding
 		.container
@@ -98,7 +85,7 @@ block content
 					.section-title-item
 						h2.section-title
 							span.xs-title How it works
-							|                             HOW IT WORKS
+							| HOW IT WORKS
 			.row
 				.col-lg-3.col-sm-6.wow.fadeInUp(data-wow-delay='300ms' data-wow-duration='1.5s')
 					.single-service
@@ -138,6 +125,7 @@ block content
 						p Profits from crop or animal sales are distributed to investors after they are harvested and sold. At the end of the holding period, investors will receive their share from the sale of the land.
 
 							i.icon.icon-arrow-right
+
 	section.recent-work-sec.section-padding
 		.container
 			.row
@@ -145,339 +133,10 @@ block content
 					.section-title-item
 						h2.section-title
 							span.xs-title OUR PROJECTS
-							|                             Recent Works
+							|  Recent Works
 
-			#mixcontent.row
-				.col-lg-4.mix.cat3.col-sm-6
-					a.xs-image-popup(data-effect='mfp-zoom-in' href='#popup_1')
-						.single-recent-work
-							img(src='/images/work_1.jpg' alt='')
-							.recet-work-footer
-								i.icon-Our_service_3
-								h3 Watering
-					#popup_1.container.xs-gallery-popup-item.mfp-hide
-						.row
-							.col-lg-5.xs-padding-0
-								.xs-popup-img
-									img(src='/images/our-project/project_1.jpg' alt='')
-							.col-lg-7
-								.xs-popup-content
-									h2.hidden-title Project info
-									h3 Watering
-									.row
-										.col-lg-5
-											ul.xs-popup-left-content
-												li
-													i.icon.icon-calendar-full
-													label Project date
-													span 22 jan 2018
-												li
-													i.icon.icon-tags
-													label Category
-													span Garden care, Garden
-												li
-													i.icon.icon-user2
-													label Client
-													span Mr. Jordan, Newyork
-												li
-													i.icon.icon-invest
-													label Project value
-													span $ 500
-												li
-													i.icon.icon-map-marker2
-													label Location
-													span
-														| 76/A, Green lawn,
-														| Newyork City
-										.col-lg-7
-											.xs-popup-right-content
-												p
-													| Darkness dominion dominion her body creature appear make replenish.
-													| Bring shall him waters saw creepeth creepeth land divided.
-												blockquote
-													| &ldquo;Each which life god all living form fruitful their fowl shed a
-													| stars he
-													| left&rdquo;
-												p
-													| Fowl she&apos;d a stars he let. Creepeth deep sixth you is signs
-													| creature.
-													| Earth divide great whales.
-												a.xs-btn(href='#') PROJECT LINK
-				.col-lg-4.mix.cat1.cat2.col-sm-6
-					a.xs-image-popup(data-effect='mfp-zoom-in' href='#popup_2')
-						.single-recent-work
-							img(src='/images/work_2.jpg' alt='')
-							.recet-work-footer
-								i.icon-Our_service_1
-								h3 Home Gardening
-					#popup_2.container.xs-gallery-popup-item.mfp-hide
-						.row
-							.col-lg-5.xs-padding-0
-								.xs-popup-img
-									img(src='/images/our-project/project_1.jpg' alt='')
-							.col-lg-7
-								.xs-popup-content
-									h2.hidden-title Home Gardening
-									h3 Garden Caring
-									.row
-										.col-lg-5
-											ul.xs-popup-left-content
-												li
-													i.icon.icon-calendar-full
-													label Project date
-													span 22 jan 2018
-												li
-													i.icon.icon-tags
-													label Category
-													span Garden care, Garden
-												li
-													i.icon.icon-user2
-													label Client
-													span Mr. Jordan, Newyork
-												li
-													i.icon.icon-invest
-													label Project value
-													span $ 500
-												li
-													i.icon.icon-map-marker2
-													label Location
-													span
-														| 76/A, Green lawn,
-														| Newyork City
-										.col-lg-7
-											.xs-popup-right-content
-												p
-													| Darkness dominion dominion her body creature appear make replenish.
-													| Bring shall him waters saw creepeth creepeth land divided.
-												blockquote
-													| &ldquo;Each which life god all living form fruitful their fowl shed a
-													| stars he
-													| left&rdquo;
-												p
-													| Fowl she&apos;d a stars he let. Creepeth deep sixth you is signs
-													| creature.
-													| Earth divide great whales.
-												a.xs-btn(href='#') PROJECT LINK
-				.col-lg-4.mix.cat4.cat3.col-sm-6
-					a.xs-image-popup(data-effect='mfp-zoom-in' href='#popup_3')
-						.single-recent-work
-							img(src='/images/work_3.jpg' alt='')
-							.recet-work-footer
-								i.icon-Our_service_2
-								h3 Garden Care
-					#popup_3.container.xs-gallery-popup-item.mfp-hide
-						.row
-							.col-lg-5.xs-padding-0
-								.xs-popup-img
-									img(src='/images/our-project/project_1.jpg' alt='')
-							.col-lg-7
-								.xs-popup-content
-									h2.hidden-title Project info
-									h3 Garden Care
-									.row
-										.col-lg-5
-											ul.xs-popup-left-content
-												li
-													i.icon.icon-calendar-full
-													label Project date
-													span 22 jan 2018
-												li
-													i.icon.icon-tags
-													label Category
-													span Garden care, Garden
-												li
-													i.icon.icon-user2
-													label Client
-													span Mr. Jordan, Newyork
-												li
-													i.icon.icon-invest
-													label Project value
-													span $ 500
-												li
-													i.icon.icon-map-marker2
-													label Location
-													span
-														| 76/A, Green lawn,
-														| Newyork City
-										.col-lg-7
-											.xs-popup-right-content
-												p
-													| Darkness dominion dominion her body creature appear make replenish.
-													| Bring shall him waters saw creepeth creepeth land divided.
-												blockquote
-													| &ldquo;Each which life god all living form fruitful their fowl shed a
-													| stars he
-													| left&rdquo;
-												p
-													| Fowl she&apos;d a stars he let. Creepeth deep sixth you is signs
-													| creature.
-													| Earth divide great whales.
-												a.xs-btn(href='#') PROJECT LINK
-				.col-lg-4.mix.cat1.cat3.col-sm-6
-					a.xs-image-popup(data-effect='mfp-zoom-in' href='#popup_4')
-						.single-recent-work
-							img(src='/images/work_4.jpg' alt='')
-							.recet-work-footer
-								i.icon-Our_service_4
-								h3 Fall Clean Up
-					#popup_4.container.xs-gallery-popup-item.mfp-hide
-						.row
-							.col-lg-5.xs-padding-0
-								.xs-popup-img
-									img(src='/images/our-project/project_1.jpg' alt='')
-							.col-lg-7
-								.xs-popup-content
-									h2.hidden-title Project info
-									h3 Fall Clean Up
-									.row
-										.col-lg-5
-											ul.xs-popup-left-content
-												li
-													i.icon.icon-calendar-full
-													label Project date
-													span 22 jan 2018
-												li
-													i.icon.icon-tags
-													label Category
-													span Garden care, Garden
-												li
-													i.icon.icon-user2
-													label Client
-													span Mr. Jordan, Newyork
-												li
-													i.icon.icon-invest
-													label Project value
-													span $ 500
-												li
-													i.icon.icon-map-marker2
-													label Location
-													span
-														| 76/A, Green lawn,
-														| Newyork City
-										.col-lg-7
-											.xs-popup-right-content
-												p
-													| Darkness dominion dominion her body creature appear make replenish.
-													| Bring shall him waters saw creepeth creepeth land divided.
-												blockquote
-													| &ldquo;Each which life god all living form fruitful their fowl shed a
-													| stars he
-													| left&rdquo;
-												p
-													| Fowl she&apos;d a stars he let. Creepeth deep sixth you is signs
-													| creature.
-													| Earth divide great whales.
-												a.xs-btn(href='#') PROJECT LINK
-				.col-lg-4.mix.cat1.cat2.col-sm-6
-					a.xs-image-popup(data-effect='mfp-zoom-in' href='#popup_5')
-						.single-recent-work
-							img(src='/images/work_5.jpg' alt='')
-							.recet-work-footer
-								i.icon-Our_service_2
-								h3 Garden Maintannance
-					#popup_5.container.xs-gallery-popup-item.mfp-hide
-						.row
-							.col-lg-5.xs-padding-0
-								.xs-popup-img
-									img(src='/images/our-project/project_1.jpg' alt='')
-							.col-lg-7
-								.xs-popup-content
-									h2.hidden-title Project info
-									h3 Garden Maintannance
-									.row
-										.col-lg-5
-											ul.xs-popup-left-content
-												li
-													i.icon.icon-calendar-full
-													label Project date
-													span 22 jan 2018
-												li
-													i.icon.icon-tags
-													label Category
-													span Garden care, Garden
-												li
-													i.icon.icon-user2
-													label Client
-													span Mr. Jordan, Newyork
-												li
-													i.icon.icon-invest
-													label Project value
-													span $ 500
-												li
-													i.icon.icon-map-marker2
-													label Location
-													span
-														| 76/A, Green lawn,
-														| Newyork City
-										.col-lg-7
-											.xs-popup-right-content
-												p
-													| Darkness dominion dominion her body creature appear make replenish.
-													| Bring shall him waters saw creepeth creepeth land divided.
-												blockquote
-													| &ldquo;Each which life god all living form fruitful their fowl shed a
-													| stars he
-													| left&rdquo;
-												p
-													| Fowl she&apos;d a stars he let. Creepeth deep sixth you is signs
-													| creature.
-													| Earth divide great whales.
-												a.xs-btn(href='#') PROJECT LINK
-				.col-lg-4.mix.cat1.cat4.col-sm-6
-					a.xs-image-popup(data-effect='mfp-zoom-in' href='#popup_6')
-						.single-recent-work
-							img(src='/images/work_6.jpg' alt='')
-							.recet-work-footer
-								i.icon-recent_work_6
-								h3 Irrigation &amp; Drainage
-					#popup_6.container.xs-gallery-popup-item.mfp-hide
-						.row
-							.col-lg-5.xs-padding-0
-								.xs-popup-img
-									img(src='/images/our-project/project_1.jpg' alt='')
-							.col-lg-7
-								.xs-popup-content
-									h2.hidden-title Project info
-									h3 Irrigation &amp; Drainage
-									.row
-										.col-lg-5
-											ul.xs-popup-left-content
-												li
-													i.icon.icon-calendar-full
-													label Project date
-													span 22 jan 2018
-												li
-													i.icon.icon-tags
-													label Category
-													span Garden care, Garden
-												li
-													i.icon.icon-user2
-													label Client
-													span Mr. Jordan, Newyork
-												li
-													i.icon.icon-invest
-													label Project value
-													span $ 500
-												li
-													i.icon.icon-map-marker2
-													label Location
-													span
-														| 76/A, Green lawn,
-														| Newyork City
-										.col-lg-7
-											.xs-popup-right-content
-												p
-													| Darkness dominion dominion her body creature appear make replenish.
-													| Bring shall him waters saw creepeth creepeth land divided.
-												blockquote
-													| &ldquo;Each which life god all living form fruitful their fowl shed a
-													| stars he
-													| left&rdquo;
-												p
-													| Fowl she&apos;d a stars he let. Creepeth deep sixth you is signs
-													| creature.
-													| Earth divide great whales.
-												a.xs-btn(href='#') PROJECT LINK
+			include includes/portfolios.pug
+
 			.row
 				.col-lg-12
 					.load-more-btn
@@ -556,21 +215,15 @@ block content
 				.col-lg-6.offset-lg-6.xs-padding-0.call-action-item
 					.call-to-action-content
 						h2.column-title.white
-							span Get start
-							|  your 
+							span Start Investing
 							br
-							| first lawn
+							| Now
 						p
-							| Fruit is their fill meat hath abundantly place meat don&apos;t stars so 
-							br
-							| and which signs
-							|                             third
-							|                             second
-							|                             after seasons under.
+							| Sign up to begin, or view our available projects
 						.call-to-btn
-							a.xs-btn.fill(href='#') Our Services
-							a.xs-btn(href='#') Contact Us
+							a.xs-btn.fill(href='/projects') Our Projects
+							a.xs-btn(href='/signup') Sign Up
 	.xs-map-sec
 		.xs-maps-wraper
 			.map
-				iframe(src='https://maps.google.com/maps?width=100&height=600&hl=en&q=New%20York%20C%20USA+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed')
+				iframe(src='https://maps.google.com/maps?width=100&height=600&hl=en&q=497%20Evergreen%20Rd.%20Roseville,%20CA%2095673&t=&z=13&ie=UTF8&iwloc=&output=embed')

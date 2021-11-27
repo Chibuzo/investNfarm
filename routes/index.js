@@ -12,8 +12,14 @@ const Country = require('../models').Country;
 
 router.get('/', async (req, res, next) => {
     try {
-        const farms = await investmentService.getFarms();
-        res.render('new', { title: 'Welcome', farms });
+        const investments = await investmentService.list({
+            include: ['investors', 'InvestmentCategory'],
+            order: [
+                ['createdAt', 'DESC']
+            ],
+            limit: 6
+        });
+        res.render('new', { title: 'Welcome', investments });
     } catch (err) {
         next(err);
     }
@@ -23,8 +29,8 @@ router.get('/about', async (req, res, next) => {
     res.render('about1', { title: 'About InvestNFarm' });
 });
 
-router.get('/team', (req, res, next) => {
-    res.render('team', { title: 'Our People' });
+router.get('/faq', (req, res, next) => {
+    res.render('faq', { title: 'Frequently asked Questions' });
 });
 
 router.get('/contact', async (req, res, next) => {
@@ -63,12 +69,16 @@ router.post('/login', async (req, res, next) => {
     }
 });
 
-router.get('/investment/:id/*', isAuthenticated, async (req, res, next) => {
+router.get('/projects', isAuthenticated, async (req, res, next) => {
     try {
-        const investments = await investmentService.list({ include: 'investors' });
-        const id = req.params.id;
-        const selectedInvestment = investments.find(inv => inv.id == id) || investments[0];
-        res.render('portfolio', { investments, selectedInvestment: selectedInvestment, title: selectedInvestment.investment_name });
+        const investments = await investmentService.list({
+            include: ['investors', 'InvestmentCategory'],
+            order: [
+                ['createdAt', 'DESC']
+            ],
+            limit: 20
+        });
+        res.render('portfolio', { title: 'Our Projects', investments });
     } catch (err) {
         next(err);
     }

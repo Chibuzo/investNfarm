@@ -1,128 +1,44 @@
 extends layout 
 
-block styleBlock 
-    link(rel="stylesheet", href='/css/style.css')
-    link(rel='stylesheet', href='/stylesheets/owl.carousel.min.css')
-    link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
-
 block content        
     .feature-image(style="background-image: url(/images/money.jpg); background-position: bottom")
-        div.row.feature-text
-            div.col.text-center
-                h1.mb-4 Our Products yield high interests
+        .row.feature-text
+            .col.text-center
+                h1.mb-4.text-white Our Products yield high interests
     .container
-        .row.mt-5 
-            .col-md-12.text-center
+        .row.my-5.justify-content-md-center
+            .col-md-9.text-center
                 h3 Our Products
                 p We have a diverse range of products that are highly versatile and guaranteed to return a high yield on your investment. To have a view of the various products, scroll and click on any image to get more information displayed below. 
-                p Investing with us is very simple, first fund your wallet, secondly, choose a product, thirdly set an amount to invest then wait till maturity to receive your ROI.
-        .row.mt-5
-            .col-md-12
-                .owl-carousel 
-                    each inv in investments
-                        - const url_path = inv.investment_name.split(' ').join('-')
-                        a.text-green(href=`/investment/${inv.id}/${url_path}`)
-                            .item(style=`background-image: url(/${inv.photo_url})`)
-                                p.text-center= inv.investment_name 
+                //- p Investing with us is very simple, first fund your wallet, secondly, choose a product, thirdly set an amount to invest then wait till maturity to receive your ROI.
 
-        .row 
-            .col-md-12.text-center(style="margin: 20px") Click above & view below 
-        .row 
-            .col-md-12 
-                .bg-photo
-        .row 
-            .col-md-12
-                img(src=`/${selectedInvestment.photo_url}` style="width: 100%")
-    .container-fluid.mt-5.pb-5(style="background-image: url(/images/wheat.jpg); background-size: cover; background-position: center")
-        a#loc
-            .row.justify-content-md-center(style="padding-top: 90px") 
-                .col-md-5.col-md-offset-4    
-                    form(method="post" action="/invest")
-                        - const remaining_units = selectedInvestment.units - selectedInvestment.sold_unit_count
-                        input(type="hidden" name="investmentId" value=`${selectedInvestment.id}`)
-                        .portfolio-details 
-                            .row 
-                                .col-md-6 #[strong Investment Name:]
-                                .col-md-5 #{selectedInvestment.investment_name}
-                            .row 
-                                .col-md-6 #[strong Unit Cost:]
-                                .col-md-5 ₦#{view.formatCurrency(selectedInvestment.unit_cost)} 
-                            .row 
-                                .col-md-6 #[strong Country:]
-                                .col-md-5 #{selectedInvestment.country}    
-                            .row 
-                                .col-md-6 #[strong Investment Period:]
-                                .col-md-5 #{selectedInvestment.period} Months
-                            .row 
-                                .col-md-6 #[strong Units Left:]
-                                .col-md-5= remaining_units
-                            .row 
-                                .col-md-6 #[strong Return on investment:]
-                                .col-md-5 #{selectedInvestment.roi}%   
-                            .row.mt-5.justify-content-md-center
-                                .col-md-4
-                                    .input-group
-                                        span.input-group-text #[strong Unit(s)]
-                                        input.form-control.input-lg(type="number" name="units" value="1" min="1" max=`${remaining_units}`)
-                                .col-md-6
-                                    if user
-                                        button.btn.btn-success(type="submit") INVEST NOW
-                                    else
-                                        button.btn.btn-success(type="button" data-bs-toggle="modal" data-bs-target="#loginModal") INVEST NOW   
+    section.recent-work-sec.section-padding.section-bg
+        .container
+            .row
+                .col-lg-12
+                    .section-title-item
+                        h2.section-title
+                            span.xs-title OUR PROJECTS
+                            |  Recent Works
 
-    #loginModal.modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true')
+            include includes/portfolios.pug
+
+
+    #loginModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
         .modal-dialog
             .modal-content
-                form#form-login(action="/login", method="post")
+                form#form-login(action="/login" method="post")
                     .modal-header
                         h5#exampleModalLabel.modal-title Login to Continue
-                        button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+                        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
                     .modal-body
                         .mb-3 
                             label Email
-                            input.form-control.form-control-lg(type="email", name="email", placeholder="Email" aria-label="Email")
+                            input.form-control.form-control-lg(type="email" name="email" placeholder="Email" aria-label="Email")
                         .mb-3
                             label Password
-                            input.form-control.form-control-lg(type="password", name="password", placeholder="Password", aria-label="Password", required=true)
+                            input.form-control.form-control-lg(type="password" name="password" placeholder="Password" aria-label="Password", required=true)
                     .modal-footer
-                        button.btn.btn-secondary(type='button', data-bs-dismiss='modal') Close
+                        button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
                         button.btn.btn-success(type='submit') Login 
 
-block scriptBlock
-    script(src="/javascripts/owl.carousel.min.js")  
-
-    script. 
-        $(document).ready(function(){
-            $('.owl-carousel').owlCarousel({
-                loop:true,
-                margin:13,
-                responsiveClass:true,
-                nav: true,
-                responsive:{
-                    0:{
-                        items:1,
-                        nav:true
-                    },
-                    600:{
-                        items:3,
-                        nav:false
-                    },
-                    1000:{
-                        items:4,
-                        nav:true,
-                    }
-                }
-            });
-
-
-            $("#form-login").submit(function(e) {
-                e.preventDefault();
-
-                $.post('/login?json=true', $(this).serialize(), function(d) {
-                    console.log(d)
-                    if (d.status === true) {
-                        location.reload();
-                    }
-                });
-            });
-        });                                    

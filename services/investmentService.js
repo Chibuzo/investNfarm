@@ -103,8 +103,7 @@ const sanitize = rawInvestment => {
 
 const sanitizeFarm = rawFarm => {
     const farm = { ...rawFarm.toJSON() };
-    console.log(JSON.parse(farm.benefits))
-    return { ...farm, benefits: JSON.parse(farm.benefits) };
+    return { ...farm, benefits: JSON.parse(farm.benefits) || [] };
 }
 
 module.exports = {
