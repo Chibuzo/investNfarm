@@ -84,6 +84,16 @@ router.get('/projects', isAuthenticated, async (req, res, next) => {
     }
 });
 
+router.get('/projects/:id/*', isAuthenticated, async (req, res, next) => {
+    try {
+        const investment = await investmentService.view(req.params.id, true);
+        // investment.investments = investment.investments.filter(inv => inv.id != req.params.id);
+        res.render('portfolio-page', { title: investment.InvestmentCategory.category_name, investment });
+    } catch (err) {
+        next(err);
+    }
+});
+
 router.post('/invest', authenticate, async (req, res, next) => {
     try {
         const userId = req.session.user.id;
@@ -104,15 +114,15 @@ router.post('/confirmpayment', async (req, res, next) => {
     }
 });
 
-router.post('/wallet/topup', authenticate, async (req, res, next) => {
-    try {
-        const user_id = req.session.user.id;
-        const transaction = await walletService.topUpWallet({ ...req.body, user_id });
-        res.status(200).json({ status: 'success', transaction });
-    } catch (err) {
-        next(err);
-    }
-});
+// router.post('/wallet/topup', authenticate, async (req, res, next) => {
+//     try {
+//         const user_id = req.session.user.id;
+//         const transaction = await walletService.topUpWallet({ ...req.body, user_id });
+//         res.status(200).json({ status: 'success', transaction });
+//     } catch (err) {
+//         next(err);
+//     }
+// });
 
 router.post('/request-withdrawal', authenticate, async (req, res, next) => {
     try {

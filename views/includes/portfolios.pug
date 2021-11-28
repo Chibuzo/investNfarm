@@ -1,9 +1,11 @@
 #mixcontent.row
     each inv in investments
+        - const url_path = `/projects/${inv.id}/${inv.investment_name.split(' ').join('-')}`
         .col-lg-4.mix.col-sm-6
             a.xs-image-popup(data-effect='mfp-zoom-in' href=`#popup_${inv.id}`)
                 .single-recent-work
-                    .project-photo(style=`background-image:url(${inv.photo_url});`)
+                    .project-photo-wrapper
+                        .project-photo(style=`background-image:url(${inv.photo_url});`)
                     .recet-work-footer
                         i.icon-Our_service_3
                         h3= inv.investment_name
@@ -11,7 +13,7 @@
                 .row
                     .col-lg-5.xs-padding-0
                         .xs-popup-img
-                            img(src='/images/our-project/project_1.jpg' alt='')
+                            img(src=`${inv.InvestmentCategory.photo_url}` alt='')
                     .col-lg-7
                         .xs-popup-content
                             h2.hidden-title Project info
@@ -46,4 +48,4 @@
                                 .col-lg-7
                                     .xs-popup-right-content
                                         p= inv.InvestmentCategory.about
-                                        a.xs-btn(href='#') VIEW MORE
+                                        a.xs-btn(href=`${url_path}`) VIEW MORE

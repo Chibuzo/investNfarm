@@ -1,0 +1,60 @@
+extends layout 
+
+block content 
+
+    section.xs-blog-single-sec.section-padding
+        .container
+            .row
+                .col-lg-8
+                    .blog-content-item.single-blog-details
+                        .single-blog-item
+                            .blog-post-img
+                                img(src=`/${investment.photo_url}` alt='')
+                            .blog-meta
+                                ul
+                                    li 
+                                        a(href='#')
+                                            span.lnr.lnr-map-marker 
+                                            span Location: #{investment.country}
+                                    li
+                                        a(href='#')
+                                            span.lnr.lnr-star 
+                                            span Unit Cost: #{investment.unit_cost}
+                                    li
+                                        a(href='#')
+                                            span.lnr.lnr-calendar-full 
+                                            | Duration: #{investment.period}
+                                    li
+                                        a(href='#')
+                                            span.lnr.lnr-chart-bars 
+                                            span ROI: #{investment.roi}
+                                    li
+                                        a(href='#')
+                                            span.lnr.lnr-pie-chart 
+                                            | Avaliable Units: #{investment.units - investment.sold_unit_count}
+                            h3.xs-blog-title #{investment.investment_name}
+                            p= investment.InvestmentCategory.about 
+                            h3.xs-blog-title Benefits
+                            ul.benefits 
+                                each benefit in investment.InvestmentCategory.benefits 
+                                    li= benefit
+                            h3.xs-blog-title Our Model
+                            p= investment.InvestmentCategory.model
+
+
+                .col-lg-4
+                    .sidebar-widgets
+                        .widget
+                            h4.widget-title
+                                span.light-text Similar
+                                |  projects
+                            .widget-posts
+                                each inv in investment.investments
+                                    - const url_path = `/projects/${inv.id}/${inv.investment_name.split(' ').join('-')}`
+                                    .widget-post
+                                        img.d-flex(src=`/${inv.photo_url}` alt='similar project image' draggable='false')
+                                        .media-body
+                                            h4.entry-title
+                                                a(href=`${url_path}`) #{inv.investment_name} 
+                                            span.post-meta-date
+                                                a(href='#')  Avaliable#{inv.status}

@@ -14,9 +14,17 @@ const save = async ({ body: investmentData, files }) => {
     return Investment.create({ ...investmentData, photo_url });
 }
 
-const view = async id => {
-    const investment = await Investment.findOne({ where: { id }, include: 'investors' });
-    return sanitize(investment);
+const view = async (id, investments = false) => {
+    const rawInvestment = await Investment.findOne({
+        where: { id },
+        include: ['investors', 'InvestmentCategory']
+    });
+    const investment = sanitize(rawInvestment);
+
+    if (investments) {
+        investment.investments = await getFarmInvestments(investment.InvestmentCategory.id);
+    }
+    return investment;
 }
 
 const list = async (criteria = {}) => {
@@ -78,6 +86,12 @@ const viewFarm = async id => {
     return sanitizeFarm(farm);
 }
 
+const getFarmInvestments = async id => {
+    const farm = await InvestmentCategory.findByPk(id);
+    const investments = await farm.getInvestments();
+    return investments.map(investment => sanitize(investment));
+}
+
 const saveFarm = async ({ body: farmData, files }) => {
     const photo_url = await uploadFile(files);
     const benefits = JSON.stringify(farmData['benefit[]']);
@@ -94,6 +108,9 @@ const saveFarm = async ({ body: farmData, files }) => {
 
 const sanitize = rawInvestment => {
     const investment = { ...rawInvestment.toJSON() };
+    if (investment.InvestmentCategory) {
+        investment.InvestmentCategory.benefits = JSON.parse(investment.InvestmentCategory.benefits) || [];
+    }
     if (investment.investors) {
         investment.investor_count = investment.investors.length;
         investment.sold_unit_count = investment.investors.reduce((totalUnits, user) => totalUnits + user.UserInvestments.units, 0)

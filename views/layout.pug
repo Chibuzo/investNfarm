@@ -7,12 +7,14 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
   link(href='https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
   link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i' rel='stylesheet')
+  link(rel='stylesheet' href='/stylesheets/fonts.css')
   link(rel='icon' type='image/png' href='favicon.ico')
   link(rel='apple-touch-icon' href='apple-touch-icon.png')
   link(rel='stylesheet' href='/style/fontawesome-min.css')
   link(rel='stylesheet' href='/style/bootstrap.min.css')
   link(rel='stylesheet' href='/style/xsIcon.css')
   link(rel='stylesheet' href='/style/iconmoon.css')
+  link(rel='stylesheet' href='/style/linearicon.css')
   link(rel='stylesheet' href='/style/isotope.css')
   link(rel='stylesheet' href='/style/magnific-popup.css')
   link(rel='stylesheet' href='/style/owl.carousel.min.css')
@@ -51,14 +53,14 @@ section.xs-header-top
       .col-lg-6.align-self-center.col-md-4
         .header-top-social
           ul
+            //- li
+            //-   a(href='#')
+            //-     i.fa.fa-facebook-f
             li
-              a(href='#')
-                i.fa.fa-facebook-f
-            li
-              a(href='#')
+              a(href='https://twitter.com/investnfarm')
                 i.fa.fa-twitter
             li
-              a(href='#')
+              a(href='https://instagram.com/investnfarm/')
                 i.fa.fa-instagram
 section.xs-header-middle
   .container
@@ -118,20 +120,14 @@ footer.xs-footer-sec
             p
               | Invest”N”Farm is an innovative digital agritech crowdfunding platform focused on arable and pastoral farming and other operations in Nigeria.
             ul.footer-social
+              //- li
+              //-   a(href='#')
+              //-     i.fa.fa-facebook-f
               li
-                a(href='#')
-                  i.fa.fa-facebook-f
-              li
-                a(href='#')
+                a(href='https://twitter.com/investnfarm')
                   i.fa.fa-twitter
               li
-                a(href='#')
-                  i.fa.fa-google-plus
-              li
-                a(href='#')
-                  i.fa.fa-pinterest
-              li
-                a(href='#')
+                a(href='https://instagram.com/investnfarm/')
                   i.fa.fa-instagram
         .col-md-3
           .widgets
@@ -149,34 +145,29 @@ footer.xs-footer-sec
                 a(href='faq.html') Faq
         .col-md-3
           .widgets
-            h3.widget-title Our Services
+            h3.widget-title Help
             ul.service-link
               li
-                a(href='#') Design &amp; Planing
+                a(href='#') Terms & Condition
               li
-                a(href='#') Garden care
+                a(href='#') Privacy Policy
               li
-                a(href='#') Snow removal
-              li
-                a(href='#') Preparing landscape
-              li
-                a(href='#') Forest planing
-              li
-                a(href='#') Fence grate
+                a(href='#') Faq
+
         .col-md-3
           .widgets
             h3.widget-title Contact Us
             ul.footer-contact-list
               li
-                i.icon.icon-map-marker2
+                i.lnr.lnr-map-marker
                 | #[strong Visit our office]
                 br/ 497 Evergreen Rd. Roseville, CA 95673
               li
-                i.icon.icon-phone3
-                |                                     +44 345 678 903
+                i.lnr.lnr-phone
+                | +44 345 678 903
               li
-                i.icon.icon-envelope
-                a.__cf_email__(href='/cdn-cgi/l/email-protection' data-cfemail='ceabb6afa3bea2ab8ea9a3afa7a2e0ada1a3') [email&nbsp;protected]
+                i.lnr.lnr-envelope
+                | investnfarm@gmail.com
     .copyright-content
       .row
         .col-md-6
@@ -184,7 +175,7 @@ footer.xs-footer-sec
             | Copyright #{new Date().getFullYear()}, 
             a(href='https://investnfarm.com') InvestNfarm
             | . All
-            |                             Rights Reserved.
+            |  Rights Reserved.
         .col-md-6
           ul.footer-bottom-menu
             li
