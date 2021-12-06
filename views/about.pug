@@ -1,31 +1,14 @@
 extends layout
 
-block styleBlock 
-    link(rel='stylesheet', href='/stylesheets/owl.carousel.min.css')
-    link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
-    style.
-        .owl-carousel .owl-item img {
-            display: inline-block;
-            width: auto;
-        }
+block content 
+    section.banner-inner-sec(style="background-image:url('/images/about-bg.jpg')")
+        .banner-table
+            .banner-table-cell
+                .container
+                    .banner-inner-content
+                        h2.banner-inner-title ABOUT US
 
-        @media (max-width: 576px) {
-            .row>* {
-                width: auto
-            }
-        }
-
-block content
-    .container-fluid.feature
-        .row.feature-text
-            .col.text-center
-                h1.mb-4.text-white INVEST IN FARMS….TRADE IN COMMODITIES
-        .row
-            .col(style="padding: 0")
-                video(width="100%", autoPlay muted loop)
-                    source(src="images/Tractor.mp4", type="video/mp4")
-
-    .container-fluid.secondary-bg.pt-5.mb-5(style="margin-top: -7px")  
+    .container-fluid.secondary-bg.pt-5(style="margin-top: -7px")  
         .container 
             .row
                 .col-md-6.col-xs-12.mt-5.text-white
@@ -34,133 +17,184 @@ block content
                     p We are registered in Nigeria as Invest”N”farm limited, RC:1607086. We believe strongly that Agriculture is one of the most secured and profitable businesses to invest in as we provide opportunities to everyone to engage in Agribusiness anytime and on the go by investing in farms and trading in commodities. 
                     p We make it very simple for our investors in Nigeria and all over the world to be able to invest in as little as possible and watch your investment grow. 
                     p Our investments are 100% safe and risk free as we are fully insured. Join us on this journey as we build the economy together and make you smile to the bank. Welcome to a world of great Agricultural experience with Invest”N”farm!
+                    p Our agritech investment platform enables investors to invest through diverse creative investment models.
+
                 .col-md-6.col-xs-12.text-end
                     img(src="images/partner.png" style="width: 100%")
-    .container.mb-5
-        .row.justify-content-md-center 
-            .col-md-9
-                h2.text-center.my-5 Our Four Step model
-                .row.mb-3
-                    .col-md-2.goal-caption SIGN UP 
-                    .col.goal 
-                        p Sign up for a complimentary Invest”N”Farm account to gain full access to high profit farmland investment opportunities in our user-friendly portal.
-                .row.mb-3
-                    .col-md-2.goal-caption INVEST
-                    .col.goal 
-                        p Determine what best model fits your investment portfolio and invest. All opportunities have been carefully selected and offer high return possibilities.
-                .row.mb-3
-                    .col-md-2.goal-caption TRACK
-                    .col.goal 
-                        p Congratulations, you are an investor! Invest”N”Farm manages all aspects of the farmland, from planting to harvesting to selling while you simply track your farm’s progress online.
-                .row.mb-3
-                    .col-md-2.goal-caption RECEIVE
-                    .col.goal 
-                        p Profits from crop or animal sales are distributed to investors after they are harvested and sold. At the end of the holding period, investors will receive their share from the sales of the farm produce .
-    .container.modus   
-        .row.justify-content-md-center.d-none.d-md-block
-            .col-md-12
-                .row.mb-5 
-                    .col
-                    .col 
-                        div.caption 1
-                        div.triangle#text-1
-                    .col 
-                        div.caption 2
-                        div.triangle#text-2
-                    .col 
-                        div.caption 3
-                        div.triangle#text-3
-                    .col 
-                        div.caption 4
-                        div.triangle#text-4
-                    .col 
-        .row.justify-content-md-center.text-center#modus
-            .col-md-8#text-1-div
-                .d-block.d-sm-none
-                    div.caption 1
-                    div.triangle
-                h2 Invest In A Farming Project
-                p Choose from our carefully curated and affordable farm projects. Sign up, create an account, and select the numbers of units you want to invest in and make payment.
-            .col-md-8.d-md-none#text-2-div
-                .d-block.d-sm-none
-                    div.caption 2
-                    div.triangle
-                h2 Status & Updates
-                p On your personal dashboard,you would monitor you investments portfolio and also get real time updates.
-            .col-md-8.d-md-none#text-3-div
-                .d-block.d-sm-none
-                    div.caption 3
-                    div.triangle
-                h2 Let Your Investment Grow 
-                p Once the farming project is fully funded, we start farming and support our farmers with agronomy training and supervision, farming inputs and technical equipment.
-            .col-md-8.d-md-none#text-4-div
-                .d-block.d-sm-none
-                    div.caption 4
-                    div.triangle
-                h2 Receive Returns Plus initial Investment
-                p After the investment period, when the produce has been harvested and sold, your investment will be paid back to you together with the returns. this will be visible and accessible from your wallet on your dashboard.
-        
-        .container.mt-5
-            .row.justify-content-md-center
-                .col-md-8.text-center 
-                    h2 How Do We Manage Risks?
-                    p Farming comes with risks. We mitigate risks through careful selection of farmers, crops and farm locations, the selection of necessary crop insurance, agronomy support and market analysis
-                
-    .container-fluid.mt-5.py-5.footer-risk(style="background-image: url(/images/wheat.png); background-size: cover; background-position: center")
+
+    section.servicev2-sec.section-padding.section-bg
         .container
-            .row.text-center#add-slide
-                .col-md-6.col-xs-12
-                    img(src="images/sun.png")
-                    h3.my-3 Climate Risk
-                    p Weather information determines optimal timing of planting and harvesting, Solar powered irrigation systems, Certified drought tolerant seeds.
-                .col-md-6.col-xs-12
-                    img(src="images/hand.png")
-                    h3.my-3 Soil Risk
-                    p Data-driven crop selection, preserving soil quality over the long term, regular soil health checks so yields are maximized season after season, Organic methods used where possible, reducing the stress placed on the soil.
-                .col-md-6.col-xs-12
-                    img(src="images/hand-shake.png")
-                    h3.my-3 Farmer Risk
-                    p Working with trusted farmers & cooperatives with whom we build relationships, Supervised production, with advice on modern techniques offered to all farmers, Produce from different farmers in multiple locations is combined, reducing the risk that a contract cannot be fulfilled.
-                .col-md-6.col-xs-12
-                    img(src="images/plant.png")
-                    h3.my-3 Crop Failure
-                    p Crop insurance that covers unavoidable pests or diseases and adverse weather conditions, Supervised production, including crop loss mitigation techniques, Contracts with large off-takers provide guaranteed markets with a fixed price and quantity.
+            .row
+                .col-lg-12
+                    .section-title-item.section-title-v2-item
+                        h2.section-title
+                            em Our
+                            |  Goals
+                        h3.hidden-title OUR GOALS
 
-block scriptBlock 
-    script(src="/javascripts/jquery.min.js")
-    script(src="/javascripts/owl.carousel.min.js")  
+            .row
+                .col-lg-9.wow.fadeInUp(data-wow-duration='1.5s' data-wow-delay='400ms' style='visibility: visible; animation-duration: 1.5s; animation-delay: 400ms; animation-name: fadeInUp;')
+                    .row
+                        .col-md-6
+                            .single-services-item
+                                span.lnr.lnr-dinner
+                                h3.xs-service-title Food Production
+                                p To contribute to the existing collaborative food production in Africa and enhance participation in the achievement of global food security.
+                        .col-md-6
+                            .single-services-item
+                                span.lnr.lnr-leaf
+                                h3.xs-service-title Empower Farmers
+                                p To empower and improve farmer’s efficiency and income with the use of tech-based input.
+                        .col-md-6
+                            .single-services-item
+                                span.lnr.lnr-chart-bars
+                                h3.xs-service-title Economic Growth
+                                p To be a source of economic growth and financial income for investors through a realistic return on their Investment.
+                        .col-md-6
+                            .single-services-item
+                                span.lnr.lnr-briefcase
+                                h3.xs-service-title Job Creation
+                                p To contribute to job creation, strengthen food security for nations in Africa and encourage participation and investment in agriculture.
+                .col-lg-3.align-self-center.wow.fadeInUp(data-wow-duration='1.5s' data-wow-delay='500ms' style='visibility: visible; animation-duration: 1.5s; animation-delay: 500ms; animation-name: fadeInUp;')
+                    .why-choose-inner-img
+                    img(src='/images/why-choose-us-inner.png' alt='')
 
-    script. 
-        if (window.innerWidth <= 576) {
-            document.querySelector('#add-slide').classList.add('owl-carousel');
-        }
+    section.team-sec.section-padding
+        .container
+            .row
+                .col-lg-12
+                    .section-title-item.section-title-v2-item
+                        h2.section-title
+                            | Meet The Team
+                        h3.hidden-title experts
+            .row
+                .col-lg-3.col-sm-6
+                    .single-team
+                        .team-img
+                            img(src='/images/Collins_Akalonu.jpg' alt='')
+                            .team-social
+                                a(href='#')
+                                    i.fa.fa-faceboonpm startk
+                                a(href='#')
+                                    i.fa.fa-twitter
+                                a(href='#')
+                                    i.fa.fa-google-plus
+                                a(href='#')
+                                    i.fa.fa-linkedin
+                        h3 Collins Akalonu
+                        p Product Owner
+                .col-lg-3.col-sm-6
+                    .single-team
+                        .team-img
+                            img(src='/images/Romana_Munyavi.jpg' alt='')
+                            .team-social
+                                a(href='#')
+                                    i.fa.fa-facebook
+                                a(href='#')
+                                    i.fa.fa-twitter
+                                a(href='#')
+                                    i.fa.fa-google-plus
+                                a(href='#')
+                                    i.fa.fa-linkedin
+                        h3 Romana Munyavi
+                        p Digital Business Analyst
+                .col-lg-3.col-sm-6
+                    .single-team
+                        .team-img
+                            img(src='/images/Oluyemi_Olu_Adeniran.jpg' alt='')
+                            .team-social
+                                a(href='#')
+                                    i.fa.fa-facebook
+                                a(href='#')
+                                    i.fa.fa-twitter
+                                a(href='#')
+                                    i.fa.fa-google-plus
+                                a(href='#')
+                                    i.fa.fa-linkedin
+                        h3 Olu-Adeniran 
+                        p Product Lead
+                .col-lg-3.col-sm-6
+                    .single-team
+                        .team-img
+                            img(src='/images/Roseline_Adekunle.jpg' alt='')
+                            .team-social
+                                a(href='#')
+                                    i.fa.fa-facebook
+                                a(href='#')
+                                    i.fa.fa-twitter
+                                a(href='#')
+                                    i.fa.fa-google-plus
+                                a(href='#')
+                                    i.fa.fa-linkedin
+                        h3 Roseline Adekunle
+                        p Agile Project Manager/Scrum Master
 
-        $(document).ready(function() {
-            $(".triangle").click(function() {
-                $(".triangle").css({ "border-color": "#329337 transparent transparent transparent" });
-                $(this).css({ "border-color": "#fff transparent transparent transparent" })
-                $("#modus .col-md-8").addClass('d-md-none');
-                $("#" + $(this).attr("id") + "-div").removeClass("d-md-none");
-            });
+            .row.mt-5
+                .col-lg-3.col-sm-6
+                    .single-team
+                        .team-img
+                            img(src='/images/vicky.jpg' alt='')
+                            .team-social
+                                a(href='#')
+                                    i.fa.fa-faceboonpm startk
+                                a(href='#')
+                                    i.fa.fa-twitter
+                                a(href='#')
+                                    i.fa.fa-google-plus
+                                a(href='#')
+                                    i.fa.fa-linkedin
+                        h3 Victorine Nonjang
+                        p Data/Business Intelligence Analyst
+                .col-lg-3.col-sm-6
+                    .single-team
+                        .team-img
+                            img(src='/images/Wasilat_Elegbede.jpg' alt='')
+                            .team-social
+                                a(href='#')
+                                    i.fa.fa-facebook
+                                a(href='#')
+                                    i.fa.fa-twitter
+                                a(href='#')
+                                    i.fa.fa-google-plus
+                                a(href='#')
+                                    i.fa.fa-linkedin
+                        h3 Wasilat Elegbede
+                        p Agile Project Manager/Scrum Master
+                .col-lg-3.col-sm-6
+                    .single-team
+                        .team-img
+                            img(src='/images/oludare.jpg' alt='')
+                            .team-social
+                                a(href='#')
+                                    i.fa.fa-facebook
+                                a(href='#')
+                                    i.fa.fa-twitter
+                                a(href='#')
+                                    i.fa.fa-google-plus
+                                a(href='#')
+                                    i.fa.fa-linkedin
+                        h3 Oludare Olorufemi 
+                        p GDPR/Subject Matter Expert
+                .col-lg-3.col-sm-6
+                    .single-team
+                        .team-img
+                            img(src='/images/damilola.jpg' alt='')
+                            .team-social
+                                a(href='#')
+                                    i.fa.fa-facebook
+                                a(href='#')
+                                    i.fa.fa-twitter
+                                a(href='#')
+                                    i.fa.fa-google-plus
+                                a(href='#')
+                                    i.fa.fa-linkedin
+                        h3 Damilola Ademiju
+                        p Digital Business Analyst         
 
-            $('.owl-carousel').owlCarousel({
-                loop:true,
-                margin:10,
-                responsiveClass:true,
-                responsive:{
-                    0:{
-                        items:1,
-                        nav:true
-                    },
-                    600:{
-                        items:3,
-                        nav:false
-                    },
-                    1000:{
-                        items:5,
-                        nav:false,
-                        loop:false
-                    }
-                }
-            })
-        });
+    section.ready-to-contact.section-padding(style='background: url(./images/ready-to-contact.jpg) no-repeat center center /cover')
+        .container
+            .col-lg-8.offset-lg-2
+                .ready-to-contact-content
+                    h2 Are you ready to start investing?
+                    p Sign up right away and choose from our carefully selected farm projects and invest, while we take care of your investments and profit
+                    a.xs-btn.fill(href='/signup') SIGN UP

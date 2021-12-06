@@ -1,10 +1,8 @@
-const Payment = require('../models').Payment;
-const investmentService = require('./investmentService');
+const { Payment, UserInvestments } = require('../models');
 
-const savePaymentDetails = async ({ reference, amount, status, investmentId, units, userId }) => {
-    await Payment.create({ reference, amount, investmentId, userId, status });
-
-    return investmentService.invest({ userId, investmentId, units });
+const savePaymentDetails = async ({ flw_ref: reference, amount, status, investmentId, transaction_id, userId }) => {
+    await Payment.create({ reference, amount, investmentId, transaction_id, userId, status });
+    return UserInvestments.update({ status: 'active' }, { where: { UserId: userId, InvestmentId: investmentId } });
 }
 
 module.exports = {

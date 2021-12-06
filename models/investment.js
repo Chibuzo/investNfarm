@@ -22,9 +22,9 @@ module.exports = (sequelize, DataTypes) => {
         photo_url: {
             type: DataTypes.STRING
         },
-        active: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true
+        status: {
+            type: DataTypes.STRING,
+            defaultValue: 'avaliable'
         },
         deleted: {
             type: DataTypes.BOOLEAN,

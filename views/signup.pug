@@ -1,52 +1,52 @@
 extends layout 
 
 block content
-    div.container-fluid.primary-bg.text-white
-        div.row
-            div.col.text-center
+    .container-fluid.primary-bg.text-white
+        .row.pt-4
+            .col.text-center
                 if newUser 
-                    h1.mt-5 Sign Up Successful 
+                    h3.mt-5 Sign Up Successful 
                 else
-                    h1.mt-5 Sign Up
-                    p Choose from over 20 investment portfolios with high ROI
-        div.row 
-            div.col
+                    h3.mt-5 Sign Up
+                    p.mb-5 Choose from over 20 investment portfolios with high ROI
+        .row 
+            .col
                 .container
-                    .row.mb-4 
+                    .row.mb-4.px-5 
                         .col
                             if newUser 
-                                div.alert.alert-success.text-center.mt-4
+                                .alert.alert-success.text-center.mt-4
                                     i.fa.fa-check-circle.fa-4x
                                     br/ 
                                     | Thank you for signing up with Invest"N"Farm. 
                                     br/ A mail has been sent to you to verify your email address
                             else
-                                form(action="/signup", method="post")#signupForm
-                                    div.row.gx-5
-                                        div.col-md-6.col-sm-12.col-xs-12.mb-3
-                                            input.form-control.form-control-lg(type="text" name="fname" placeholder="First name" aria-label="First name" required=true)
-                                        div.col-md-6.col-sm-12.col-xs-12.mb-3
-                                            input.form-control.form-control-lg(type="text" name="lname" placeholder="Last name" aria-label="Last name" required=true)
-                                    div.row.gx-5
-                                        div.col-md-6.col-sm-12.col-xs-12.mb-3
-                                            select.form-select.form-select-lg(type="text" name="gender" placeholder="Gender" aria-label="Gender")
+                                form(action="/signup" method="post")#signupForm
+                                    .row.gx-5
+                                        .col-md-6.col-sm-12.col-xs-12.mb-3
+                                            input.form-control(type="text" name="fname" placeholder="First name" aria-label="First name" required=true)
+                                        .col-md-6.col-sm-12.col-xs-12.mb-3
+                                            input.form-control(type="text" name="lname" placeholder="Last name" aria-label="Last name" required=true)
+                                    .row.gx-5
+                                        .col-md-6.col-sm-12.col-xs-12.mb-3
+                                            select.form-control(type="text" name="gender" placeholder="Gender" aria-label="Gender")
                                                 option(value="Female") Female
                                                 option(value="Male") Male
-                                        div.col-md-6.col-sm-12.col-xs-12.mb-3
-                                            input.form-control.form-control-lg(type="text" name="phone" placeholder="Phone Number" aria-label="Phone Number")
-                                    div.row.gx-5
-                                        div.col-md-6.col-sm-12.col-xs-12.mb-3
-                                            input.form-control.form-control-lg(type="email" name="email" placeholder="Email" aria-label="Email" required=true)
-                                        div.col-md-6.col-sm-12.col-xs-12.mb-3
-                                            select.form-control.form-control-lg(name="country" placeholder="Country" aria-label="Country" required)
+                                        .col-md-6.col-sm-12.col-xs-12.mb-3
+                                            input.form-control(type="text" name="phone" placeholder="Phone Number" aria-label="Phone Number")
+                                    .row.gx-5
+                                        .col-md-6.col-sm-12.col-xs-12.mb-3
+                                            input.form-control(type="email" name="email" placeholder="Email" aria-label="Email" required=true)
+                                        .col-md-6.col-sm-12.col-xs-12.mb-3
+                                            select.form-control(name="country" placeholder="Country" aria-label="Country" required)
                                                 option(value="") -- Select Country --
                                                 each country in countries 
                                                     option(value=`${country.country}`)= country.country
-                                    div.row.gx-5
-                                        div.col-md-6.col-sm-12.col-xs-12.mb-3
-                                            input.form-control.form-control-lg#password(type="password" name="password" placeholder="Password" aria-label="Password" required=true)
-                                        div.col-md-6.col-sm-12.col-xs-12.mb-3
-                                            input.form-control.form-control-lg#confirm_password(type="password", name="confirm_password" placeholder="Confirm Password" aria-label="Confirm Password" required=true)    
+                                    .row.gx-5
+                                        .col-md-6.col-sm-12.col-xs-12.mb-3
+                                            input.form-control#password(type="password" name="password" placeholder="Password" aria-label="Password" required=true)
+                                        .col-md-6.col-sm-12.col-xs-12.mb-3
+                                            input.form-control#confirm_password(type="password" name="confirm_password" placeholder="Confirm Password" aria-label="Confirm Password" required=true)    
                                     .row.gy-3.justify-content-md-center.mb-5
                                         .col-md-4.d-grid 
                                             br/
@@ -55,7 +55,6 @@ block content
             .col.text-center 
                 .row.gy-3.justify-content-md-center.mb-5
                     .col-md-4.d-grid 
-                        br
                         h3 OR 
                         br
                         button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Login With Google
@@ -74,4 +73,4 @@ block content
             }
             return;
         });            
-                                  
+

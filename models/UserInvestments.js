@@ -26,9 +26,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             defaultValue: 1
         },
-        active: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true
+        status: {
+            type: DataTypes.STRING,
+            defaultValue: 'pending'
         }
     }, {});
 

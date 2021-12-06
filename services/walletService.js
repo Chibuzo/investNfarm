@@ -16,24 +16,22 @@ const fetchTransactions = async criteria => {
     return { transactions, balance };
 }
 
-const topUpWallet = async ({ amount, status, flw_ref, transaction_id, user_id }) => {
-    const payment = await Payment.create({
-        userId: user_id,
-        amount, transaction_id, status,
-        reference: flw_ref
-    });
+// const topUpWallet = async ({ amount, status, flw_ref, transaction_id, user_id }) => {
+//     const payment = await Payment.create({
+//         userId: user_id,
+//         amount, transaction_id, status,
+//         reference: flw_ref
+//     });
 
-    console.log({ payment })
-
-    return Transaction.create({
-        description: 'topup',
-        amount,
-        user_id,
-        payment_id: payment.id,
-        type: 'C',
-        status: 'success'
-    });
-}
+//     return Transaction.create({
+//         description: 'topup',
+//         amount,
+//         user_id,
+//         payment_id: payment.id,
+//         type: 'C',
+//         status: 'success'
+//     });
+// }
 
 const requestWithdrawal = async ({ bank, account_name, account_number, amount, user_id }) => {
     const withdrawal = await Withdrawal.create({
@@ -77,7 +75,6 @@ const updateWithdrawal = async ({ id, status }) => {
 
 module.exports = {
     fetchTransactions,
-    topUpWallet,
     requestWithdrawal,
     listWithdrawals,
     updateWithdrawal

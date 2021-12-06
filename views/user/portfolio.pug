@@ -1,21 +1,21 @@
 extends layout 
 
 block styleBlock 
-    link(rel='stylesheet', href='/stylesheets/owl.carousel.min.css')
-    link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
+    link(rel='stylesheet' href='/stylesheets/owl.carousel.min.css')
+    link(rel='stylesheet' href='/stylesheets/owl.theme.default.min.css')
 
 block content
     section.content-header
         h1
             | Portfolio
-        
+
     // Main content
     section.content
         .row
             .col-md-12
                 .box
                     .box-header
-                        h3.box-title Pending Investment Request
+                        h3.box-title Avaliable Projects
                     .box-body
                         .owl-carousel 
                             each inv in investments

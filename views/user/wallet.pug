@@ -1,13 +1,13 @@
 extends layout 
 
 block styleBlock 
-    link(rel='stylesheet', href='/stylesheets/owl.carousel.min.css')
-    link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
+    link(rel='stylesheet' href='/stylesheets/owl.carousel.min.css')
+    link(rel='stylesheet' href='/stylesheets/owl.theme.default.min.css')
 
 block content
     section.content-header
         h1 Virtual Wallet
-        
+
     // Main content
     section.content
         .row
@@ -25,7 +25,7 @@ block content
                                             th Description
                                             th Amount
                                             th Status
-                                            
+
                                     tbody
                                         each trnx in transactions 
                                             - let row = trnx.type === 'C' ? 'success' : 'danger'
@@ -35,17 +35,17 @@ block content
                                                 td= trnx.description 
                                                 td= '₦' + view.formatCurrency(trnx.amount) 
                                                 td= trnx.status
-                                                       
+
             .col-md-3 
                 h3 Wallet Balance: ₦#{view.formatCurrency(balance)}
                 hr
-                p #[strong TOP UP WALLET]
-                .row
-                    .col-md-12
-                        .input-group
-                            input.form-control#amount(type="text", name="amount", placeholder="Amount" aria-label="Amount")
-                            .input-group-btn
-                                button.btn.btn-danger#topup(onClick=`makePayment('${user.email}', '${user.phone}', '${user.fullname}')`) Top Up
+                //- p #[strong TOP UP WALLET]
+                //- .row
+                //-     .col-md-12
+                //-         .input-group
+                //-             input.form-control#amount(type="text" name="amount" placeholder="Amount" aria-label="Amount")
+                //-             .input-group-btn
+                //-                 button.btn.btn-danger#topup(onClick=`makePayment('${user.email}', '${user.phone}', '${user.fullname}')`) Top Up
                 .row(style="margin-top: 40px")      
                     .col-md-12 
                         P #[strong WITHDRAW FROM YOUR WALLET]
@@ -105,7 +105,7 @@ block Modals
 
 block scriptBlock
     script(src="https://checkout.flutterwave.com/v3.js")
-    
+
     script. 
         $(document).ready(function() {
             toastr.options = {
@@ -163,7 +163,7 @@ block scriptBlock
                 },
                 callback: function (payment_data) { // specified callback function
                     const { amount, status, flw_ref, transaction_id } = payment_data;
-                    
+
                     $.post('/wallet/topup', { amount, status, flw_ref, transaction_id }, function(d) {
                         if (d.status.trim() === 'success') {
                             location.reload();

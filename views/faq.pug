@@ -8,9 +8,7 @@ block content
                     .banner-inner-content
                         h2.banner-inner-title FAQ
                         ul.xs-breadcumb
-                            li
-                                a(href='/')  Home / 
-                                |  faq
+
     section.xs-faq-sec.section-padding  
         .container
             .row
@@ -18,11 +16,9 @@ block content
                     .faq-content
                         .faq-content-item
                             h3.faq-title
-                                span.light-text Common
+                                span.light-text Frequently Asked
                                 |  questions
-                            p
-                            | Pharetra auctor libero suscipit rhoncus vivamus tempor nascetur Nisi platea euismod,
-                            | aliquam ac feugiat donec commodo aenean volutpat
+
                         #accordion.faq-item
                             .faq-single-item
                                 h4#headingOne
@@ -31,7 +27,7 @@ block content
                                         | Is InvestNfarm Registered?
                                 #collapseOne.collapse(aria-labelledby='headingOne' data-parent='#accordion')
                                     .card-body
-                                        p Yes, InvestNfarm is a registered with the CAC in Nigeria with registration number xxxxxxx
+                                        p Yes, InvestNfarm is a registered with the CAC in Nigeria with registration number 1791394
                             .faq-single-item
                                 h4#headingOne
                                     button.btn.btn-link(data-toggle='collapse' data-target='#collapse2' aria-expanded='true' aria-controls='collapse2')
@@ -129,3 +125,12 @@ block content
                                 textarea#x_contact_massage.form-control.message-box(name='massage' placeholder='Your Question' cols='30' rows='10')
                                 .xs-btn-wraper
                                     input#xs_contact_submit.xs-btn.sm-btn(type='submit' value='SEND QUESTION')
+
+
+    section.ready-to-contact.section-padding(style='background: url(./images/ready-to-contact.jpg) no-repeat center center /cover')
+        .container
+            .col-lg-8.offset-lg-2
+                .ready-to-contact-content
+                    h2 Are you ready to start investing?
+                    p Sign up right away and choose from our carefully selected farm projects and invest, while we take care of your investments and profit
+                    a.xs-btn.fill(href='/signup') SIGN UP

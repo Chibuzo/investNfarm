@@ -2,14 +2,14 @@ extends layout
 
 block content        
     .feature-image(style="background-image: url(/images/money.jpg); background-position: bottom")
-        .row.feature-text
-            .col.text-center
-                h1.mb-4.text-white Our Products yield high interests
+        .row
+            .col
+
     .container
         .row.my-5.justify-content-md-center
             .col-md-9.text-center
                 h3 Our Products
-                p We have a diverse range of products that are highly versatile and guaranteed to return a high yield on your investment. To have a view of the various products, scroll and click on any image to get more information displayed below. 
+                p We have a diverse range of products that are highly versatile and guarante high return on investments. To have a view of the various products, scroll and click on any image to get more information. 
                 //- p Investing with us is very simple, first fund your wallet, secondly, choose a product, thirdly set an amount to invest then wait till maturity to receive your ROI.
 
     section.recent-work-sec.section-padding.section-bg
@@ -18,27 +18,8 @@ block content
                 .col-lg-12
                     .section-title-item
                         h2.section-title
-                            span.xs-title OUR PROJECTS
-                            |  Recent Works
+                            |  OUR PROJECTS 
 
             include includes/portfolios.pug
 
-
-    #loginModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
-        .modal-dialog
-            .modal-content
-                form#form-login(action="/login" method="post")
-                    .modal-header
-                        h5#exampleModalLabel.modal-title Login to Continue
-                        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
-                    .modal-body
-                        .mb-3 
-                            label Email
-                            input.form-control.form-control-lg(type="email" name="email" placeholder="Email" aria-label="Email")
-                        .mb-3
-                            label Password
-                            input.form-control.form-control-lg(type="password" name="password" placeholder="Password" aria-label="Password", required=true)
-                    .modal-footer
-                        button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-                        button.btn.btn-success(type='submit') Login 
 

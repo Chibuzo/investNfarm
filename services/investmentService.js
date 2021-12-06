@@ -53,19 +53,10 @@ const invest = async ({ userId: UserId, investmentId: InvestmentId, units = 1 })
     if (!investment) throw new ErrorHandler(404, 'Investment not found');
 
     // check for sufficient balance
-    const { balance } = await walletService.fetchTransactions({ where: { user_id: UserId } });
-    if (balance < investment.unit_cost * units) {
-        throw new ErrorHandler(400, 'You don\'t sufficient balance for this transaction');
-    }
-    // debit wallet
-    await Transaction.create({
-        description: 'Investment',
-        amount: investment.unit_cost * units,
-        user_id: UserId,
-        investment_id: investment.id,
-        type: 'D',
-        status: 'success'
-    });
+    // const { balance } = await walletService.fetchTransactions({ where: { user_id: UserId } });
+    // if (balance < investment.unit_cost * units) {
+    //     throw new ErrorHandler(400, 'You don\'t sufficient balance for this transaction');
+    // }
 
     return investment.createUserInvestment({ UserId, InvestmentId, units });
 }

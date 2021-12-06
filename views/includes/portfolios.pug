@@ -6,6 +6,7 @@
                 .single-recent-work
                     .project-photo-wrapper
                         .project-photo(style=`background-image:url(${inv.photo_url});`)
+                            p Click to view
                     .recet-work-footer
                         i.icon-Our_service_3
                         h3= inv.investment_name
@@ -22,25 +23,27 @@
                                 .col-lg-5
                                     ul.xs-popup-left-content
                                         li
-                                            i.icon.icon-tags
+                                            i.lnr.lnr-tag
                                             label Project Category
                                             span #{inv.InvestmentCategory.category_name}
                                         li
-                                            i.icon.icon-invest
+                                            i.lnr.lnr-star 
                                             label Unit Cost
                                             span  ₦#{view.formatCurrency(inv.unit_cost)} 
                                         li
-                                            i.icon.icon-invest
+                                            i.lnr.lnr-hourglass 
                                             label Project Duration
                                             span #{inv.period} Months
                                         li 
+                                            i.lnr.lnr-pie-chart
                                             label Units Left 
-                                            span #{inv.units - inv.sold_unit_count}
+                                            span #{inv.units - inv.sold_unit_count} units
                                         li 
+                                            i.lnr.lnr-chart-bars
                                             label ROI 
                                             span #{inv.roi}%	
                                         li
-                                            i.icon.icon-map-marker2
+                                            i.lnr.lnr-map-marker
                                             label Location
                                             span
                                                 | #{inv.country},
@@ -48,4 +51,4 @@
                                 .col-lg-7
                                     .xs-popup-right-content
                                         p= inv.InvestmentCategory.about
-                                        a.xs-btn(href=`${url_path}`) VIEW MORE
+                                        a.xs-btn(href=`${url_path}`) READ MORE

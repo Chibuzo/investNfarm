@@ -11,6 +11,7 @@ block content
                             .blog-post-img
                                 img(src=`/${investment.photo_url}` alt='')
                             .blog-meta
+                                -const avaliable_units = investment.units - investment.sold_unit_count
                                 ul
                                     li 
                                         a(href='#')
@@ -19,19 +20,19 @@ block content
                                     li
                                         a(href='#')
                                             span.lnr.lnr-star 
-                                            span Unit Cost: #{investment.unit_cost}
+                                            span Unit Cost: ₦#{view.formatCurrency(investment.unit_cost)}
                                     li
                                         a(href='#')
-                                            span.lnr.lnr-calendar-full 
-                                            | Duration: #{investment.period}
+                                            span.lnr.lnr-hourglass 
+                                            | Duration: #{investment.period} Months
                                     li
                                         a(href='#')
                                             span.lnr.lnr-chart-bars 
-                                            span ROI: #{investment.roi}
+                                            span ROI: #{investment.roi}%
                                     li
                                         a(href='#')
                                             span.lnr.lnr-pie-chart 
-                                            | Avaliable Units: #{investment.units - investment.sold_unit_count}
+                                            | Avaliable Units: #{avaliable_units}
                             h3.xs-blog-title #{investment.investment_name}
                             p= investment.InvestmentCategory.about 
                             h3.xs-blog-title Benefits
@@ -41,6 +42,14 @@ block content
                             h3.xs-blog-title Our Model
                             p= investment.InvestmentCategory.model
 
+                    .row
+                        .col-md-2
+                            input.form-control.input-lg(type="number" id="units" value="1" min="1" max=`${avaliable_units}` style="padding: 0.685rem .75rem")
+                        .col-md-5     
+                            if user   
+                                button.btn.btn-lg.btn-success(type="button" onClick=`makePayment('${user.email}', '${user.phone}', '${user.fullname}', ${investment.unit_cost}, ${investment.id})`) Invest Now  
+                            else
+                                button.btn.btn-lg.btn-success(type="button" data-toggle="modal" data-target="#loginModal") Invest Now
 
                 .col-lg-4
                     .sidebar-widgets
@@ -58,3 +67,83 @@ block content
                                                 a(href=`${url_path}`) #{inv.investment_name} 
                                             span.post-meta-date
                                                 a(href='#')  Avaliable#{inv.status}
+
+    #loginModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+        .modal-dialog
+            .modal-content
+                form#form-login(action="/login" method="post")
+                    .modal-header
+                        h5#exampleModalLabel.modal-title Login to Continue
+                        button.btn-close(type='button' data-dismiss='modal' aria-label='Close')
+                    .modal-body
+                        .mb-3 
+                            label Email
+                            input.form-control.form-control-lg(type="email" name="email" placeholder="Email" aria-label="Email")
+                        .mb-3
+                            label Password
+                            input.form-control.form-control-lg(type="password" name="password" placeholder="Password" aria-label="Password", required=true)
+                    .modal-footer
+                        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                        button.btn.btn-success(type='submit') Login 
+
+block scriptBlock 
+    script(src="https://checkout.flutterwave.com/v3.js")
+
+    script. 
+        $(document).ready(function() {
+            $("#form-login").submit(function(e) {
+                e.preventDefault();
+
+                $.post('/login?json=true', $(this).serialize(), function(d) {
+                    if (d.status == true) {
+                        location.reload();
+                    }
+                });
+            });
+        });
+
+        function makePayment(email, phone_number, name, unit_cost, investmentId) {
+            const units = $("#units").val();
+            const amount = parseInt(units, 10) * unit_cost;
+            if (!amount) {
+                alert("Enter topup amount to continue");
+                return;
+            }
+
+            $.post('/invest', { investmentId, units }, function(d) {
+                if (d.status.trim() === 'success') {
+                    const tx_ref = `TNX_${d.userInvestment.id}`;
+
+                    FlutterwaveCheckout({
+                        public_key: "FLWPUBK_TEST-1e39ec87d96dc02f0b3e2fb3a6b60d9b-X",
+                        amount,
+                        tx_ref,
+                        currency: "NGN",
+                        country: "NG",
+                        customer: {
+                            email,
+                            phone_number,
+                            name,
+                        },
+                        callback: function (payment_data) { // specified callback function
+                            const { amount, status, flw_ref, transaction_id } = payment_data;
+
+                            $.post('/save-payment', { amount, status, flw_ref, transaction_id, units, investmentId }, function(d) {
+                                if (d.status.trim() == 'success') {
+                                    location.replace('/users/dashboard');
+                                    return;
+                                }
+                                alert('Payment not successful')
+                            });
+                        },
+                        customizations: {
+                            title: "Make Payment",
+                            description: "Make payment to complete your investment process",
+                            logo: "https://investnfarm.com/imageslogo.png",
+                        },
+                    });
+                } else {
+                    alert('Error: Cannot complete investment at this time')
+                }
+            });
+        }

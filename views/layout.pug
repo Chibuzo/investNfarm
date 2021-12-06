@@ -45,8 +45,9 @@ section.xs-header-top
         .header-top-info
           ul
             li
-              i.icon.icon-envelope
-              | investnfarm@info.com
+              a(href="mailto:investnfarm@info.com")
+                i.icon.icon-envelope
+                | investnfarm@info.com
       .col-lg-6.align-self-center.col-md-4
         .header-top-social
           ul
@@ -57,7 +58,7 @@ section.xs-header-top
               a(href='https://twitter.com/investnfarm')
                 i.fa.fa-twitter
             li
-              a(href='https://instagram.com/investnfarm/')
+              a(href='https://instagram.com/investnfarm/') 
                 i.fa.fa-instagram
 section.xs-header-middle
   .container
@@ -71,7 +72,7 @@ section.xs-header-middle
           ul 
             li
               i.icon-number_1
-              label Reliable Agric Investing
+              label Reliable Agrictech Investment
               p Service provider
 header.xs-header-nav
   .container
@@ -94,10 +95,14 @@ header.xs-header-nav
                 a(href='/faq') FAQ
               li
                 a(href='/contact') Contact Us
+              li  
+                a.btn.btn-success(href="/login") Login
+
             .header-nav-right-info.align-to-right
               label
                 i.icon.icon-phone3
-                |  +44 345 678 903
+                | +44 345 678 903
+
 
 block content 
 
@@ -109,23 +114,6 @@ footer.xs-footer-sec
           i.fa.fa-angle-double-up
     .footer-item
       .row
-        .col-lg-3
-          .widgets
-            .footer-logo
-              a(href='/')
-                img(src='/images/logo.png' alt='')
-            p
-              | Invest”N”Farm is an innovative digital agritech crowdfunding platform focused on arable and pastoral farming and other operations in Nigeria.
-            ul.footer-social
-              //- li
-              //-   a(href='#')
-              //-     i.fa.fa-facebook-f
-              li
-                a(href='https://twitter.com/investnfarm')
-                  i.fa.fa-twitter
-              li
-                a(href='https://instagram.com/investnfarm/')
-                  i.fa.fa-instagram
         .col-md-3
           .widgets
             h3.widget-title InvestNfarm
@@ -135,36 +123,51 @@ footer.xs-footer-sec
               li
                 a(href='/about') About Us
               li
-                a(href='/products') Products
+                a(href='/projects') Products
               li    
                 a(href='/contact') Contact  
               li
-                a(href='faq.html') Faq
+                a(href='/faq') FAQ
         .col-md-3
           .widgets
             h3.widget-title Help
             ul.service-link
               li
-                a(href='#') Terms & Condition
+                a(href='/terms-conditions') Terms & Condition
               li
-                a(href='#') Privacy Policy
+                a(href='/privacy-policy') Privacy Policy
               li
-                a(href='#') Faq
+                a(href='/faq') FAQ
 
-        .col-md-3
+        .col-md-2
           .widgets
-            h3.widget-title Contact Us
-            ul.footer-contact-list
+            h3.widget-title Social Media
+            ul
+              li
+                a(href='https://twitter.com/investnfarm')
+                  i.fa.fa-twitter &nbsp; &nbsp; 
+                  | Twitter
+              li
+                a(href='https://instagram.com/investnfarm/')
+                  i.fa.fa-instagram &nbsp; &nbsp; 
+                  | Instagram
+              li
+                a(href='/index')
+        .col-md-1
+        .col-md-3
+          .widgets.pb-3
+            ul.footer-contact-list.mt-5
               li
                 i.lnr.lnr-map-marker
                 | #[strong Visit our office]
-                br/ 497 Evergreen Rd. Roseville, CA 95673
+                br/ 16, Adeniyi Jones, Victoria Island, Lagos. Nigeria.
               li
                 i.lnr.lnr-phone
                 | +44 345 678 903
               li
                 i.lnr.lnr-envelope
                 | investnfarm@gmail.com
+
     .copyright-content
       .row
         .col-md-6
@@ -176,9 +179,9 @@ footer.xs-footer-sec
         .col-md-6
           ul.footer-bottom-menu
             li
-              a(href='#') Terms of Service 
+              a(href='/terms-conditions') Terms of Service 
             li
-              a(href='#') Privacy Policy
+              a(href='/privacy-policy') Privacy Policy
 script(data-cfasync='false' src='/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')
 script(src='/javascripts/jquery.min.js')
 script(src='/javascripts/bootstrap.min.js')
@@ -190,3 +193,5 @@ script(src='/javascripts/jquery.appear.min.js')
 script(src='/javascripts/isotope.js')
 script(src='/javascripts/wow.min.js')
 script(src='/javascripts/main.js')
+
+block scriptBlock

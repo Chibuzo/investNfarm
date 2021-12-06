@@ -19,14 +19,14 @@ router.get('/', async (req, res, next) => {
             ],
             limit: 6
         });
-        res.render('new', { title: 'Welcome', investments });
+        res.render('index', { title: 'Welcome', investments });
     } catch (err) {
         next(err);
     }
 });
 
 router.get('/about', async (req, res, next) => {
-    res.render('about1', { title: 'About InvestNFarm' });
+    res.render('about', { title: 'About InvestNFarm' });
 });
 
 router.get('/faq', (req, res, next) => {
@@ -87,7 +87,7 @@ router.get('/projects', isAuthenticated, async (req, res, next) => {
 router.get('/projects/:id/*', isAuthenticated, async (req, res, next) => {
     try {
         const investment = await investmentService.view(req.params.id, true);
-        // investment.investments = investment.investments.filter(inv => inv.id != req.params.id);
+        investment.investments = investment.investments.filter(inv => inv.id != req.params.id);
         res.render('portfolio-page', { title: investment.InvestmentCategory.category_name, investment });
     } catch (err) {
         next(err);
@@ -97,14 +97,16 @@ router.get('/projects/:id/*', isAuthenticated, async (req, res, next) => {
 router.post('/invest', authenticate, async (req, res, next) => {
     try {
         const userId = req.session.user.id;
-        await investmentService.invest({ ...req.body, userId });
-        res.redirect(`/users/portfolio`);
+        const userInvestment = await investmentService.invest({ ...req.body, userId });
+        res.status(200).json({ status: 'success', userInvestment });
+        //res.redirect(`/users/portfolio`);
     } catch (err) {
+        console.log(err)
         next(err);
     }
 });
 
-router.post('/confirmpayment', async (req, res, next) => {
+router.post('/save-payment', async (req, res, next) => {
     try {
         req.body.userId = req.session.user.id;
         const investment = await paymentService.savePaymentDetails(req.body);

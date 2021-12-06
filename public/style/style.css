@@ -110,7 +110,7 @@ ul, li {
   clear: both; }
 
 p {
-  color: #6d6d6d;
+  color: #282828;
   font-size: 14px;
   line-height: 26px;
   margin: 0 0 15px;
@@ -591,7 +591,7 @@ h6 {
  =================================*/
 .xs-header-middle {
   position: relative;
-  padding: 30px 0;
+  padding: 17px 0;
   /*------- index v2---*/
   /*------- index v4---*/ }
   .xs-header-middle .header-middle-info {
@@ -957,8 +957,8 @@ h6 {
     padding: 18px 0;
     -webkit-transform: translateY(-50%);
             transform: translateY(-50%); }
-    .xs-banner-sec.banner-slider .owl-nav > div i {
-      font-family: "iconfont"; }
+    /* .xs-banner-sec.banner-slider .owl-nav > div i {
+      font-family: "iconfont"; } */
     .xs-banner-sec.banner-slider .owl-nav > div.owl-prev {
       left: 3%;
       right: auto; }
@@ -1198,9 +1198,7 @@ h6 {
 /*=================================
   start  service section
  =================================*/
-.service-sec {
-  background: url(../images/service-bg.jpg) no-repeat center center/cover;
-  padding-bottom: 25px; }
+
   .service-sec .single-service {
     text-align: center;
     margin-bottom: 30px; }
@@ -3972,7 +3970,7 @@ h6 {
 /*--------------------- comment form ----------------*/
 .xs-form .form-control {
   font-family: "Open Sans", sans-serif;
-  border: 1px solid #eee;
+  /* border: 1px solid #eee; */
   border-radius: 0;
   margin-bottom: 25px;
   height: 50px;
@@ -4102,7 +4100,7 @@ h6 {
     padding: 0;
     background: #FFFFFF; }
     .xs-contact-v2-sec .xs-form-group .form-control {
-      border: 1px solid #eeeeee; }
+      border: 1px solid #c5c2c2; }
     .xs-contact-v2-sec .xs-form-group .xs-btn-wraper {
       text-align: center; }
       .xs-contact-v2-sec .xs-form-group .xs-btn-wraper .xs-btn {
@@ -4115,7 +4113,8 @@ h6 {
 .xs-contact-infomation {
   margin-bottom: 100px; }
   .xs-contact-infomation.xs-contact-infomation-v2 [class*='col-']:last-of-type .contact-info-group {
-    padding: 27px 40px; }
+    /* padding: 27px 40px;  */
+  }
   .xs-contact-infomation.xs-contact-info-1 {
     margin-bottom: 135px; }
 
@@ -4364,17 +4363,55 @@ h6 {
   height: 240px;
 }
 
+.project-photo-wrapper:hover p, .project-photo-wrapper:focus p, .project-photo-wrapper:hover .project-photo::before, .project-photo-wrapper:focus .project-photo::before {
+  display: block;
+}
+
 .project-photo {
+    display: relative;
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
+     -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
     transition: all .5s;
+}
+
+.project-photo::before {
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(52,73,94, 0.6);
+}
+
+.project-photo p {
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    display: none;
 }
 
 .project-photo-wrapper:hover .project-photo,
 .project-photo-wrapper:focus .project-photo {
   transform: scale(1.2);
+  -ms-transform: scale(1.2);
+   -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
 }
 
 .xs-popup-right-content p {
@@ -4435,4 +4472,45 @@ h6 {
   list-style: disc;
   padding-left: 0;
   margin-left: 22px;
+}
+
+.about-video-img img {
+  box-shadow: 0px 1px 15px -3px #008435 !important;
+}
+
+.header-top-info ul li a {
+  color: #fff;
+}
+
+.header-top-social ul li a i {
+  font-size: 20px
+}
+
+.why-choose-us-sec {
+  background-image: url('../images/farm-bg.jpg');
+  background-size: cover;
+}
+
+.why-choose-us-sec .single-why-choose-list p {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+.why-choose-us-sec .single-why-choose-list h4 {
+  font-family: "Poppins", sans-serif;
+  color: #008435;
+}
+
+.service-sec {
+  /* background-image: url('../images/how-it-works.jpg');
+  background-size: cover; */
+  background: url(../images/how-it-works.jpg) no-repeat center center/cover;
+}
+
+.service-sec p {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  line-height: 25px;
+  color: #333;
 }
