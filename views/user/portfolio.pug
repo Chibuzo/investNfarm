@@ -1,8 +1,8 @@
 extends layout 
 
 block styleBlock 
-    link(rel='stylesheet' href='/stylesheets/owl.carousel.min.css')
-    link(rel='stylesheet' href='/stylesheets/owl.theme.default.min.css')
+    link(rel='stylesheet' href='/style/owl.carousel.min.css')
+    link(rel='stylesheet' href='/style/owl.theme.default.min.css')
 
 block content
     section.content-header
@@ -20,11 +20,13 @@ block content
                         .owl-carousel 
                             each inv in investments
                                 - const url_path = inv.investment_name.split(' ').join('-')
-                                a(href=`/investment/${inv.id}/${url_path}#loc`)
-                                    .item(style=`background-image: url(/${inv.photo_url})` data-)
-                                        p.text-center= inv.investment_name 
+                                a(href=`/projects/${inv.id}/${url_path}#loc`)
+                                    .item-wrapprt
+                                        .item(style=`background-image: url(/${inv.photo_url})` data-)
+                                            .item-label
+                                                p.text-center= inv.investment_name
 
-                        .row 
+                        .row(style="margin-top: 20px")
                             .col-md-12
                                 h3 Your Portfolio At a Glance
                                 table.table.table-striped(style="margin-top: 15px")
@@ -56,9 +58,10 @@ block scriptBlock
         $(document).ready(function(){
             $('.owl-carousel').owlCarousel({
                 loop:true,
-                margin:13,
+                margin:16,
                 responsiveClass:true,
-                nav: true,
+                autoplay: true,
+                autoplayHoverPause: true,
                 responsive:{
                     0:{
                         items:1,
@@ -70,7 +73,7 @@ block scriptBlock
                     },
                     1000:{
                         items:4,
-                        nav:true,
+                        nav: false
                     }
                 }
             })

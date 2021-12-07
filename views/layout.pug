@@ -96,7 +96,11 @@ header.xs-header-nav
               li
                 a(href='/contact') Contact Us
               li  
-                a.btn.btn-success(href="/login") Login
+                if user 
+                  a.btn.btn-success(href="/users/dashboard") 
+                    | My Dashboard 
+                else
+                  a.btn.btn-success(href="/login") Login
 
             .header-nav-right-info.align-to-right
               label
