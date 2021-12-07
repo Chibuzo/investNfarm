@@ -28,9 +28,9 @@ block content
 
                                     tbody
                                         each trnx in transactions 
-                                            - let row = trnx.type === 'C' ? 'success' : 'danger'
-                                            - if (trnx.status === 'pending') row = 'active'
-                                            tr(class=`${row}`)
+                                            //- - let row = trnx.type === 'C' ? 'success' : 'danger'
+                                            //- - if (trnx.status === 'pending') row = 'active'
+                                            tr
                                                 td= view.formatDate(trnx.createdAt)
                                                 td= trnx.description 
                                                 td= '₦' + view.formatCurrency(trnx.amount) 

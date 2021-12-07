@@ -16,23 +16,23 @@ block content
                                     li 
                                         a(href='#')
                                             span.lnr.lnr-map-marker 
-                                            span Location: #{investment.country}
+                                            span #{investment.country}
                                     li
                                         a(href='#')
                                             span.lnr.lnr-star 
-                                            span Unit Cost: ₦#{view.formatCurrency(investment.unit_cost)}
+                                            span #[strong Unit Cost:] ₦#{view.formatCurrency(investment.unit_cost)}
                                     li
                                         a(href='#')
                                             span.lnr.lnr-hourglass 
-                                            | Duration: #{investment.period} Months
+                                            | #[strong Duration:] #{investment.period} Months
                                     li
                                         a(href='#')
                                             span.lnr.lnr-chart-bars 
-                                            span ROI: #{investment.roi}%
+                                            span #[strong ROI:] #{investment.roi}%
                                     li
                                         a(href='#')
                                             span.lnr.lnr-pie-chart 
-                                            | Avaliable Units: #{avaliable_units}
+                                            | #[strong Avaliable Units:] #{avaliable_units}
                             h3.xs-blog-title #{investment.investment_name}
                             p= investment.InvestmentCategory.about 
                             h3.xs-blog-title Benefits
@@ -66,7 +66,7 @@ block content
                                             h4.entry-title
                                                 a(href=`${url_path}`) #{inv.investment_name} 
                                             span.post-meta-date
-                                                a(href='#')  Avaliable#{inv.status}
+                                                a(href='#') #{inv.status}
 
     #loginModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
         .modal-dialog

@@ -3594,10 +3594,10 @@ h6 {
     margin-bottom: 18px; }
     .blog-content-item .single-blog-item .blog-meta ul li {
       display: inline-block;
-      margin-right: 33px; }
+      margin-right: 28px; }
       .blog-content-item .single-blog-item .blog-meta ul li a {
         font-size: 14px;
-        color: #999999;
+        color: #999999; 
         font-family: "Open Sans", sans-serif;
         transition: all 500ms ease;
         -moz-transition: all 500ms ease;
