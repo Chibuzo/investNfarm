@@ -27,7 +27,7 @@ body.hold-transition.skin-green.sidebar-mini
         // Main Header
         header.main-header
             // Logo
-            a.logo(href='/users/dashboard')
+            a.logo(href='/')
                 // mini logo for sidebar mini 50x50 pixels
                 span.logo-mini
                     b InvestNFarm
@@ -99,4 +99,14 @@ script.
     $(document).ready(function() {
         const link = location.href.split('#')[1];
         $('#link-' + link).addClass('active');
+
+
+        // auto logout
+        const user = !{JSON.stringify(user)};
+        const hour = 3600000;
+        if (user && user.remember_me !== true) {
+            setInterval(function() {
+                location.replace('/');
+            }, hour);
+        }
     });

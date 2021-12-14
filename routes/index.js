@@ -33,6 +33,10 @@ router.get('/faq', (req, res, next) => {
     res.render('faq', { title: 'Frequently asked Questions' });
 });
 
+router.get('/terms-and-conditions', (req, res, next) => {
+    res.render('terms', { title: "Terms of Agreement" });
+});
+
 router.get('/contact', async (req, res, next) => {
     res.render('contact', { title: 'Contact InvestNFarm' });
 });
@@ -62,6 +66,10 @@ router.post('/signup', async (req, res, next) => {
 router.post('/login', async (req, res, next) => {
     try {
         req.session.user = await userService.login(req.body);
+        if (req.body.remember_me) {
+            req.session.cookie.maxAge = 60 * 60 * 1000 * 24 * 30;   // 30 days
+            req.session.user.remember_me = true;
+        }
         if (req.query.json == 'true') return res.json({ status: true });
         res.redirect('/users/dashboard');
     } catch (err) {

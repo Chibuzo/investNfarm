@@ -26,8 +26,8 @@ app.use(fileUpload({
 }));
 app.use(session({
     secret: "thisismysecrctekeyfhrgfgrfrty84fwir767tobechangedbeforegoinglive",
-    saveUninitialized: true,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 }, // one fucking day
+    saveUninitialized: false,
+    // cookie: { maxAge: 1000 * 60 * 60 }, // one fucking hour
     resave: false
 }));
 app.use(cookieParser());

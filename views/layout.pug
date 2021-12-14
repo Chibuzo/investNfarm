@@ -1,191 +1,183 @@
 doctype html
 head
-  meta(charset='utf-8')
-  meta(http-equiv='x-ua-compatible' content='ie=edge')
-  title InvestNfarm - #{title}
-  meta(name='description' content='')
-  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
-  link(href='https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
-  link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i' rel='stylesheet')
-  link(rel='stylesheet' href='/stylesheets/fonts.css')
-  link(rel='icon' type='image/png' href='favicon.ico')
-  link(rel='apple-touch-icon' href='apple-touch-icon.png')
-  link(rel='stylesheet' href='/style/fontawesome-min.css')
-  link(rel='stylesheet' href='/style/bootstrap.min.css')
-  link(rel='stylesheet' href='/style/xsIcon.css')
-  link(rel='stylesheet' href='/style/iconmoon.css')
-  link(rel='stylesheet' href='/style/linearicon.css')
-  link(rel='stylesheet' href='/style/isotope.css')
-  link(rel='stylesheet' href='/style/magnific-popup.css')
-  link(rel='stylesheet' href='/style/owl.carousel.min.css')
-  link(rel='stylesheet' href='/style/owl.theme.default.min.css')
-  link(rel='stylesheet' href='/style/navigation.css')
-  link(rel='stylesheet' href='/style/animate.css')
-  link(rel='stylesheet' href='/style/style.css')
-  link(rel='stylesheet' href='/style/responsive.css')
-//if lt IE 10
-  p.browserupgrade
-    | You are using an 
-    strong outdated
-    |  browser. Please 
-    a(href='http://browsehappy.com/')
-      | upgrade
-      | your browser
-    |  to improve your experience.
-#preloader
-  .preloader-wrapper
-    .la-ball-clip-rotate-pulse.la-2x
-      div
-      div
-  a.cancel-preloader(href='') Cancel Preloader
-section.xs-header-top
-  .container
-    .row
-      .col-lg-6.col-md-8
-        .header-top-info
-          ul
-            li
-              a(href="mailto:investnfarm@info.com")
-                i.icon.icon-envelope
-                | investnfarm@info.com
-      .col-lg-6.align-self-center.col-md-4
-        .header-top-social
-          ul
-            //- li
-            //-   a(href='#')
-            //-     i.fa.fa-facebook-f
-            li
-              a(href='https://twitter.com/investnfarm')
-                i.fa.fa-twitter
-            li
-              a(href='https://instagram.com/investnfarm/') 
-                i.fa.fa-instagram
-section.xs-header-middle
-  .container
-    .row
-      .col-md-3.align-self-center
-        .logo
-          a(href='/')
-            img(src='/images/logo.png' alt='')
-      .align-self-center.col-md-9
-        .header-middle-info.float-right
-          ul 
-            li
-              i.icon-number_1
-              label Reliable Agrictech Investment
-              p Service provider
-header.xs-header-nav
-  .container
-    .row.menu-item
-      .col-lg-12
-        nav#navigation1.navigation.header-nav.clearfix
-          .nav-header
-            a.mobile-logo(href='/index')
-              img(src='/images/mobile_logo.png' alt='')
-            .nav-toggle
-          .nav-menus-wrapper.clearfix
-            ul.nav-menu
-              li.active
-                a(href='/') Home
-              li
-                a(href='/about') About us
-              li
-                a(href='/projects') Our Projects
-              li 
-                a(href='/faq') FAQ
-              li
-                a(href='/contact') Contact Us
-              li  
-                if user 
-                  a.btn.btn-success(href="/users/dashboard") 
-                    | My Dashboard 
-                else
-                  a.btn.btn-success(href="/login") Login
+    meta(charset='utf-8')
+    meta(http-equiv='x-ua-compatible' content='ie=edge')
+    title InvestNfarm - #{title}
+    meta(name='description' content='')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(href='https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i' rel='stylesheet')
+    link(rel='stylesheet' href='/stylesheets/fonts.css')
+    link(rel='icon' type='image/png' href='favicon.ico')
+    link(rel='apple-touch-icon' href='apple-touch-icon.png')
+    link(rel='stylesheet' href='/style/fontawesome-min.css')
+    link(rel='stylesheet' href='/style/bootstrap.min.css')
+    link(rel='stylesheet' href='/style/xsIcon.css')
+    link(rel='stylesheet' href='/style/iconmoon.css')
+    link(rel='stylesheet' href='/style/linearicon.css')
+    link(rel='stylesheet' href='/style/isotope.css')
+    link(rel='stylesheet' href='/style/magnific-popup.css')
+    link(rel='stylesheet' href='/style/owl.carousel.min.css')
+    link(rel='stylesheet' href='/style/owl.theme.default.min.css')
+    link(rel='stylesheet' href='/style/navigation.css')
+    link(rel='stylesheet' href='/style/animate.css')
+    link(rel='stylesheet' href='/style/style.css')
+    link(rel='stylesheet' href='/style/responsive.css')
 
-            .header-nav-right-info.align-to-right
-              label
-                i.icon.icon-phone3
-                | +44 345 678 903
+    block StylesBlock
+//if lt IE 10
+    p.browserupgrade
+        | You are using an 
+        strong outdated
+        |  browser. Please 
+        a(href='http://browsehappy.com/')
+            | upgrade
+            | your browser
+        |  to improve your experience.
+    a.cancel-preloader(href='') Cancel Preloader
+section.xs-header-top
+    .container
+        .row
+            .col-lg-6.col-md-8
+                .header-top-info
+                    ul
+                        li
+                            a(href="mailto:investnfarm@info.com")
+                                i.icon.icon-envelope
+                                | investnfarm@info.com
+            .col-lg-6.align-self-center.col-md-4
+                .header-top-social
+                    ul
+                        //- li
+                        //-   a(href='#')
+                        //-     i.fa.fa-facebook-f
+                        li
+                            a(href='https://twitter.com/investnfarm')
+                                i.fa.fa-twitter
+                        li
+                            a(href='https://instagram.com/investnfarm/') 
+                                i.fa.fa-instagram
+section.xs-header-middle
+    .container
+        .row
+            .col-md-3.align-self-center
+                .logo
+                    a(href='/')
+                        img(src='/images/logo.png' alt='')
+            .align-self-center.col-md-9
+                .header-middle-info.float-right
+                    ul 
+                        li
+                            i.icon-number_1
+                            label Reliable Agrictech Investment
+                            p Service provider
+header.xs-header-nav
+    .container
+        .row.menu-item
+            .col-lg-12
+                nav#navigation1.navigation.header-nav.clearfix
+                    .nav-header
+                        a.mobile-logo(href='/index')
+                            img(src='/images/mobile_logo.png' alt='')
+                        .nav-toggle
+                    .nav-menus-wrapper.clearfix
+                        ul.nav-menu
+                            li.active
+                                a(href='/') Home
+                            li
+                                a(href='/about') About us
+                            li
+                                a(href='/projects') Our Projects
+                            li 
+                                a(href='/faq') FAQ
+                            li
+                                a(href='/contact') Contact Us
+                            li  
+                                if user 
+                                    a.btn.btn-success(href="/users/dashboard") 
+                                        | My Dashboard 
+                                else
+                                    a.btn.btn-success(href="/login") Login
+
+                        .header-nav-right-info.align-to-right
+                            label
+                                i.icon.icon-phone3
+                                | +44 345 678 903
 
 
 block content 
 
 footer.xs-footer-sec
-  .container
-    .footer-top-item
-      .xs-back-to-top
-        a.BackTo(href='#')
-          i.fa.fa-angle-double-up
-    .footer-item
-      .row
-        .col-md-3
-          .widgets
-            h3.widget-title InvestNfarm
-            ul
-              li
-                a(href='/index') Home
-              li
-                a(href='/about') About Us
-              li
-                a(href='/projects') Products
-              li    
-                a(href='/contact') Contact  
-              li
-                a(href='/faq') FAQ
-        .col-md-3
-          .widgets
-            h3.widget-title Help
-            ul.service-link
-              li
-                a(href='/terms-conditions') Terms & Condition
-              li
-                a(href='/privacy-policy') Privacy Policy
-              li
-                a(href='/faq') FAQ
+    .container
+        .footer-top-item
+            .xs-back-to-top
+                a.BackTo(href='#')
+                    i.fa.fa-angle-double-up
+        .footer-item
+            .row
+                .col-md-3
+                    .widgets
+                        h3.widget-title InvestNfarm
+                        ul
+                            li
+                                a(href='/index') Home
+                            li
+                                a(href='/about') About Us
+                            li
+                                a(href='/projects') Products
+                            li    
+                                a(href='/contact') Contact  
+                            li
+                                a(href='/faq') FAQ
+                .col-md-3
+                    .widgets
+                        h3.widget-title Help
+                        ul.service-link
+                            li
+                                a(href='/terms-and-conditions') Terms & Conditions
+                            li
+                                a(href='/privacy-policy') Privacy Policy
+                            li
+                                a(href='/faq') FAQ
 
-        .col-md-2
-          .widgets
-            h3.widget-title Social Media
-            ul
-              li
-                a(href='https://twitter.com/investnfarm')
-                  i.fa.fa-twitter &nbsp; &nbsp; 
-                  | Twitter
-              li
-                a(href='https://instagram.com/investnfarm/')
-                  i.fa.fa-instagram &nbsp; &nbsp; 
-                  | Instagram
-              li
-                a(href='/index')
-        .col-md-1
-        .col-md-3
-          .widgets.pb-3
-            ul.footer-contact-list.mt-5
-              li
-                i.lnr.lnr-map-marker
-                | #[strong Visit our office]
-                br/ 16, Adeniyi Jones, Victoria Island, Lagos. Nigeria.
-              li
-                i.lnr.lnr-phone
-                | +44 345 678 903
-              li
-                i.lnr.lnr-envelope
-                | investnfarm@gmail.com
+                .col-md-2
+                    .widgets
+                        h3.widget-title Social Media
+                        ul
+                            li
+                                a(href='https://twitter.com/investnfarm')
+                                    i.fa.fa-twitter &nbsp; &nbsp; 
+                                    | Twitter
+                            li
+                                a(href='https://instagram.com/investnfarm/')
+                                    i.fa.fa-instagram &nbsp; &nbsp; 
+                                    | Instagram
+                            li
+                                a(href='/index')
+                .col-md-1
+                .col-md-3
+                    .widgets.pb-3
+                        ul.footer-contact-list.mt-5
+                            li
+                                i.lnr.lnr-map-marker
+                                | #[strong Visit our office]
+                                br/ 16, Adeniyi Jones, Victoria Island, Lagos. Nigeria.
+                            li
+                                i.lnr.lnr-phone
+                                | +44 345 678 903
+                            li
+                                i.lnr.lnr-envelope
+                                | investnfarm@gmail.com
 
-    .copyright-content
-      .row
-        .col-md-6
-          p
-            | Copyright #{new Date().getFullYear()}, 
-            a(href='https://investnfarm.com') InvestNfarm
-            | . All
-            |  Rights Reserved.
-        .col-md-6
-          ul.footer-bottom-menu
-            li
-              a(href='/terms-conditions') Terms of Service 
-            li
-              a(href='/privacy-policy') Privacy Policy
+        .copyright-content
+            .row
+                .col-md-6
+                    p
+                        | Copyright #{new Date().getFullYear()}, 
+                        a(href='https://investnfarm.com') InvestNfarm
+                        | . All
+                        |  Rights Reserved.
+
 script(data-cfasync='false' src='/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')
 script(src='/javascripts/jquery.min.js')
 script(src='/javascripts/bootstrap.min.js')

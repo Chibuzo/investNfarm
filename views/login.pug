@@ -1,7 +1,7 @@
 extends layout 
 
 block content
-    .container-fluid.primary-bg.text-white.mt-5
+    .container-fluid.primary-bg.mt-5
         .row
             .col.text-center
                 h3.pt-4.mt-3 Login to Your Account
@@ -22,6 +22,9 @@ block content
                                         input.form-control.form-control-lg(type="password" name="password" placeholder="Password" aria-label="Password", required=true)
                                 .row.gy-2
                                     .col.d-grid.pe-md-4.ps-md-5
+                                        .form-group.form-check 
+                                            input.form-check-input#checkout-remember-me(type="checkbox" name="remember_me")
+                                            label.form-check-label(for="checkout-remember-me") Remember me 
                                         button.btn.btn-success.btn-lg.btn-block(type="submit") Login to Your Account  
                         .col-md-6.col-sm-12.col-xs-12.mt-3
                             .row.gy-3
@@ -40,4 +43,7 @@ block content
                             br/ <br>
                             p.title 
                                 a(href="#/reset-password") Forgot Password?
+                            br/ 
+
+
 

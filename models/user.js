@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         gender: DataTypes.STRING,
+        age_group: DataTypes.STRING,
         email: {
             type: DataTypes.STRING,
             allowNull: false
