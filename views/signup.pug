@@ -81,7 +81,6 @@ block content
 
     script. 
         document.querySelector("#signupForm").addEventListener("submit", function(e) {
-            e.preventDefault();
             if (document.querySelector("#checkout-terms").checked === false) {
                 document.querySelector(".alert-danger").innerHTML = "<i class='fa fa-info-circle fa-lg'></i> &nbsp; You have to read and agree with the Terms & Conditions to continue";
                 document.querySelector(".alert-danger").classList.remove("d-none");
