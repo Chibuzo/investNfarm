@@ -24,7 +24,7 @@ block content
                                 form(action="/signup" method="post")#signupForm
                                     .row.gx-5
                                         .col-md-6.col-sm-12.col-xs-12.mb-3
-                                            input.form-control(type="text" name="fullame" placeholder="Full name" aria-label="First name" required=true)
+                                            input.form-control(type="text" name="fullname" placeholder="Full name" aria-label="First name" required=true)
                                         .col-md-6.col-sm-12.col-xs-12.mb-3
                                             select.form-control(type="text" name="gender" placeholder="Gender" aria-label="Gender" required)
                                                 option(value="") -- Select Gender --
@@ -73,11 +73,13 @@ block content
             .col.text-center 
                 .row.gy-3.justify-content-md-center.mb-5
                     .col-md-4.d-grid 
-                        h3 OR 
-                        br
-                        button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Login With Google
-                        button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Login With Facebook
-                        button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Login With Apple Account
+                        if newUser 
+                        else
+                            h3 OR 
+                            br
+                            button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Login With Google
+                            button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Login With Facebook
+                            button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Login With Apple Account
 
     script. 
         document.querySelector("#signupForm").addEventListener("submit", function(e) {
