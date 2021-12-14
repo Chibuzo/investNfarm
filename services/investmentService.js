@@ -85,7 +85,8 @@ const getFarmInvestments = async id => {
 
 const saveFarm = async ({ body: farmData, files }) => {
     const photo_url = await uploadFile(files);
-    const benefits = JSON.stringify(farmData['benefit[]']);
+    let benefits = JSON.stringify(farmData['benefit[]']);
+    if (!Array.isArray(benefits)) benefits = [benefits];
     delete farmData['benefit[]'];
     farmData.benefits = benefits;
     if (farmData.id) {

@@ -42,7 +42,16 @@ block content
                                         .row 
                                             .col-md-12
                                                 label Benefits 
-                                                input.form-control.input-lg(type="text" name="benefit[]" placeholder="Benefit...")    
+                                                .benefit
+                                                    br/
+                                                    input.form-control.input-lg(type="text" name="benefit[]" placeholder="Benefit...") 
+                                        .row#more-benefits 
+                                            .col-md-10
+                                                br/
+                                                input.form-control.input-lg(type="text" name="benefit[]" placeholder="Benefit...")  
+                                            .col-md-2 
+                                                label
+                                                button.btn.btn-danger.btn-lg#add-btn(type="button") Add  
                                     .form-group 
                                         .row 
                                             .col-md-12 
@@ -51,3 +60,11 @@ block content
                                     .form-group.text-center 
                                         br/
                                         input.btn.btn-success.btn-lg(type="submit" value="Publish Farm")
+
+block scriptBlock
+    script.
+        $(document).ready(function() {
+            $("#add-btn").click(function() {
+                $(".benefit").clone().removeClass('benefit').insertBefore("#more-benefits")
+            });
+        });
