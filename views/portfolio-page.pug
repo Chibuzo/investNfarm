@@ -84,6 +84,12 @@ block content
                         .mb-3
                             label Password
                             input.form-control.form-control-lg(type="password" name="password" placeholder="Password" aria-label="Password", required=true)
+                            .form-group.form-check 
+                                input.form-check-input#checkout-remember-me(type="checkbox" name="remember_me")
+                                label.form-check-label(for="checkout-remember-me") Remember me 
+
+                            p Don't have an account yet? 
+                                a(href="/signup") Sign Up Now
                     .modal-footer
                         button.btn.btn-secondary(type='button' data-dismiss='modal') Close
                         button.btn.btn-success(type='submit') Login 

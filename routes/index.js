@@ -37,6 +37,10 @@ router.get('/terms-and-conditions', (req, res, next) => {
     res.render('terms', { title: "Terms of Agreement" });
 });
 
+router.get('/privacy-policy', (req, res, next) => {
+    res.render('privacy-policy', { title: "Privacy Policy" });
+});
+
 router.get('/contact', async (req, res, next) => {
     res.render('contact', { title: 'Contact InvestNFarm' });
 });
