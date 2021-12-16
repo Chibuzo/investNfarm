@@ -1215,7 +1215,7 @@ h6 {
       position: relative;
       margin-bottom: 10px; }
       .service-sec .single-service .service-img i {
-        margin: -50px auto auto;
+        margin: auto;
         width: 90px;
         height: 90px;
         border-radius: 50%;
@@ -4514,4 +4514,21 @@ h6 {
   font-size: 15px;
   line-height: 25px;
   color: #333;
+}
+
+/***
+    Mobile
+*/
+@media (max-width: 576px) {
+  .logo {
+    text-align: center;
+  }
+
+  .call-to-action-sec .call-action-item .call-to-action-content {
+    padding: 52px 31px 60px 35px;
+  }
+
+  .call-to-action-sec .call-action-item .call-to-action-content .call-to-btn .fill {
+    margin-right: 3px;
+  }
 }
