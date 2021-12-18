@@ -17,20 +17,20 @@ const options = {
 
 let transporter = nodemailer.createTransport({
     //host: 'email-smtp.us-east-1.amazonaws.com',
-    host: 'smtp.google.com',
+    host: 'email-smtp.us-east-1.amazonaws.com',
     port: 587,
     secure: true, // true for 465, false for other ports,
     pool: true,
     rateLimit: 20,
     auth: {
-        user: 'uzo.systems@gmail.com',
-        pass: 'uzooyibo'
+        user: 'AKIAVUOFS2JPCGTFPVN7',
+        pass: 'BKRWIS1yxnZuBpb1YrWOZJb6gbjlhvJZpPpLFtLqKcye'
     }
 });
 transporter.use('compile', hbs(options));
 
 const BASE_URL = process.env.BASE_URL;
-const SENT_FROM = 'uzo.systems@gmail.com';
+const SENT_FROM = 'noreply@investnfarm.com';
 
 const sendMail = (to, subject, template, data) => {
     let mailOptions = {
