@@ -16,15 +16,14 @@ const options = {
 };
 
 let transporter = nodemailer.createTransport({
-    //host: 'email-smtp.us-east-1.amazonaws.com',
     host: 'email-smtp.us-east-1.amazonaws.com',
-    port: 587,
+    port: 465,
     secure: true, // true for 465, false for other ports,
     pool: true,
     rateLimit: 20,
     auth: {
-        user: 'AKIAVUOFS2JPCGTFPVN7',
-        pass: 'BKRWIS1yxnZuBpb1YrWOZJb6gbjlhvJZpPpLFtLqKcye'
+        user: process.env.AWS_SES_USER,
+        pass: process.env.AWS_SES_PASS
     }
 });
 transporter.use('compile', hbs(options));
@@ -34,7 +33,7 @@ const SENT_FROM = 'noreply@investnfarm.com';
 
 const sendMail = (to, subject, template, data) => {
     let mailOptions = {
-        from: '"Farm\'N\'Invest" <' + SENT_FROM + '>',
+        from: '"Invest\'N\'Farm" <' + SENT_FROM + '>',
         to: to,
         subject: subject,
         template: template,
@@ -45,7 +44,7 @@ const sendMail = (to, subject, template, data) => {
         if (error) {
             return console.log(error);
         }
-        console.log('Message sent: %s', info.messageId);
+        // console.log('Message sent: %s', info.messageId);
     });
 }
 
@@ -57,10 +56,10 @@ module.exports = {
 
         const data = {
             user: user.fullname,
-            url: BASE_URL + 'users/activate/' + email_b64 + '/' + hash,
+            url: BASE_URL + 'activate/' + email_b64 + '/' + hash,
             base_url: BASE_URL
         };
-        const subject = "Confirm your email address";
+        const subject = "Verify your email address";
         const template = 'verifyAccount';
         sendMail(user.email, subject, template, data);
     },
