@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 const { ErrorHandler } = require('../helpers/errorHandler');
 
+const { Buffer } = require('buffer');
+
 const create = async ({ fullname, age_group, email, phone, country, gender, password }) => {
     if (!fullname) throw new ErrorHandler(400, 'Fullname are required');
     if (!email) throw new ErrorHandler(400, 'Email is required');
@@ -29,7 +31,7 @@ const create = async ({ fullname, age_group, email, phone, country, gender, pass
 const login = async ({ email, password }) => {
     const foundUser = await User.findOne({
         where: { email },
-        attributes: ['id', 'fullname', 'email', 'country', 'phone', 'password', 'active']
+        attributes: ['id', 'fullname', 'email', 'country', 'phone', 'password', 'status']
     });
     if (!foundUser) throw new ErrorHandler(404, 'Email or password is incorrect');
 
@@ -38,9 +40,28 @@ const login = async ({ email, password }) => {
     const match = await bcrypt.compare(password, foundUser.password);
     if (!match) throw new ErrorHandler(400, 'Email and password doesn\'t match');
 
+    if (user.status === 'Inactive') {
+        return { status: false, email: user.email };
+    }
+
     delete user.password;
-    delete user.active;
     return user;
+}
+
+const activateAccount = async (email_hash, hash_string) => {
+    if (!email_hash || !hash_string) {
+        throw new ErrorHandler(400, 'Email or hash not found');
+    }
+    const email = Buffer.from(email_hash, 'base64').toString('ascii');
+    const user = await User.findOne({ where: { email } }, { raw: true });
+
+    const crypto = require('crypto');
+    const hash = crypto.createHash('md5').update(user.email + 'okirikwenEE129Okpkenakai').digest('hex');
+    if (hash_string !== hash) {
+        throw new ErrorHandler(400, 'Invalid hash. couldn\'t verify your email');
+    }
+    await User.update({ status: 'Active' }, { where: { email } });
+    return { ...user, status: 'Active' };
 }
 
 const find = async (criteria = {}) => {
@@ -74,6 +95,7 @@ const sanitize = user => {
 module.exports = {
     create,
     login,
+    activateAccount,
     find,
     updateUser
 }

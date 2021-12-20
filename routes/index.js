@@ -8,6 +8,7 @@ const paymentService = require('../services/PaymentService');
 const walletService = require('../services/walletService');
 const authenticateAdmin = require('../middlewares/authenticateAdmin');
 const Country = require('../models').Country;
+const emailService = require('../services/emailService');
 
 
 router.get('/', async (req, res, next) => {
@@ -69,7 +70,12 @@ router.post('/signup', async (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
     try {
-        req.session.user = await userService.login(req.body);
+        const user = await userService.login(req.body);
+        if (user.status === false) {
+            req.session.temp_email = user.email;
+            return res.redirect('/user/activate-account?q=inactive')
+        }
+        req.session.user = user;
         if (req.body.remember_me) {
             req.session.cookie.maxAge = 60 * 60 * 1000 * 24 * 30;   // 30 days
             req.session.user.remember_me = true;
@@ -79,6 +85,32 @@ router.post('/login', async (req, res, next) => {
     } catch (err) {
         next(err);
     }
+});
+
+router.get('/activate/:email_hash/:hash_string', async (req, res, next) => {
+    try {
+        const email_hash = req.params.email_hash;
+        const hash_string = req.params.hash_string;
+        const user = await userService.activateAccount(email_hash, hash_string);
+        res.redirect('/user/activate-account');
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.get('/user/activate-account', (req, res) => {
+    let user_status = 'active';
+    if (req.query.q && req.query.q === 'inactive') {
+        user_status = 'inactive';
+    }
+    res.render('user/activate-account', { user_status });
+});
+
+router.get('/resend-verification-email', async (req, res) => {
+    const email = req.session.temp_email || '';
+    const [user] = await userService.find({ where: { email } });
+    emailService.sendConfirmationEmail(user);
+    res.end();
 });
 
 router.get('/projects', isAuthenticated, async (req, res, next) => {

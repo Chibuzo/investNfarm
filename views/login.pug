@@ -11,7 +11,7 @@ block content
         .row.mb-5 
             .col
                 .container
-                    .row 
+                    .row.justify-content-md-center
                         .col-md-6.col-sm-12.col-xs-12.mt-4
                             form(action="/login" method="post")
                                 .row
@@ -26,18 +26,18 @@ block content
                                             input.form-check-input#checkout-remember-me(type="checkbox" name="remember_me")
                                             label.form-check-label(for="checkout-remember-me") Remember me 
                                         button.btn.btn-success.btn-lg.btn-block(type="submit") Login to Your Account  
-                        .col-md-6.col-sm-12.col-xs-12.mt-3
-                            .row.gy-3
-                                .col-md-12.mt-5.d-block.d-sm-none
-                                    h2.text-center OR
-                                .col.d-grid.pe-md-5.ps-md-4
-                                    button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Login With Google 
-                            .row.gy-3
-                                .col.d-grid.pe-md-5.ps-md-4
-                                    button.btn.btn-success.btn-lg.btn-block.mt-3(type="button") Login With Facebook 
-                            .row.gy-3
-                                .col.d-grid.pe-md-5.ps-md-4
-                                    button.btn.btn-success.btn-lg.btn-block.mt-3(type="submit") Login With Apple Account                  
+                        //- .col-md-6.col-sm-12.col-xs-12.mt-3
+                        //-     .row.gy-3
+                        //-         .col-md-12.mt-5.d-block.d-sm-none
+                        //-             h2.text-center OR
+                        //-         .col.d-grid.pe-md-5.ps-md-4
+                        //-             button.btn.btn-success.btn-lg.btn-block.mt-2(type="button") Login With Google 
+                        //-     .row.gy-3
+                        //-         .col.d-grid.pe-md-5.ps-md-4
+                        //-             button.btn.btn-success.btn-lg.btn-block.mt-3(type="button") Login With Facebook 
+                        //-     .row.gy-3
+                        //-         .col.d-grid.pe-md-5.ps-md-4
+                        //-             button.btn.btn-success.btn-lg.btn-block.mt-3(type="submit") Login With Apple Account                  
                     .row 
                         .col.text-center 
                             br/ <br>
