@@ -42,21 +42,27 @@ section.xs-header-top
                 .header-top-info
                     ul
                         li
-                            a(href="mailto:investnfarm@info.com")
+                            a(href="mailto:info@investnfarm.com")
                                 i.icon.icon-envelope
-                                | investnfarm@info.com
+                                | info@investnfarm.com
             .col-lg-6.align-self-center.col-md-4
                 .header-top-social
                     ul
-                        //- li
-                        //-   a(href='#')
-                        //-     i.fa.fa-facebook-f
+                        li
+                            a(href='https://www.facebook.com/Investnfarm/')
+                                i.fa.fa-facebook-f
                         li
                             a(href='https://twitter.com/investnfarm')
                                 i.fa.fa-twitter
                         li
                             a(href='https://instagram.com/investnfarm/') 
                                 i.fa.fa-instagram
+                        li
+                            a(href='https://www.linkedin.com/in/investnfarms/')
+                                i.fa.fa-linkedin
+                        li
+                            a(href='https://www.youtube.com/channel/UCuPIKgxbSV-nmOixOjWdI_w')
+                                i.fa.fa-youtube
 section.xs-header-middle
     .container
         .row
@@ -64,7 +70,7 @@ section.xs-header-middle
                 .logo
                     a(href='/')
                         img(src='/images/logo.png' alt='')
-            .align-self-center.col-md-9.d-none.d-sm-none
+            .align-self-center.col-md-9.d-none.d-sm-none.d-md-block
                 .header-middle-info.float-right
                     ul 
                         li
@@ -85,7 +91,7 @@ header.xs-header-nav
                             li
                                 a(href='/about') About us
                             li
-                                a(href='/projects') Our Projects
+                                a(href='/projects') Our Products
                             li 
                                 a(href='/faq') FAQ
                             li
@@ -98,9 +104,9 @@ header.xs-header-nav
                                     a.btn.btn-success(href="/login") Login
 
                         .header-nav-right-info.align-to-right
-                            label
+                            label(data-toggle="popover" data-placement="bottom" data-content="<br><p><a href='tel:+23435426723' class='btn btn-success btn-block'><i class='fa fa-phone'></i> Call Us Now</a></p><p><a href='https://api.whatsapp.com/send?phone=23435426723' class='btn btn-success btn-block'><i class='fa fa-whatsapp'></i> Message on Whatsapp</a></p>")
                                 i.icon.icon-phone3
-                                | +44 345 678 903
+                                a(href='#').text-white +234  354 267 23
 
 
 block content 
@@ -149,7 +155,17 @@ footer.xs-footer-sec
                                     i.fa.fa-instagram &nbsp; &nbsp; 
                                     | Instagram
                             li
-                                a(href='/index')
+                                a(href='https://www.facebook.com/Investnfarm/')
+                                    i.fa.fa-facebook &nbsp; &nbsp;&nbsp;
+                                    | Facebook
+                            li 
+                                a(href='https://www.linkedin.com/in/investnfarms/')
+                                    i.fa.fa-linkedin &nbsp; &nbsp;
+                                    | LinkedIn
+                            li 
+                                a(href='https://www.youtube.com/channel/UCuPIKgxbSV-nmOixOjWdI_w')
+                                    i.fa.fa-youtube &nbsp; &nbsp;
+                                    | Youtube
                 .col-md-1
                 .col-md-3
                     .widgets.pb-3
@@ -157,13 +173,13 @@ footer.xs-footer-sec
                             li
                                 i.lnr.lnr-map-marker
                                 | #[strong Visit our office]
-                                br/ 16, Adeniyi Jones, Victoria Island, Lagos. Nigeria.
+                                br/ 7 Agoro Kessington Crescent, Festac Link Bridge, Amuwo Odofin, Lagos State, Nigeria
                             li
                                 i.lnr.lnr-phone
-                                | +44 345 678 903
+                                a(href='tel:+23435426723') +234  354 267 23
                             li
                                 i.lnr.lnr-envelope
-                                | investnfarm@gmail.com
+                                a(href="mailto:info@investnfarm.com") info@investnfarm.com
 
         .copyright-content
             .row
@@ -176,6 +192,7 @@ footer.xs-footer-sec
 
 script(data-cfasync='false' src='/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')
 script(src='/javascripts/jquery.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous")
 script(src='/javascripts/bootstrap.min.js')
 script(src='/javascripts/jquery-mixtub.js')
 script(src='/javascripts/jquery.magnific-popup.min.js')
@@ -186,4 +203,10 @@ script(src='/javascripts/isotope.js')
 script(src='/javascripts/wow.min.js')
 script(src='/javascripts/main.js')
 
+script. 
+    $(function () {
+        $('[data-toggle="popover"]').popover({
+            html: true
+        })
+    })
 block scriptBlock
