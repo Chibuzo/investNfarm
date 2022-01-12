@@ -35,15 +35,15 @@ block content
                                         .col-md-6.col-sm-12.col-xs-12.mb-3
                                             select.form-control(type="text" name="age_group" placeholder="" aria-label="" data-toggle="popover" data-placement="top" data-content='We need your age to personalize the services we offer to you.' required)
                                                 option(value="") -- Select Age Group --
-                                                option(value="Gen Z") (9 - 24) Gen Z
-                                                option(value="Millennials") (25 - 40) Millennials
-                                                option(value="Gen X") (41 - 56) Gen X
-                                                option(value="Boomers II") (57 - 66) Boomers II
-                                                option(value="Boomers I") (67 - 75) Boomers I
-                                                option(value="Post War") (76 - 93) Post War
-                                                option(value="WW II") (94 - 99) WW II
+                                                option(value="Gen Z") 18 - 24 (Gen Z)
+                                                option(value="Millennials") 25 - 40 (Millennials)
+                                                option(value="Gen X") 41 - 56 (Gen X)
+                                                option(value="Boomers II") 57 - 66 (Boomers II)
+                                                option(value="Boomers I") 67 - 75 (Boomers I)
+                                                option(value="Post War") 76 - 93 (Post War)
+                                                option(value="WW II") 94 - 99 (WW II)
                                         .col-md-6.col-sm-12.col-xs-12.mb-3
-                                            input.form-control(type="text" name="phone" placeholder="Phone Number" aria-label="Phone Number")
+                                            input.form-control.phone-input(type="number" name="phone" placeholder="Phone Number" aria-label="Phone Number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==15) return false;")
                                     .row.gx-5
                                         .col-md-6.col-sm-12.col-xs-12.mb-3
                                             input.form-control(type="email" name="email" placeholder="Email" aria-label="Email" required=true)

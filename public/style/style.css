@@ -4516,6 +4516,16 @@ h6 {
   color: #333;
 }
 
+.phone-input {
+    -moz-appearance: textfield;
+}
+
+.phone-input::-webkit-outer-spin-button, .phone-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 /***
     Mobile
 */

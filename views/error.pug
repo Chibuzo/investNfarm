@@ -1,6 +1,10 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  .container
+    .row.py-5.my-5
+      .col.text-center
+        span.lnr.lnr-warning.mt-5(style="font-size: 50px")
+        h2.mt-2= message
+        br/ 
+        a.btn.btn-success.btn-lg(href=`${url_referrer}`) Go Back

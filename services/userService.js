@@ -13,6 +13,9 @@ const create = async ({ fullname, age_group, email, phone, country, gender, pass
     if (!country) throw new ErrorHandler(400, 'Country is required');
     if (!password) throw new ErrorHandler(400, 'Password is required');
 
+    const existingUser = await User.findOne({ where: { email } });
+    if (existingUser) throw new ErrorHandler(400, `A user already exist with this email (${email})`);
+
     const passwordHash = await bcrypt.hash(password, saltRounds);
     const data = {
         fullname,
