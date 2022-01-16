@@ -9,6 +9,7 @@ const walletService = require('../services/walletService');
 const authenticateAdmin = require('../middlewares/authenticateAdmin');
 const Country = require('../models').Country;
 const emailService = require('../services/emailService');
+const { ErrorHandler } = require('../helpers/errorHandler');
 
 
 router.get('/', async (req, res, next) => {
@@ -134,7 +135,8 @@ router.get('/password-reset/:email_hash/:hash_string', async (req, res, next) =>
     try {
         const email_hash = req.params.email_hash;
         const hash_string = req.params.hash_string;
-        const status = await userService.verifyPasswordResetLink(email_hash, hash_string);
+        const { id, status } = await userService.verifyPasswordResetLink(email_hash, hash_string);
+        req.session.reset_password_id = id;
         res.render('password-reset-form', { title: 'Set new password', status });
     } catch (err) {
         next(err);
@@ -143,8 +145,10 @@ router.get('/password-reset/:email_hash/:hash_string', async (req, res, next) =>
 
 router.post('/reset-password', async (req, res, next) => {
     try {
+        if (!req.session.reset_password_id) throw new ErrorHandler(400, 'Invalid operation');
         const { password } = req.body;
-        await userService.changePassword(password);
+        await userService.changePassword(password, req.session.reset_password_id);
+        delete req.session.reset_password_id;
         res.render('login', { title: 'Login', message: 'Your password reset was successful.' });
     } catch (err) {
         next(err);

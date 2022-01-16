@@ -73,19 +73,20 @@ const verifyPasswordResetLink = async (email_hash, hash_string) => {
     }
     const email = Buffer.from(email_hash, 'base64').toString('ascii');
     const user = await User.findOne({ where: { email } }, { raw: true });
+    if (!user) throw new ErrorHandler(400, 'User not found');
 
     const hash = crypto.createHash('md5').update(user.email + 'okirikwenEE129Okpkenakai').digest('hex');
     if (hash_string !== hash) {
         throw new ErrorHandler(400, 'Invalid hash. couldn\'t verify your email');
     }
-    return true;
+    return { id: user.id, status: true };
 }
 
 const changePassword = async (newPassword, user_id) => {
     if (!newPassword) throw new ErrorHandler(400, 'Password can not be empty');
     const passwordHash = await bcrypt.hash(newPassword, saltRounds);
 
-    return User.update({ password: passwordHash }, { where: { id } });
+    return User.update({ password: passwordHash }, { where: { id: user_id } });
 }
 
 const find = async (criteria = {}) => {
