@@ -13,10 +13,12 @@ block content
                 .container
                     .row.justify-content-md-center
                         .col-md-6.col-sm-12.col-xs-12.mt-4
+                            if message
+                                .alert.alert-warning= message
                             form(action="/login" method="post")
                                 .row
                                     .col.mb-3.pe-md-4.ps-md-5
-                                        input.form-control.form-control-lg(type="email" name="email" placeholder="Email" aria-label="Email")
+                                        input.form-control.form-control-lg(type="email" name="email" placeholder="Email" aria-label="Email" required=true)
                                 .row
                                     .col.mb-3.pe-md-4.ps-md-5    
                                         input.form-control.form-control-lg(type="password" name="password" placeholder="Password" aria-label="Password", required=true)
@@ -42,7 +44,7 @@ block content
                         .col.text-center 
                             br/ <br>
                             p.title 
-                                a(href="#/reset-password") Forgot Password?
+                                a(href="/reset-password") Forgot Password?
                             br/ 
 
 

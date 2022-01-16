@@ -113,6 +113,44 @@ router.get('/resend-verification-email', async (req, res) => {
     res.end();
 });
 
+router.get('/reset-password', async (req, res, next) => {
+    res.render('reset-password', { title: 'Reset Password' });
+});
+
+router.post('/send-reset-email', async (req, res, next) => {
+    try {
+        const { email } = req.body;
+        const [user] = await userService.find({ where: { email } });
+        let message = 'A password reset link has been sent to your email';
+        emailService.sendPasswordResetLink(user);
+        if (!user) message = 'There is no account associated with this email';
+        res.render('reset-password', { title: 'Reset Password', message });
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.get('/password-reset/:email_hash/:hash_string', async (req, res, next) => {
+    try {
+        const email_hash = req.params.email_hash;
+        const hash_string = req.params.hash_string;
+        const status = await userService.verifyPasswordResetLink(email_hash, hash_string);
+        res.render('/reset-password-form', { title: 'Set new password', status });
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.post('/reset-password', async (req, res, next) => {
+    try {
+        const { password } = req.body;
+        await userService.changePassword(password);
+        res.render('login', { title: 'Login', message: 'Your password reset was successful.' });
+    } catch (err) {
+        next(err);
+    }
+})
+
 router.get('/projects', isAuthenticated, async (req, res, next) => {
     try {
         const investments = await investmentService.list({

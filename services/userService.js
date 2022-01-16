@@ -5,6 +5,7 @@ const saltRounds = 10;
 const { ErrorHandler } = require('../helpers/errorHandler');
 
 const { Buffer } = require('buffer');
+const crypto = require('crypto');
 
 const create = async ({ fullname, age_group, email, phone, country, gender, password }) => {
     if (!fullname) throw new ErrorHandler(400, 'Fullname are required');
@@ -58,13 +59,33 @@ const activateAccount = async (email_hash, hash_string) => {
     const email = Buffer.from(email_hash, 'base64').toString('ascii');
     const user = await User.findOne({ where: { email } }, { raw: true });
 
-    const crypto = require('crypto');
     const hash = crypto.createHash('md5').update(user.email + 'okirikwenEE129Okpkenakai').digest('hex');
     if (hash_string !== hash) {
         throw new ErrorHandler(400, 'Invalid hash. couldn\'t verify your email');
     }
     await User.update({ status: 'Active' }, { where: { email } });
     return { ...user, status: 'Active' };
+}
+
+const verifyPasswordResetLink = async (email_hash, hash_string) => {
+    if (!email_hash || !hash_string) {
+        throw new ErrorHandler(400, 'Email or hash not found');
+    }
+    const email = Buffer.from(email_hash, 'base64').toString('ascii');
+    const user = await User.findOne({ where: { email } }, { raw: true });
+
+    const hash = crypto.createHash('md5').update(user.email + 'okirikwenEE129Okpkenakai').digest('hex');
+    if (hash_string !== hash) {
+        throw new ErrorHandler(400, 'Invalid hash. couldn\'t verify your email');
+    }
+    return true;
+}
+
+const changePassword = async (newPassword, user_id) => {
+    if (!newPassword) throw new ErrorHandler(400, 'Password can not be empty');
+    const passwordHash = await bcrypt.hash(newPassword, saltRounds);
+
+    return User.update({ password: passwordHash }, { where: { id } });
 }
 
 const find = async (criteria = {}) => {
@@ -76,8 +97,9 @@ const find = async (criteria = {}) => {
         order: [
             ['createdAt', 'DESC']
         ],
-        criteria
+        ...criteria
     });
+    console.log({ users })
     return users.map(user => sanitize(user));
 }
 
@@ -100,5 +122,7 @@ module.exports = {
     login,
     activateAccount,
     find,
-    updateUser
+    updateUser,
+    verifyPasswordResetLink,
+    changePassword
 }

@@ -63,4 +63,20 @@ module.exports = {
         const template = 'verifyAccount';
         sendMail(user.email, subject, template, data);
     },
+
+    sendPasswordResetLink: function (user) {
+        if (!user) return false;
+        const email_b64 = Buffer.from(user.email).toString('base64');
+        const crypto = require('crypto');
+        const hash = crypto.createHash('md5').update(user.email + 'okirikwenEE129Okpkenakai').digest('hex');
+
+        const data = {
+            user: user.fullname,
+            url: encodeURI(BASE_URL + 'password-reset/' + email_b64 + '/' + hash),
+            base_url: encodeURI(BASE_URL)
+        };
+        const subject = "InvestNfarm Password Reset Link";
+        const template = 'passwordReset';
+        sendMail(user.email, subject, template, data);
+    }
 }
