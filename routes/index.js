@@ -135,7 +135,7 @@ router.get('/password-reset/:email_hash/:hash_string', async (req, res, next) =>
         const email_hash = req.params.email_hash;
         const hash_string = req.params.hash_string;
         const status = await userService.verifyPasswordResetLink(email_hash, hash_string);
-        res.render('reset-password-form', { title: 'Set new password', status });
+        res.render('password-reset-form', { title: 'Set new password', status });
     } catch (err) {
         next(err);
     }
