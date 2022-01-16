@@ -4,1504 +4,1214 @@ module.exports = {
     up: async (queryInterface, Sequelize) => {
         return queryInterface.bulkInsert('Countries', [
             {
-                "country": "Andorra",
-                "id": "1",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Afghanistan",
+                "dial_code": "+93",
+                "code": "AF"
             },
             {
-                "country": "United Arab Emirates",
-                "id": "2",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Aland Islands",
+                "dial_code": "+358",
+                "code": "AX"
             },
             {
-                "country": "Albania",
-                "id": "3",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Albania",
+                "dial_code": "+355",
+                "code": "AL"
             },
             {
-                "country": "Armenia",
-                "id": "4",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Algeria",
+                "dial_code": "+213",
+                "code": "DZ"
             },
             {
-                "country": "Afghanistan",
-                "id": "5",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "AmericanSamoa",
+                "dial_code": "+1684",
+                "code": "AS"
             },
             {
-                "country": "Antigua and Barbuda",
-                "id": "6",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Andorra",
+                "dial_code": "+376",
+                "code": "AD"
             },
             {
-                "country": "Anguilla",
-                "id": "7",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Angola",
+                "dial_code": "+244",
+                "code": "AO"
             },
             {
-                "country": "Angola",
-                "id": "8",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Anguilla",
+                "dial_code": "+1264",
+                "code": "AI"
             },
             {
-                "country": "Antarctica",
-                "id": "9",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Antarctica",
+                "dial_code": "+672",
+                "code": "AQ"
             },
             {
-                "country": "Argentina",
-                "id": "10",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Antigua and Barbuda",
+                "dial_code": "+1268",
+                "code": "AG"
             },
             {
-                "country": "American Samoa",
-                "id": "11",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Argentina",
+                "dial_code": "+54",
+                "code": "AR"
             },
             {
-                "country": "Austria",
-                "id": "12",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Armenia",
+                "dial_code": "+374",
+                "code": "AM"
             },
             {
-                "country": "Australia",
-                "id": "13",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Aruba",
+                "dial_code": "+297",
+                "code": "AW"
             },
             {
-                "country": "Aruba",
-                "id": "14",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Australia",
+                "dial_code": "+61",
+                "code": "AU"
             },
             {
-                "country": "Åland",
-                "id": "15",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Austria",
+                "dial_code": "+43",
+                "code": "AT"
             },
             {
-                "country": "Azerbaijan",
-                "id": "16",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Azerbaijan",
+                "dial_code": "+994",
+                "code": "AZ"
             },
             {
-                "country": "Bosnia and Herzegovina",
-                "id": "17",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Bahamas",
+                "dial_code": "+1242",
+                "code": "BS"
             },
             {
-                "country": "Barbados",
-                "id": "18",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Bahrain",
+                "dial_code": "+973",
+                "code": "BH"
             },
             {
-                "country": "Bangladesh",
-                "id": "19",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Bangladesh",
+                "dial_code": "+880",
+                "code": "BD"
             },
             {
-                "country": "Belgium",
-                "id": "20",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Barbados",
+                "dial_code": "+1246",
+                "code": "BB"
             },
             {
-                "country": "Burkina Faso",
-                "id": "21",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Belarus",
+                "dial_code": "+375",
+                "code": "BY"
             },
             {
-                "country": "Bulgaria",
-                "id": "22",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Belgium",
+                "dial_code": "+32",
+                "code": "BE"
             },
             {
-                "country": "Bahrain",
-                "id": "23",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Belize",
+                "dial_code": "+501",
+                "code": "BZ"
             },
             {
-                "country": "Burundi",
-                "id": "24",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Benin",
+                "dial_code": "+229",
+                "code": "BJ"
             },
             {
-                "country": "Benin",
-                "id": "25",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Bermuda",
+                "dial_code": "+1441",
+                "code": "BM"
             },
             {
-                "country": "Saint Barthélemy",
-                "id": "26",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Bhutan",
+                "dial_code": "+975",
+                "code": "BT"
             },
             {
-                "country": "Bermuda",
-                "id": "27",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Bolivia, Plurinational State of",
+                "dial_code": "+591",
+                "code": "BO"
             },
             {
-                "country": "Brunei",
-                "id": "28",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Bosnia and Herzegovina",
+                "dial_code": "+387",
+                "code": "BA"
             },
             {
-                "country": "Bolivia",
-                "id": "29",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Botswana",
+                "dial_code": "+267",
+                "code": "BW"
             },
             {
-                "country": "Bonaire",
-                "id": "30",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Brazil",
+                "dial_code": "+55",
+                "code": "BR"
             },
             {
-                "country": "Brazil",
-                "id": "31",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "British Indian Ocean Territory",
+                "dial_code": "+246",
+                "code": "IO"
             },
             {
-                "country": "Bahamas",
-                "id": "32",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Brunei Darussalam",
+                "dial_code": "+673",
+                "code": "BN"
             },
             {
-                "country": "Bhutan",
-                "id": "33",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Bulgaria",
+                "dial_code": "+359",
+                "code": "BG"
             },
             {
-                "country": "Bouvet Island",
-                "id": "34",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Burkina Faso",
+                "dial_code": "+226",
+                "code": "BF"
             },
             {
-                "country": "Botswana",
-                "id": "35",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Burundi",
+                "dial_code": "+257",
+                "code": "BI"
             },
             {
-                "country": "Belarus",
-                "id": "36",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Cambodia",
+                "dial_code": "+855",
+                "code": "KH"
             },
             {
-                "country": "Belize",
-                "id": "37",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Cameroon",
+                "dial_code": "+237",
+                "code": "CM"
             },
             {
-                "country": "Canada",
-                "id": "38",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Canada",
+                "dial_code": "+1",
+                "code": "CA"
             },
             {
-                "country": "Cocos [Keeling] Islands",
-                "id": "39",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Cape Verde",
+                "dial_code": "+238",
+                "code": "CV"
             },
             {
-                "country": "Democratic Republic of the Congo",
-                "id": "40",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Cayman Islands",
+                "dial_code": "+ 345",
+                "code": "KY"
             },
             {
-                "country": "Central African Republic",
-                "id": "41",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Central African Republic",
+                "dial_code": "+236",
+                "code": "CF"
             },
             {
-                "country": "Republic of the Congo",
-                "id": "42",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Chad",
+                "dial_code": "+235",
+                "code": "TD"
             },
             {
-                "country": "Switzerland",
-                "id": "43",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Chile",
+                "dial_code": "+56",
+                "code": "CL"
             },
             {
-                "country": "Ivory Coast",
-                "id": "44",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "China",
+                "dial_code": "+86",
+                "code": "CN"
             },
             {
-                "country": "Cook Islands",
-                "id": "45",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Christmas Island",
+                "dial_code": "+61",
+                "code": "CX"
             },
             {
-                "country": "Chile",
-                "id": "46",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Cocos (Keeling) Islands",
+                "dial_code": "+61",
+                "code": "CC"
             },
             {
-                "country": "Cameroon",
-                "id": "47",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Colombia",
+                "dial_code": "+57",
+                "code": "CO"
             },
             {
-                "country": "China",
-                "id": "48",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Comoros",
+                "dial_code": "+269",
+                "code": "KM"
             },
             {
-                "country": "Colombia",
-                "id": "49",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Congo",
+                "dial_code": "+242",
+                "code": "CG"
             },
             {
-                "country": "Costa Rica",
-                "id": "50",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Congo, The Democratic Republic of the Congo",
+                "dial_code": "+243",
+                "code": "CD"
             },
             {
-                "country": "Cuba",
-                "id": "51",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Cook Islands",
+                "dial_code": "+682",
+                "code": "CK"
             },
             {
-                "country": "Cape Verde",
-                "id": "52",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Costa Rica",
+                "dial_code": "+506",
+                "code": "CR"
             },
             {
-                "country": "Curacao",
-                "id": "53",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Cote d'Ivoire",
+                "dial_code": "+225",
+                "code": "CI"
             },
             {
-                "country": "Christmas Island",
-                "id": "54",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Croatia",
+                "dial_code": "+385",
+                "code": "HR"
             },
             {
-                "country": "Cyprus",
-                "id": "55",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Cuba",
+                "dial_code": "+53",
+                "code": "CU"
             },
             {
-                "country": "Czechia",
-                "id": "56",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Cyprus",
+                "dial_code": "+357",
+                "code": "CY"
             },
             {
-                "country": "Germany",
-                "id": "57",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Czech Republic",
+                "dial_code": "+420",
+                "code": "CZ"
             },
             {
-                "country": "Djibouti",
-                "id": "58",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Denmark",
+                "dial_code": "+45",
+                "code": "DK"
             },
             {
-                "country": "Denmark",
-                "id": "59",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Djibouti",
+                "dial_code": "+253",
+                "code": "DJ"
             },
             {
-                "country": "Dominica",
-                "id": "60",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Dominica",
+                "dial_code": "+1767",
+                "code": "DM"
             },
             {
-                "country": "Dominican Republic",
-                "id": "61",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Dominican Republic",
+                "dial_code": "+1849",
+                "code": "DO"
             },
             {
-                "country": "Algeria",
-                "id": "62",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Ecuador",
+                "dial_code": "+593",
+                "code": "EC"
             },
             {
-                "country": "Ecuador",
-                "id": "63",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Egypt",
+                "dial_code": "+20",
+                "code": "EG"
             },
             {
-                "country": "Estonia",
-                "id": "64",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "El Salvador",
+                "dial_code": "+503",
+                "code": "SV"
             },
             {
-                "country": "Egypt",
-                "id": "65",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Equatorial Guinea",
+                "dial_code": "+240",
+                "code": "GQ"
             },
             {
-                "country": "Western Sahara",
-                "id": "66",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Eritrea",
+                "dial_code": "+291",
+                "code": "ER"
             },
             {
-                "country": "Eritrea",
-                "id": "67",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Estonia",
+                "dial_code": "+372",
+                "code": "EE"
             },
             {
-                "country": "Spain",
-                "id": "68",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Ethiopia",
+                "dial_code": "+251",
+                "code": "ET"
             },
             {
-                "country": "Ethiopia",
-                "id": "69",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Falkland Islands (Malvinas)",
+                "dial_code": "+500",
+                "code": "FK"
             },
             {
-                "country": "Finland",
-                "id": "70",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Faroe Islands",
+                "dial_code": "+298",
+                "code": "FO"
             },
             {
-                "country": "Fiji",
-                "id": "71",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Fiji",
+                "dial_code": "+679",
+                "code": "FJ"
             },
             {
-                "country": "Falkland Islands",
-                "id": "72",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Finland",
+                "dial_code": "+358",
+                "code": "FI"
             },
             {
-                "country": "Micronesia",
-                "id": "73",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "France",
+                "dial_code": "+33",
+                "code": "FR"
             },
             {
-                "country": "Faroe Islands",
-                "id": "74",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "French Guiana",
+                "dial_code": "+594",
+                "code": "GF"
             },
             {
-                "country": "France",
-                "id": "75",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "French Polynesia",
+                "dial_code": "+689",
+                "code": "PF"
             },
             {
-                "country": "Gabon",
-                "id": "76",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Gabon",
+                "dial_code": "+241",
+                "code": "GA"
             },
             {
-                "country": "United Kingdom",
-                "id": "77",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Gambia",
+                "dial_code": "+220",
+                "code": "GM"
             },
             {
-                "country": "Grenada",
-                "id": "78",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Georgia",
+                "dial_code": "+995",
+                "code": "GE"
             },
             {
-                "country": "Georgia",
-                "id": "79",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Germany",
+                "dial_code": "+49",
+                "code": "DE"
             },
             {
-                "country": "French Guiana",
-                "id": "80",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Ghana",
+                "dial_code": "+233",
+                "code": "GH"
             },
             {
-                "country": "Guernsey",
-                "id": "81",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Gibraltar",
+                "dial_code": "+350",
+                "code": "GI"
             },
             {
-                "country": "Ghana",
-                "id": "82",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Greece",
+                "dial_code": "+30",
+                "code": "GR"
             },
             {
-                "country": "Gibraltar",
-                "id": "83",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Greenland",
+                "dial_code": "+299",
+                "code": "GL"
             },
             {
-                "country": "Greenland",
-                "id": "84",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Grenada",
+                "dial_code": "+1473",
+                "code": "GD"
             },
             {
-                "country": "Gambia",
-                "id": "85",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Guadeloupe",
+                "dial_code": "+590",
+                "code": "GP"
             },
             {
-                "country": "Guinea",
-                "id": "86",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Guam",
+                "dial_code": "+1671",
+                "code": "GU"
             },
             {
-                "country": "Guadeloupe",
-                "id": "87",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Guatemala",
+                "dial_code": "+502",
+                "code": "GT"
             },
             {
-                "country": "Equatorial Guinea",
-                "id": "88",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Guernsey",
+                "dial_code": "+44",
+                "code": "GG"
             },
             {
-                "country": "Greece",
-                "id": "89",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Guinea",
+                "dial_code": "+224",
+                "code": "GN"
             },
             {
-                "country": "South Georgia and the South Sandwich Islands",
-                "id": "90",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Guinea-Bissau",
+                "dial_code": "+245",
+                "code": "GW"
             },
             {
-                "country": "Guatemala",
-                "id": "91",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Guyana",
+                "dial_code": "+595",
+                "code": "GY"
             },
             {
-                "country": "Guam",
-                "id": "92",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Haiti",
+                "dial_code": "+509",
+                "code": "HT"
             },
             {
-                "country": "Guinea-Bissau",
-                "id": "93",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Holy See (Vatican City State)",
+                "dial_code": "+379",
+                "code": "VA"
             },
             {
-                "country": "Guyana",
-                "id": "94",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Honduras",
+                "dial_code": "+504",
+                "code": "HN"
             },
             {
-                "country": "Hong Kong",
-                "id": "95",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Hong Kong",
+                "dial_code": "+852",
+                "code": "HK"
             },
             {
-                "country": "Heard Island and McDonald Islands",
-                "id": "96",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Hungary",
+                "dial_code": "+36",
+                "code": "HU"
             },
             {
-                "country": "Honduras",
-                "id": "97",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Iceland",
+                "dial_code": "+354",
+                "code": "IS"
             },
             {
-                "country": "Croatia",
-                "id": "98",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "India",
+                "dial_code": "+91",
+                "code": "IN"
             },
             {
-                "country": "Haiti",
-                "id": "99",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Indonesia",
+                "dial_code": "+62",
+                "code": "ID"
             },
             {
-                "country": "Hungary",
-                "id": "100",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Iran, Islamic Republic of Persian Gulf",
+                "dial_code": "+98",
+                "code": "IR"
             },
             {
-                "country": "Indonesia",
-                "id": "101",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Iraq",
+                "dial_code": "+964",
+                "code": "IQ"
             },
             {
-                "country": "Ireland",
-                "id": "102",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Ireland",
+                "dial_code": "+353",
+                "code": "IE"
             },
             {
-                "country": "Israel",
-                "id": "103",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Isle of Man",
+                "dial_code": "+44",
+                "code": "IM"
             },
             {
-                "country": "Isle of Man",
-                "id": "104",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Israel",
+                "dial_code": "+972",
+                "code": "IL"
             },
             {
-                "country": "India",
-                "id": "105",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Italy",
+                "dial_code": "+39",
+                "code": "IT"
             },
             {
-                "country": "British Indian Ocean Territory",
-                "id": "106",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Jamaica",
+                "dial_code": "+1876",
+                "code": "JM"
             },
             {
-                "country": "Iraq",
-                "id": "107",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Japan",
+                "dial_code": "+81",
+                "code": "JP"
             },
             {
-                "country": "Iran",
-                "id": "108",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Jersey",
+                "dial_code": "+44",
+                "code": "JE"
             },
             {
-                "country": "Iceland",
-                "id": "109",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Jordan",
+                "dial_code": "+962",
+                "code": "JO"
             },
             {
-                "country": "Italy",
-                "id": "110",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Kazakhstan",
+                "dial_code": "+77",
+                "code": "KZ"
             },
             {
-                "country": "Jersey",
-                "id": "111",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Kenya",
+                "dial_code": "+254",
+                "code": "KE"
             },
             {
-                "country": "Jamaica",
-                "id": "112",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Kiribati",
+                "dial_code": "+686",
+                "code": "KI"
             },
             {
-                "country": "Jordan",
-                "id": "113",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Korea, Democratic People's Republic of Korea",
+                "dial_code": "+850",
+                "code": "KP"
             },
             {
-                "country": "Japan",
-                "id": "114",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Korea, Republic of South Korea",
+                "dial_code": "+82",
+                "code": "KR"
             },
             {
-                "country": "Kenya",
-                "id": "115",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Kuwait",
+                "dial_code": "+965",
+                "code": "KW"
             },
             {
-                "country": "Kyrgyzstan",
-                "id": "116",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Kyrgyzstan",
+                "dial_code": "+996",
+                "code": "KG"
             },
             {
-                "country": "Cambodia",
-                "id": "117",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Laos",
+                "dial_code": "+856",
+                "code": "LA"
             },
             {
-                "country": "Kiribati",
-                "id": "118",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Latvia",
+                "dial_code": "+371",
+                "code": "LV"
             },
             {
-                "country": "Comoros",
-                "id": "119",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Lebanon",
+                "dial_code": "+961",
+                "code": "LB"
             },
             {
-                "country": "Saint Kitts and Nevis",
-                "id": "120",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Lesotho",
+                "dial_code": "+266",
+                "code": "LS"
             },
             {
-                "country": "North Korea",
-                "id": "121",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Liberia",
+                "dial_code": "+231",
+                "code": "LR"
             },
             {
-                "country": "South Korea",
-                "id": "122",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Libyan Arab Jamahiriya",
+                "dial_code": "+218",
+                "code": "LY"
             },
             {
-                "country": "Kuwait",
-                "id": "123",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Liechtenstein",
+                "dial_code": "+423",
+                "code": "LI"
             },
             {
-                "country": "Cayman Islands",
-                "id": "124",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Lithuania",
+                "dial_code": "+370",
+                "code": "LT"
             },
             {
-                "country": "Kazakhstan",
-                "id": "125",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Luxembourg",
+                "dial_code": "+352",
+                "code": "LU"
             },
             {
-                "country": "Laos",
-                "id": "126",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Macao",
+                "dial_code": "+853",
+                "code": "MO"
             },
             {
-                "country": "Lebanon",
-                "id": "127",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Macedonia",
+                "dial_code": "+389",
+                "code": "MK"
             },
             {
-                "country": "Saint Lucia",
-                "id": "128",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Madagascar",
+                "dial_code": "+261",
+                "code": "MG"
             },
             {
-                "country": "Liechtenstein",
-                "id": "129",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Malawi",
+                "dial_code": "+265",
+                "code": "MW"
             },
             {
-                "country": "Sri Lanka",
-                "id": "130",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Malaysia",
+                "dial_code": "+60",
+                "code": "MY"
             },
             {
-                "country": "Liberia",
-                "id": "131",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Maldives",
+                "dial_code": "+960",
+                "code": "MV"
             },
             {
-                "country": "Lesotho",
-                "id": "132",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Mali",
+                "dial_code": "+223",
+                "code": "ML"
             },
             {
-                "country": "Lithuania",
-                "id": "133",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Malta",
+                "dial_code": "+356",
+                "code": "MT"
             },
             {
-                "country": "Luxembourg",
-                "id": "134",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Marshall Islands",
+                "dial_code": "+692",
+                "code": "MH"
             },
             {
-                "country": "Latvia",
-                "id": "135",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Martinique",
+                "dial_code": "+596",
+                "code": "MQ"
             },
             {
-                "country": "Libya",
-                "id": "136",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Mauritania",
+                "dial_code": "+222",
+                "code": "MR"
             },
             {
-                "country": "Morocco",
-                "id": "137",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Mauritius",
+                "dial_code": "+230",
+                "code": "MU"
             },
             {
-                "country": "Monaco",
-                "id": "138",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Mayotte",
+                "dial_code": "+262",
+                "code": "YT"
             },
             {
-                "country": "Moldova",
-                "id": "139",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Mexico",
+                "dial_code": "+52",
+                "code": "MX"
             },
             {
-                "country": "Montenegro",
-                "id": "140",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Micronesia, Federated States of Micronesia",
+                "dial_code": "+691",
+                "code": "FM"
             },
             {
-                "country": "Saint Martin",
-                "id": "141",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Moldova",
+                "dial_code": "+373",
+                "code": "MD"
             },
             {
-                "country": "Madagascar",
-                "id": "142",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Monaco",
+                "dial_code": "+377",
+                "code": "MC"
             },
             {
-                "country": "Marshall Islands",
-                "id": "143",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Mongolia",
+                "dial_code": "+976",
+                "code": "MN"
             },
             {
-                "country": "Macedonia",
-                "id": "144",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Montenegro",
+                "dial_code": "+382",
+                "code": "ME"
             },
             {
-                "country": "Mali",
-                "id": "145",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Montserrat",
+                "dial_code": "+1664",
+                "code": "MS"
             },
             {
-                "country": "Myanmar [Burma]",
-                "id": "146",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Morocco",
+                "dial_code": "+212",
+                "code": "MA"
             },
             {
-                "country": "Mongolia",
-                "id": "147",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Mozambique",
+                "dial_code": "+258",
+                "code": "MZ"
             },
             {
-                "country": "Macao",
-                "id": "148",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Myanmar",
+                "dial_code": "+95",
+                "code": "MM"
             },
             {
-                "country": "Northern Mariana Islands",
-                "id": "149",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Namibia",
+                "dial_code": "+264",
+                "code": "NA"
             },
             {
-                "country": "Martinique",
-                "id": "150",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Nauru",
+                "dial_code": "+674",
+                "code": "NR"
             },
             {
-                "country": "Mauritania",
-                "id": "151",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Nepal",
+                "dial_code": "+977",
+                "code": "NP"
             },
             {
-                "country": "Montserrat",
-                "id": "152",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Netherlands",
+                "dial_code": "+31",
+                "code": "NL"
             },
             {
-                "country": "Malta",
-                "id": "153",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Netherlands Antilles",
+                "dial_code": "+599",
+                "code": "AN"
             },
             {
-                "country": "Mauritius",
-                "id": "154",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "New Caledonia",
+                "dial_code": "+687",
+                "code": "NC"
             },
             {
-                "country": "Maldives",
-                "id": "155",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "New Zealand",
+                "dial_code": "+64",
+                "code": "NZ"
             },
             {
-                "country": "Malawi",
-                "id": "156",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Nicaragua",
+                "dial_code": "+505",
+                "code": "NI"
             },
             {
-                "country": "Mexico",
-                "id": "157",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Niger",
+                "dial_code": "+227",
+                "code": "NE"
             },
             {
-                "country": "Malaysia",
-                "id": "158",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Nigeria",
+                "dial_code": "+234",
+                "code": "NG"
             },
             {
-                "country": "Mozambique",
-                "id": "159",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Niue",
+                "dial_code": "+683",
+                "code": "NU"
             },
             {
-                "country": "Namibia",
-                "id": "160",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Norfolk Island",
+                "dial_code": "+672",
+                "code": "NF"
             },
             {
-                "country": "New Caledonia",
-                "id": "161",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Northern Mariana Islands",
+                "dial_code": "+1670",
+                "code": "MP"
             },
             {
-                "country": "Niger",
-                "id": "162",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Norway",
+                "dial_code": "+47",
+                "code": "NO"
             },
             {
-                "country": "Norfolk Island",
-                "id": "163",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Oman",
+                "dial_code": "+968",
+                "code": "OM"
             },
             {
-                "country": "Nigeria",
-                "id": "164",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Pakistan",
+                "dial_code": "+92",
+                "code": "PK"
             },
             {
-                "country": "Nicaragua",
-                "id": "165",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Palau",
+                "dial_code": "+680",
+                "code": "PW"
             },
             {
-                "country": "Netherlands",
-                "id": "166",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Palestinian Territory, Occupied",
+                "dial_code": "+970",
+                "code": "PS"
             },
             {
-                "country": "Norway",
-                "id": "167",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Panama",
+                "dial_code": "+507",
+                "code": "PA"
             },
             {
-                "country": "Nepal",
-                "id": "168",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Papua New Guinea",
+                "dial_code": "+675",
+                "code": "PG"
             },
             {
-                "country": "Nauru",
-                "id": "169",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Paraguay",
+                "dial_code": "+595",
+                "code": "PY"
             },
             {
-                "country": "Niue",
-                "id": "170",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Peru",
+                "dial_code": "+51",
+                "code": "PE"
             },
             {
-                "country": "New Zealand",
-                "id": "171",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Philippines",
+                "dial_code": "+63",
+                "code": "PH"
             },
             {
-                "country": "Oman",
-                "id": "172",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Pitcairn",
+                "dial_code": "+872",
+                "code": "PN"
             },
             {
-                "country": "Panama",
-                "id": "173",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Poland",
+                "dial_code": "+48",
+                "code": "PL"
             },
             {
-                "country": "Peru",
-                "id": "174",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Portugal",
+                "dial_code": "+351",
+                "code": "PT"
             },
             {
-                "country": "French Polynesia",
-                "id": "175",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Puerto Rico",
+                "dial_code": "+1939",
+                "code": "PR"
             },
             {
-                "country": "Papua New Guinea",
-                "id": "176",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Qatar",
+                "dial_code": "+974",
+                "code": "QA"
             },
             {
-                "country": "Philippines",
-                "id": "177",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Romania",
+                "dial_code": "+40",
+                "code": "RO"
             },
             {
-                "country": "Pakistan",
-                "id": "178",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Russia",
+                "dial_code": "+7",
+                "code": "RU"
             },
             {
-                "country": "Poland",
-                "id": "179",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Rwanda",
+                "dial_code": "+250",
+                "code": "RW"
             },
             {
-                "country": "Saint Pierre and Miquelon",
-                "id": "180",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Reunion",
+                "dial_code": "+262",
+                "code": "RE"
             },
             {
-                "country": "Pitcairn Islands",
-                "id": "181",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Saint Barthelemy",
+                "dial_code": "+590",
+                "code": "BL"
             },
             {
-                "country": "Puerto Rico",
-                "id": "182",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Saint Helena, Ascension and Tristan Da Cunha",
+                "dial_code": "+290",
+                "code": "SH"
             },
             {
-                "country": "Palestine",
-                "id": "183",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Saint Kitts and Nevis",
+                "dial_code": "+1869",
+                "code": "KN"
             },
             {
-                "country": "Portugal",
-                "id": "184",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Saint Lucia",
+                "dial_code": "+1758",
+                "code": "LC"
             },
             {
-                "country": "Palau",
-                "id": "185",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Saint Martin",
+                "dial_code": "+590",
+                "code": "MF"
             },
             {
-                "country": "Paraguay",
-                "id": "186",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Saint Pierre and Miquelon",
+                "dial_code": "+508",
+                "code": "PM"
             },
             {
-                "country": "Qatar",
-                "id": "187",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Saint Vincent and the Grenadines",
+                "dial_code": "+1784",
+                "code": "VC"
             },
             {
-                "country": "Réunion",
-                "id": "188",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Samoa",
+                "dial_code": "+685",
+                "code": "WS"
             },
             {
-                "country": "Romania",
-                "id": "189",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "San Marino",
+                "dial_code": "+378",
+                "code": "SM"
             },
             {
-                "country": "Serbia",
-                "id": "190",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Sao Tome and Principe",
+                "dial_code": "+239",
+                "code": "ST"
             },
             {
-                "country": "Russia",
-                "id": "191",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Saudi Arabia",
+                "dial_code": "+966",
+                "code": "SA"
             },
             {
-                "country": "Rwanda",
-                "id": "192",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Senegal",
+                "dial_code": "+221",
+                "code": "SN"
             },
             {
-                "country": "Saudi Arabia",
-                "id": "193",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Serbia",
+                "dial_code": "+381",
+                "code": "RS"
             },
             {
-                "country": "Solomon Islands",
-                "id": "194",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Seychelles",
+                "dial_code": "+248",
+                "code": "SC"
             },
             {
-                "country": "Seychelles",
-                "id": "195",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Sierra Leone",
+                "dial_code": "+232",
+                "code": "SL"
             },
             {
-                "country": "Sudan",
-                "id": "196",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Singapore",
+                "dial_code": "+65",
+                "code": "SG"
             },
             {
-                "country": "Sweden",
-                "id": "197",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Slovakia",
+                "dial_code": "+421",
+                "code": "SK"
             },
             {
-                "country": "Singapore",
-                "id": "198",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Slovenia",
+                "dial_code": "+386",
+                "code": "SI"
             },
             {
-                "country": "Saint Helena",
-                "id": "199",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Solomon Islands",
+                "dial_code": "+677",
+                "code": "SB"
             },
             {
-                "country": "Slovenia",
-                "id": "200",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Somalia",
+                "dial_code": "+252",
+                "code": "SO"
             },
             {
-                "country": "Svalbard and Jan Mayen",
-                "id": "201",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "South Africa",
+                "dial_code": "+27",
+                "code": "ZA"
             },
             {
-                "country": "Slovakia",
-                "id": "202",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "South Sudan",
+                "dial_code": "+211",
+                "code": "SS"
             },
             {
-                "country": "Sierra Leone",
-                "id": "203",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "South Georgia and the South Sandwich Islands",
+                "dial_code": "+500",
+                "code": "GS"
             },
             {
-                "country": "San Marino",
-                "id": "204",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Spain",
+                "dial_code": "+34",
+                "code": "ES"
             },
             {
-                "country": "Senegal",
-                "id": "205",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Sri Lanka",
+                "dial_code": "+94",
+                "code": "LK"
             },
             {
-                "country": "Somalia",
-                "id": "206",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Sudan",
+                "dial_code": "+249",
+                "code": "SD"
             },
             {
-                "country": "Suriname",
-                "id": "207",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Suriname",
+                "dial_code": "+597",
+                "code": "SR"
             },
             {
-                "country": "South Sudan",
-                "id": "208",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Svalbard and Jan Mayen",
+                "dial_code": "+47",
+                "code": "SJ"
             },
             {
-                "country": "São Tomé and Príncipe",
-                "id": "209",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Swaziland",
+                "dial_code": "+268",
+                "code": "SZ"
             },
             {
-                "country": "El Salvador",
-                "id": "210",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Sweden",
+                "dial_code": "+46",
+                "code": "SE"
             },
             {
-                "country": "Sint Maarten",
-                "id": "211",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Switzerland",
+                "dial_code": "+41",
+                "code": "CH"
             },
             {
-                "country": "Syria",
-                "id": "212",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Syrian Arab Republic",
+                "dial_code": "+963",
+                "code": "SY"
             },
             {
-                "country": "Swaziland",
-                "id": "213",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Taiwan",
+                "dial_code": "+886",
+                "code": "TW"
             },
             {
-                "country": "Turks and Caicos Islands",
-                "id": "214",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Tajikistan",
+                "dial_code": "+992",
+                "code": "TJ"
             },
             {
-                "country": "Chad",
-                "id": "215",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Tanzania, United Republic of Tanzania",
+                "dial_code": "+255",
+                "code": "TZ"
             },
             {
-                "country": "French Southern Territories",
-                "id": "216",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Thailand",
+                "dial_code": "+66",
+                "code": "TH"
             },
             {
-                "country": "Togo",
-                "id": "217",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Timor-Leste",
+                "dial_code": "+670",
+                "code": "TL"
             },
             {
-                "country": "Thailand",
-                "id": "218",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Togo",
+                "dial_code": "+228",
+                "code": "TG"
             },
             {
-                "country": "Tajikistan",
-                "id": "219",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Tokelau",
+                "dial_code": "+690",
+                "code": "TK"
             },
             {
-                "country": "Tokelau",
-                "id": "220",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Tonga",
+                "dial_code": "+676",
+                "code": "TO"
             },
             {
-                "country": "East Timor",
-                "id": "221",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Trinidad and Tobago",
+                "dial_code": "+1868",
+                "code": "TT"
             },
             {
-                "country": "Turkmenistan",
-                "id": "222",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Tunisia",
+                "dial_code": "+216",
+                "code": "TN"
             },
             {
-                "country": "Tunisia",
-                "id": "223",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Turkey",
+                "dial_code": "+90",
+                "code": "TR"
             },
             {
-                "country": "Tonga",
-                "id": "224",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Turkmenistan",
+                "dial_code": "+993",
+                "code": "TM"
             },
             {
-                "country": "Turkey",
-                "id": "225",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Turks and Caicos Islands",
+                "dial_code": "+1649",
+                "code": "TC"
             },
             {
-                "country": "Trinidad and Tobago",
-                "id": "226",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Tuvalu",
+                "dial_code": "+688",
+                "code": "TV"
             },
             {
-                "country": "Tuvalu",
-                "id": "227",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Uganda",
+                "dial_code": "+256",
+                "code": "UG"
             },
             {
-                "country": "Taiwan",
-                "id": "228",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Ukraine",
+                "dial_code": "+380",
+                "code": "UA"
             },
             {
-                "country": "Tanzania",
-                "id": "229",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "United Arab Emirates",
+                "dial_code": "+971",
+                "code": "AE"
             },
             {
-                "country": "Ukraine",
-                "id": "230",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "United Kingdom",
+                "dial_code": "+44",
+                "code": "GB"
             },
             {
-                "country": "Uganda",
-                "id": "231",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "United States",
+                "dial_code": "+1",
+                "code": "US"
             },
             {
-                "country": "U.S. Minor Outlying Islands",
-                "id": "232",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Uruguay",
+                "dial_code": "+598",
+                "code": "UY"
             },
             {
-                "country": "United States",
-                "id": "233",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Uzbekistan",
+                "dial_code": "+998",
+                "code": "UZ"
             },
             {
-                "country": "Uruguay",
-                "id": "234",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Vanuatu",
+                "dial_code": "+678",
+                "code": "VU"
             },
             {
-                "country": "Uzbekistan",
-                "id": "235",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Venezuela, Bolivarian Republic of Venezuela",
+                "dial_code": "+58",
+                "code": "VE"
             },
             {
-                "country": "Vatican City",
-                "id": "236",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Vietnam",
+                "dial_code": "+84",
+                "code": "VN"
             },
             {
-                "country": "Saint Vincent and the Grenadines",
-                "id": "237",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Virgin Islands, British",
+                "dial_code": "+1284",
+                "code": "VG"
             },
             {
-                "country": "Venezuela",
-                "id": "238",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Virgin Islands, U.S.",
+                "dial_code": "+1340",
+                "code": "VI"
             },
             {
-                "country": "British Virgin Islands",
-                "id": "239",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Wallis and Futuna",
+                "dial_code": "+681",
+                "code": "WF"
             },
             {
-                "country": "U.S. Virgin Islands",
-                "id": "240",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Yemen",
+                "dial_code": "+967",
+                "code": "YE"
             },
             {
-                "country": "Vietnam",
-                "id": "241",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Zambia",
+                "dial_code": "+260",
+                "code": "ZM"
             },
             {
-                "country": "Vanuatu",
-                "id": "242",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
-            },
-            {
-                "country": "Wallis and Futuna",
-                "id": "243",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
-            },
-            {
-                "country": "Samoa",
-                "id": "244",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
-            },
-            {
-                "country": "Kosovo",
-                "id": "245",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
-            },
-            {
-                "country": "Yemen",
-                "id": "246",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
-            },
-            {
-                "country": "Mayotte",
-                "id": "247",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
-            },
-            {
-                "country": "South Africa",
-                "id": "248",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
-            },
-            {
-                "country": "Zambia",
-                "id": "249",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
-            },
-            {
-                "country": "Zimbabwe",
-                "id": "250",
-                "createdAt": "2018-01-29 12:24:47",
-                "updatedAt": "2018-01-29 12:24:47"
+                "name": "Zimbabwe",
+                "dial_code": "+263",
+                "code": "ZW"
             }
         ]);
     },

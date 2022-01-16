@@ -48,7 +48,7 @@ router.get('/contact', async (req, res, next) => {
 
 router.get('/signup', async (req, res, next) => {
     try {
-        const countries = await Country.findAll({ order: [['country', 'ASC']] });
+        const countries = await Country.findAll({ order: [['name', 'ASC']] });
         res.render('signup', { title: 'Sign Up', countries: countries.map(country => country.toJSON()) });
     } catch (err) {
         next(err);

@@ -3,17 +3,17 @@ extends layout
 block content
     .container-fluid.primary-bg
         .row.pt-4
-            .col.text-center
+            .col-md-12.text-center
                 if newUser 
                     h3.mt-5 Sign Up Successful 
                 else
                     h3.mt-5 Sign Up
                     p.mb-5 Choose from over 20 investment portfolios with high ROI
         .row 
-            .col
+            .col-md-12
                 .container
-                    .row.mb-4.px-5 
-                        .col
+                    .row.mb-4.px-md-5 
+                        .col-md-12
                             if newUser 
                                 .alert.alert-success.text-center.mt-4
                                     i.fa.fa-check-circle.fa-4x
@@ -26,11 +26,7 @@ block content
                                         .col-md-6.col-sm-12.col-xs-12.mb-3
                                             input.form-control(type="text" name="fullname" placeholder="Full name" aria-label="First name" required=true)
                                         .col-md-6.col-sm-12.col-xs-12.mb-3
-                                            select.form-control(type="text" name="gender" placeholder="Gender" aria-label="Gender" required)
-                                                option(value="") -- Select Gender --
-                                                option(value="Female") Female
-                                                option(value="Male") Male
-                                                option(value="Prefer not to say") Prefer not to say
+                                            input.form-control(type="email" name="email" placeholder="Email" aria-label="Email" required=true)
                                     .row.gx-5
                                         .col-md-6.col-sm-12.col-xs-12.mb-3
                                             select.form-control(type="text" name="age_group" placeholder="" aria-label="" data-toggle="popover" data-placement="top" data-content='We need your age to personalize the services we offer to you.' required)
@@ -43,15 +39,21 @@ block content
                                                 option(value="Post War") 76 - 93 (Post War)
                                                 option(value="WW II") 94 - 99 (WW II)
                                         .col-md-6.col-sm-12.col-xs-12.mb-3
-                                            input.form-control.phone-input(type="number" name="phone" placeholder="Phone Number" aria-label="Phone Number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==15) return false;")
+                                            select.form-control(type="text" name="gender" placeholder="Gender" aria-label="Gender" required)
+                                                option(value="") -- Select Gender --
+                                                option(value="Female") Female
+                                                option(value="Male") Male
+                                                option(value="Prefer not to say") Prefer not to say
                                     .row.gx-5
                                         .col-md-6.col-sm-12.col-xs-12.mb-3
-                                            input.form-control(type="email" name="email" placeholder="Email" aria-label="Email" required=true)
-                                        .col-md-6.col-sm-12.col-xs-12.mb-3
-                                            select.form-control(name="country" placeholder="Country" aria-label="Country" required)
+                                            select.form-control#country(name="country" placeholder="Country" aria-label="Country" required)
                                                 option(value="") -- Select Country --
-                                                each country in countries 
-                                                    option(value=`${country.country}`)= country.country
+                                                    each country in countries 
+                                                        option(value=`${country.name}` data-dial_code=`${country.dial_code}`)= country.name
+                                        .col-md-6.col-sm-12.col-xs-12.mb-3.input-group
+                                            .input-group-prepend
+                                                .input-group-text Code
+                                            input.form-control.phone-input(type="number" name="phone" placeholder="Phone Number" aria-label="Phone Number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==15) return false;")
                                     .row.gx-5
                                         .col-md-6.col-sm-12.col-xs-12.mb-3
                                             input.form-control#password(type="password" name="password" placeholder="Password" aria-label="Password" required=true)
@@ -106,6 +108,11 @@ block content
             }
             return false;
         });     
+
+
+        document.querySelector("#country").addEventListener("change", function(e) {
+            document.querySelector(".input-group-text").innerText = this.options[this.selectedIndex].dataset.dial_code;
+        });
 
         //- window.fbAsyncInit = function() {
         //-     FB.init({

@@ -3,14 +3,14 @@ extends ../layout
 block content
     .container-fluid.primary-bg
         .row.pt-4.mt-3
-            .col.text-center
+            .col-md-12.text-center
                 h3.mt-5 Email Verification Status
 
         .row.mb-5
-            .col
+            .col-md-12
                 .container
                     .row.mb-4.px-5 
-                        .col 
+                        .col-md-12 
                             if user_status === 'inactive'
                                 .alert.alert-info.text-center.mt-4
                                     i.fa.fa-info-circle.fa-4x

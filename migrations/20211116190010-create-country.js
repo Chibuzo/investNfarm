@@ -9,18 +9,12 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            country: {
+            name: {
                 type: Sequelize.STRING,
                 allowNull: false
             },
-            createdAt: {
-                allowNull: false,
-                type: Sequelize.DATE
-            },
-            updatedAt: {
-                allowNull: false,
-                type: Sequelize.DATE
-            }
+            dial_code: Sequelize.STRING,
+            code: Sequelize.STRING
         });
     },
 

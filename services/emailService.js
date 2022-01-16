@@ -56,8 +56,8 @@ module.exports = {
 
         const data = {
             user: user.fullname,
-            url: BASE_URL + 'activate/' + email_b64 + '/' + hash,
-            base_url: BASE_URL
+            url: encodeURI(BASE_URL + 'activate/' + email_b64 + '/' + hash),
+            base_url: encodeURI(BASE_URL)
         };
         const subject = "Verify your email address";
         const template = 'verifyAccount';
