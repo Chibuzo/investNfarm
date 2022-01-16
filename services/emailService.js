@@ -56,8 +56,8 @@ module.exports = {
 
         const data = {
             user: user.fullname,
-            url: encodeURI(BASE_URL + 'activate/' + email_b64 + '/' + hash),
-            base_url: encodeURI(BASE_URL)
+            url: BASE_URL + 'activate/' + email_b64 + '/' + hash,
+            base_url: BASE_URL
         };
         const subject = "Verify your email address";
         const template = 'verifyAccount';
@@ -72,8 +72,8 @@ module.exports = {
 
         const data = {
             user: user.fullname,
-            url: encodeURI(BASE_URL + 'password-reset/' + email_b64 + '/' + hash),
-            base_url: encodeURI(BASE_URL)
+            url: BASE_URL + 'password-reset/' + email_b64 + '/' + hash,
+            base_url: BASE_URL
         };
         const subject = "InvestNfarm Password Reset Link";
         const template = 'passwordReset';
