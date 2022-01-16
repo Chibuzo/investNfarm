@@ -7,7 +7,7 @@ const { ErrorHandler } = require('../helpers/errorHandler');
 const { Buffer } = require('buffer');
 const crypto = require('crypto');
 
-const create = async ({ fullname, age_group, email, phone, country, gender, password }) => {
+const create = async ({ fullname, age_group, email, phone, dial_code, country, gender, password }) => {
     if (!fullname) throw new ErrorHandler(400, 'Fullname are required');
     if (!email) throw new ErrorHandler(400, 'Email is required');
     if (!phone) throw new ErrorHandler(400, 'Phone number is required');
@@ -23,7 +23,7 @@ const create = async ({ fullname, age_group, email, phone, country, gender, pass
         email,
         age_group,
         gender,
-        phone,
+        phone: `(${dial_code})${phone}`,
         country,
         password: passwordHash
     };
@@ -99,7 +99,6 @@ const find = async (criteria = {}) => {
         ],
         ...criteria
     });
-    console.log({ users })
     return users.map(user => sanitize(user));
 }
 

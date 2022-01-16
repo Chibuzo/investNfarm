@@ -50,6 +50,7 @@ block content
                                                 option(value="") -- Select Country --
                                                     each country in countries 
                                                         option(value=`${country.name}` data-dial_code=`${country.dial_code}`)= country.name
+                                            input#dial-code(type="hidden" name="dial_code")
                                         .col-md-6.col-sm-12.col-xs-12.mb-3.input-group
                                             .input-group-prepend
                                                 .input-group-text Code
@@ -111,7 +112,9 @@ block content
 
 
         document.querySelector("#country").addEventListener("change", function(e) {
-            document.querySelector(".input-group-text").innerText = this.options[this.selectedIndex].dataset.dial_code;
+            const dial_code = this.options[this.selectedIndex].dataset.dial_code;
+            document.querySelector(".input-group-text").innerText = dial_code;
+            document.querySelector("#dial-code").value = dial_code;
         });
 
         //- window.fbAsyncInit = function() {
