@@ -93,7 +93,7 @@ router.get('/edit-farm/:id', authenticateAdmin, async (req, res, next) => {
     }
 });
 
-router.get('/portfolio/new', authenticateAdmin, async (req, res) => {
+router.get('/portfolio/new', authenticateAdmin, async (req, res, next) => {
     try {
         const farms = await investmentService.getFarms();
         res.render('admin/new-portfolio', { farms });
