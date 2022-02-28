@@ -1,11 +1,12 @@
 #mixcontent.row
     each inv in investments
         - const url_path = `/projects/${inv.id}/${inv.investment_name.split(' ').join('-')}`
+        - const photo = inv.photo_url || inv.InvestmentCategory.photo_url;
         .col-lg-4.mix.col-sm-6
             a.xs-image-popup(data-effect='mfp-zoom-in' href=`#popup_${inv.id}`)
                 .single-recent-work
                     .project-photo-wrapper
-                        .project-photo(style=`background-image:url(${inv.photo_url});`)
+                        .project-photo(style=`background-image:url(/${photo});`)
                             p Click to view
                     .recet-work-footer
                         i.icon-Our_service_3
@@ -14,7 +15,7 @@
                 .row
                     .col-lg-5.xs-padding-0
                         .xs-popup-img
-                            img(src=`${inv.InvestmentCategory.photo_url}` alt='')
+                            img(src=`/${inv.InvestmentCategory.photo_url}` alt='')
                     .col-lg-7
                         .xs-popup-content
                             h2.hidden-title Project info

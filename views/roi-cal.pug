@@ -1,0 +1,90 @@
+extends layout 
+
+block content
+    section.banner-inner-sec(style="background-image:url('/images/roi.jpg')")
+        .banner-table
+            .banner-table-cell
+                .container
+                    .banner-inner-content
+                        h2.banner-inner-title Calculate ROI
+                        ul.xs-breadcumb
+
+    section.xs-faq-sec.section-padding  
+        .container
+            .row.justify-content-md-center
+                .col-md-6
+                    form
+                        .row.gx-5
+                            .col-md-12.col-sm-12.col-xs-12.mb-3
+                                label.form-label Select Product
+                                select.form-control#investment
+                                    option(value="") -- Select Product --
+                                        each inv in investments 
+                                            option(value=`${inv.id}`)= inv.investment_name
+
+                            .col-md-12.col-sm-12.col-xs-12.mb-3
+                                label.form-label Select Currency
+                                select.form-control
+                                    option(value="") -- Select Currency --
+                                    option(value="ngn" selected) NGN - Nigerian Naira 
+                                    //- option(value="usd") USD - American Dollar
+
+                            .col-md-6.col-sm-12.col-xs-12.mb-3
+                                label.form-label Duration of Investment
+                                select.form-control#duration
+                                    option(value=``)
+
+                            .col-md-6.col-sm-12.col-xs-12.mb-3
+                                label.form-label Return on Investment
+                                input(type="text" readonly).form-control#roi
+
+                            .col-md-6.col-sm-12.col-xs-12.mb-3
+                                label.form-label Unit Cost 
+                                select.form-control#unit-cost
+                                    option(value=``)
+
+                            .col-md-6.col-sm-12.col-xs-12.mb-3
+                                label.form-label Number of Units 
+                                input.form-control(type="number" id="units" value="1" min="1")
+
+                            .col-md-12.col-sm-12.col-xs-12.mb-3.text-center
+                                button.btn.btn-success.mt-2(type="button" onclick='calculateROI()') Calculate ROI
+
+            .row.justify-content-md-center 
+                .col-md-6
+                    h4 Result
+                    table.table.table-sm
+                        tr 
+                            th Invested Amount 
+                            td#invested-amount 
+                        tr 
+                            th ROI 
+                            td#roi-result 
+                        tr 
+                            th Total Returns 
+                            td#total-returns
+    script. 
+        const investments = JSON.parse(!{JSON.stringify(invs)});
+        let selected = {};
+
+        document.querySelector("#investment").addEventListener("change", function(e) {
+            const id = this.value;
+            selected = investments.find(inv => inv.id == id);
+            const dur = document.querySelector("#duration");
+            dur.options[dur.selectedIndex].text = selected.period + " Months";
+            document.querySelector("#roi").value = selected.roi + "%";
+            const unit = document.querySelector("#unit-cost");
+            unit.options[unit.selectedIndex].text = selected.unit_cost;
+        });
+
+        function calculateROI() {
+            const units = document.querySelector("#units").value;
+            const unit_cost = parseInt(selected.unit_cost, 10);
+            const total_investment = unit_cost * parseInt(units, 10);
+            const roi = total_investment * (parseInt(selected.roi, 10) / 100);
+            const total_returns = total_investment + roi;
+
+            document.querySelector("#invested-amount").innerHTML = '&#8358;' + total_investment.toLocaleString('en-US', { style: 'decimal' });
+            document.querySelector("#roi-result").innerHTML = '&#8358;' + roi.toLocaleString('en-US', { style: 'decimal' });
+            document.querySelector("#total-returns").innerHTML = '&#8358;' + total_returns.toLocaleString('en-US', { style: 'decimal' });
+        }

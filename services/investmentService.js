@@ -78,9 +78,10 @@ const viewFarm = async id => {
 }
 
 const getFarmInvestments = async id => {
-    const farm = await InvestmentCategory.findByPk(id);
-    const investments = await farm.getInvestments();
-    return investments.map(investment => sanitize(investment));
+    return list({
+        where: { InvestmentCategoryId: id },
+        include: ['investors', 'InvestmentCategory']
+    });
 }
 
 const saveFarm = async ({ body: farmData, files }) => {
@@ -104,7 +105,8 @@ const sanitize = rawInvestment => {
     }
     if (investment.investors) {
         investment.investor_count = investment.investors.length;
-        investment.sold_unit_count = investment.investors.reduce((totalUnits, user) => totalUnits + user.UserInvestments.units, 0)
+        investment.sold_unit_count = investment.investors.reduce((totalUnits, user) => totalUnits + user.UserInvestments.units, 0);
+        investment.avaliable_units = investment.units - investment.sold_unit_count;
     }
     return investment;
 }

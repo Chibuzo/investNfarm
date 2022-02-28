@@ -1,39 +1,59 @@
 extends layout 
 
 block content 
+    - const photo = investment.photo_url || investment.InvestmentCategory.photo_url;
+    section.banner-inner-sec(style=`background-image:url(/${photo})`)
+        .banner-table
+            .banner-table-cell
+                .container
+                    .banner-inner-content
+                        h2.banner-inner-title #{investment.InvestmentCategory.category_name}
 
     section.xs-blog-single-sec.section-padding
         .container
             .row
-                .col-lg-8
+                .col-lg-6.col-xs-12
+                    h2.xs-blog-title.mb-4(style="margin-top: -51px") #{investment.investment_name}
+                    .blog-meta.mb-2
+                        .row 
+                            .col-md-6
+                                span.text-green #[strong UNIT COST] 
+                                br/
+                                h4 ₦#{view.formatCurrency(investment.unit_cost)}
+                            .col-md-6.col-xs-12
+                                span.text-green #[strong DURATION] 
+                                br
+                                h4 #{investment.period} Months
+
+                        .row.mt-2 
+                            .col-md-6.col-xs-12
+                                span.text-green #[strong FARM LOCATION]
+                                br
+                                h4 #{investment.country}
+                            .col-md-6.col-xs-12
+                                span.text-green #[strong REMAINING UNITS]
+                                h4 #{investment.avaliable_units}
+
+                        hr
+                        span.text-green #[strong RETURN ON INVESTMENT] 
+                        br/ 
+                        h3 #{investment.roi}%
+
+                    .row.mt-5.pb-2
+                        .col-md-4
+                            .input-group
+                                span.input-group-text(style="border-top-right-radius: 0; border-bottom-right-radius: 0") Units
+                                input.form-control.input-lg(type="number" id="units" value="1" min="1" max=`${investment.avaliable_units}` style="padding: 0.685rem .75rem")
+                        .col-md-5     
+                            if user   
+                                button.btn.btn-lg.btn-success(type="button" onClick=`makePayment('${user.email}', '${user.phone}', '${user.fullname}', ${investment.unit_cost}, ${investment.id})`) Invest Now  
+                            else
+                                button.btn.btn-lg.btn-success(type="button" data-toggle="modal" data-target="#loginModal") Invest Now
+
+                .col-lg-6.col-xs-12
                     .blog-content-item.single-blog-details
-                        .single-blog-item
-                            .blog-post-img
-                                img(src=`/${investment.photo_url}` alt='')
-                            .blog-meta
-                                -const avaliable_units = investment.units - investment.sold_unit_count
-                                ul
-                                    li 
-                                        a(href='#')
-                                            span.lnr.lnr-map-marker 
-                                            span #{investment.country}
-                                    li
-                                        a(href='#')
-                                            span.lnr.lnr-star 
-                                            span #[strong Unit Cost:] ₦#{view.formatCurrency(investment.unit_cost)}
-                                    li
-                                        a(href='#')
-                                            span.lnr.lnr-hourglass 
-                                            | #[strong Duration:] #{investment.period} Months
-                                    li
-                                        a(href='#')
-                                            span.lnr.lnr-chart-bars 
-                                            span #[strong ROI:] #{investment.roi}%
-                                    li
-                                        a(href='#')
-                                            span.lnr.lnr-pie-chart 
-                                            | #[strong Avaliable Units:] #{avaliable_units}
-                            h3.xs-blog-title #{investment.investment_name}
+                        .single-blog-item.pl-4
+                            h3.xs-blog-title.text-green Description
                             p= investment.InvestmentCategory.about 
                             h3.xs-blog-title Benefits
                             ul.benefits 
@@ -42,33 +62,15 @@ block content
                             h3.xs-blog-title Our Model
                             p= investment.InvestmentCategory.model
 
-                    .row
-                        .col-md-3
-                            .input-group
-                                span.input-group-text(style="border-top-right-radius: 0; border-bottom-right-radius: 0") Units
-                                input.form-control.input-lg(type="number" id="units" value="1" min="1" max=`${avaliable_units}` style="padding: 0.685rem .75rem")
-                        .col-md-5     
-                            if user   
-                                button.btn.btn-lg.btn-success(type="button" onClick=`makePayment('${user.email}', '${user.phone}', '${user.fullname}', ${investment.unit_cost}, ${investment.id})`) Invest Now  
-                            else
-                                button.btn.btn-lg.btn-success(type="button" data-toggle="modal" data-target="#loginModal") Invest Now
+    section.recent-work-sec.section-padding.section-bg
+        .container
+            .row 
+                .col-md-12.text-center
+                    .section-title-item
+                        h3.section-title.mb-5
+                            | SIMILAR PRODUCTs 
+            include includes/portfolios.pug
 
-                .col-lg-4
-                    .sidebar-widgets
-                        .widget
-                            h4.widget-title
-                                span.light-text Similar
-                                |  projects
-                            .widget-posts
-                                each inv in investment.investments
-                                    - const url_path = `/projects/${inv.id}/${inv.investment_name.split(' ').join('-')}`
-                                    .widget-post
-                                        img.d-flex(src=`/${inv.photo_url}` alt='similar project image' draggable='false')
-                                        .media-body
-                                            h4.entry-title
-                                                a(href=`${url_path}`) #{inv.investment_name} 
-                                            span.post-meta-date
-                                                a(href='#') #{inv.status}
 
     #loginModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
         .modal-dialog
@@ -147,7 +149,7 @@ block scriptBlock
                         customizations: {
                             title: "Make Payment",
                             description: "Make payment to complete your investment process",
-                            logo: "https://investnfarm.com/imageslogo.png",
+                            logo: "https://investnfarm.com/images/logo.png",
                         },
                     });
                 } else {

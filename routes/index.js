@@ -172,9 +172,25 @@ router.get('/projects', isAuthenticated, async (req, res, next) => {
 
 router.get('/projects/:id/*', isAuthenticated, async (req, res, next) => {
     try {
-        const investment = await investmentService.view(req.params.id, true);
-        investment.investments = investment.investments.filter(inv => inv.id != req.params.id);
-        res.render('portfolio-page', { title: investment.InvestmentCategory.category_name, investment });
+        const shouldFetchFarmInvestments = true;
+        const investment = await investmentService.view(req.params.id, shouldFetchFarmInvestments);
+        const investments = investment.investments.filter(inv => inv.id != req.params.id);
+        res.render('portfolio-page', { title: investment.InvestmentCategory.category_name, investment, investments });
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.get('/roi-cal', isAuthenticated, async (req, res, next) => {
+    try {
+        const investments = await investmentService.list({
+            where: { status: 'avaliable' },
+            include: ['InvestmentCategory'],
+            order: [
+                ['createdAt', 'DESC']
+            ]
+        });
+        res.render('roi-cal', { title: 'Calculate ROI', investments, invs: JSON.stringify(investments) });
     } catch (err) {
         next(err);
     }
