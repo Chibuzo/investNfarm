@@ -39,12 +39,12 @@ block content
                         br/ 
                         h3 #{investment.roi}%
 
-                    .row.mt-5.pb-2
-                        .col-md-4
+                    .row.mt-5.pb-2.mb-4
+                        .col-6
                             .input-group
                                 span.input-group-text(style="border-top-right-radius: 0; border-bottom-right-radius: 0") Units
                                 input.form-control.input-lg(type="number" id="units" value="1" min="1" max=`${investment.avaliable_units}` style="padding: 0.685rem .75rem")
-                        .col-md-5     
+                        .col-6   
                             if user   
                                 button.btn.btn-lg.btn-success(type="button" onClick=`makePayment('${user.email}', '${user.phone}', '${user.fullname}', ${investment.unit_cost}, ${investment.id})`) Invest Now  
                             else
@@ -68,7 +68,7 @@ block content
                 .col-md-12.text-center
                     .section-title-item
                         h3.section-title.mb-5
-                            | SIMILAR PRODUCTs 
+                            | SIMILAR PRODUCTS
             include includes/portfolios.pug
 
 
