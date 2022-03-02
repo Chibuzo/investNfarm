@@ -1,28 +1,34 @@
 extends ../layout 
 
 block content
-    div.container-fluid.primary-bg.text-white
-        div.row
-            div.col.text-center
-                h1.pt-4 Login 
-        div.row 
-            div.col
+    .container-fluid.primary-bg.mt-5
+        .row
+            .col.text-center
+                h3.pt-4.mt-3 Admin Dashboard
+        .row.mb-5 
+            .col
                 .container
-                    .row 
+                    .row.justify-content-md-center
                         .col-md-6.col-sm-12.col-xs-12.mt-4
-                            form(action="/admin/login", method="post")
-                                div.row
-                                    div.col.mb-3.pe-md-4.ps-md-5
-                                        input.form-control.form-control-lg(type="email", name="email", placeholder="Email" aria-label="Email")
-                                div.row
-                                    div.col.mb-3.pe-md-4.ps-md-5    
-                                        input.form-control.form-control-lg(type="password", name="password", placeholder="Password", aria-label="Password", required=true)
+                            if message
+                                .alert.alert-warning= message
+                            form(action="/admin/login" method="post")
+                                .row
+                                    .col.mb-3.pe-md-4.ps-md-5
+                                        input.form-control.form-control-lg(type="email" name="email" placeholder="Email" aria-label="Email" required=true)
+                                .row
+                                    .col.mb-3.pe-md-4.ps-md-5    
+                                        input.form-control.form-control-lg(type="password" name="password" placeholder="Password" aria-label="Password", required=true)
                                 .row.gy-2
                                     .col.d-grid.pe-md-4.ps-md-5
-                                        button.btn.btn-success.btn-lg.btn-block(type="submit") Login          
+                                        .form-group.form-check 
+                                            input.form-check-input#checkout-remember-me(type="checkbox" name="remember_me")
+                                            label.form-check-label(for="checkout-remember-me") Remember me 
+                                        button.btn.btn-success.btn-lg.btn-block(type="submit") Login              
                     .row 
                         .col.text-center 
                             br/ <br>
                             p.title 
-                                a(href="#/admin/reset-password") Forgot Password?
-                                  
+                                a(href="/reset-password") Forgot Password?
+                            br/ 
+
