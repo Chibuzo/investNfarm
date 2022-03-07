@@ -12,7 +12,13 @@ router.get('/dashboard', async (req, res, next) => {
     try {
         const user_id = req.session.user.id;
         const [investments, userInvestments] = await Promise.all([
-            investmentService.list(),
+            investmentService.list({
+                where: { status: 'avaliable' },
+                include: ['InvestmentCategory'],
+                order: [
+                    ['createdAt', 'DESC']
+                ]
+            }),
             investmentService.getUserInvestments(user_id)
         ]);
 
@@ -26,7 +32,13 @@ router.get('/portfolio', async (req, res, next) => {
     try {
         const user_id = req.session.user.id;
         const [investments, userInvestments] = await Promise.all([
-            investmentService.list(),
+            investmentService.list({
+                where: { status: 'avaliable' },
+                include: ['InvestmentCategory'],
+                order: [
+                    ['createdAt', 'DESC']
+                ]
+            }),
             investmentService.getUserInvestments(user_id)
         ]);
         res.render('user/portfolio', { investments, userInvestments });
