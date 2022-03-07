@@ -45,7 +45,7 @@ const list = async (criteria = {}) => {
 
 const getUserInvestments = async user_id => {
     const user = await User.findByPk(user_id);
-    return user.getInvestments({ joinTableAttributes: ['units', 'createdAt'], raw: true, nest: true });
+    return user.getInvestments({ where: { status: 'active' }, joinTableAttributes: ['units', 'createdAt'], raw: true, nest: true });
 }
 
 const invest = async ({ userId: UserId, investmentId: InvestmentId, units = 1 }) => {

@@ -20,9 +20,10 @@ block content
                         .owl-carousel 
                             each inv in investments
                                 - const url_path = inv.investment_name.split(' ').join('-')
+                                - const photo = inv.photo_url || inv.InvestmentCategory.photo_url;
                                 a(href=`/projects/${inv.id}/${url_path}#loc`)
                                     .item-wrapprt
-                                        .item(style=`background-image: url(/${inv.photo_url})` data-)
+                                        .item(style=`background-image: url(/${photo})` data-)
                                             .item-label
                                                 p.text-center= inv.investment_name
 
@@ -46,7 +47,7 @@ block content
                                                 td= invt.investment_name 
                                                 td= invt.UserInvestments.units
                                                 td= '₦' + view.formatCurrency(invt.unit_cost * invt.UserInvestments.units) 
-                                                td= invt.period + ' Weeks'
+                                                td= invt.period + ' Months'
                                                 td= '₦' + view.formatCurrency((invt.unit_cost * invt.UserInvestments.units) + (invt.unit_cost * invt.UserInvestments.units * (invt.roi / 100)))
                                                 //- td
                                                 //-     a(href="/investment") View Details         

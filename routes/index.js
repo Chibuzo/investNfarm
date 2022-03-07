@@ -208,7 +208,7 @@ router.post('/invest', authenticate, async (req, res, next) => {
     }
 });
 
-router.post('/save-payment', async (req, res, next) => {
+router.post('/save-payment', authenticate, async (req, res, next) => {
     try {
         req.body.userId = req.session.user.id;
         const investment = await paymentService.savePaymentDetails(req.body);

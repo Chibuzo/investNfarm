@@ -1,5 +1,9 @@
 extends layout
 
+block StylesBlock 
+    style.
+        ul.custom, li.custom { list-style: disc; margin-left: 13px}
+
 block content 
     section.banner-inner-sec(style="background-image:url('/images/about-bg.jpg')")
         .banner-table
@@ -13,23 +17,24 @@ block content
             .row
                 .col-md-6.col-xs-12.mt-5
                     h2 About Us 
-                    p We are an innovative digital agritech platform with focus on arable, pastoral farming and other agricultural operations in Africa.
+                    p.mb-5 We are an innovative digital agritech platform with focus on arable, pastoral farming and other agricultural operations in Africa.
                         | We believe strongly that agriculture is one of the most secure and profitable businesses to invest in as we provide opportunities for everyone to engage in Agribusiness anytime and anywhere.
 
-                    h4 OUR VALUE PROPOSITION 
-                    | #[strong High return on Investment]
-                    p We offer a very competitive return on investments to our investors, not only offering above what our competitors offer but also offer, realistic returns that make our investors comfortable and loyal to our brand.
+                    h3.mt-4 OUR VALUE PROPOSITION 
+                    ul.custom
+                        li.custom <h5> High return on Investment</h5>
+                            p We offer a very competitive return on investments to our investors, not only offering above what our competitors offer but also offer, realistic returns that make our investors comfortable and loyal to our brand.
 
-                    h4 Creative Business Models
-                    ul 
-                        li #[strong Sponsorship:] This is an innovative way we raise money to finance our projects.Our investors choose any of our products that resonate with them and monies are raised from them to finance the product. Investors get returns on their investment after the holding period which is the end of the lifecycle of the product.
-                        li #[strong Co-Investing:] This is a model we have introduced to allow investors to co-invest on our products with family and friends. This model permits up to 5 investors to co-invest. The investment will be initiated by one of the investors that has an account with investnfarm and invitation to co-invest will be sent to others.
-                        li #[strong Referral:] This business model allows our customers/investors to recommend people through word of mouth or a referral link generated from their dashboard to our brand. We do not only believe that  this is a way to get our loyal investors to help spread the word about our  brand, but we also use this model to reward our investors and the referred potential investors with incentives.
-                        li #[strong Collective Ownership:] This model qualifies our investors for the ownership of product investment that has been made with us which could be in farm or trading commodities. The ownership can be in a medium or long term investment as the investors want. This model  is only open to our 100 club investors.
+                        li.custom <h5>Creative Business Models</h5>
+                            ul.custom 
+                                li.custom #[strong Sponsorship:] This is an innovative way we raise money to finance our projects.Our investors choose any of our products that resonate with them and monies are raised from them to finance the product. Investors get returns on their investment after the holding period which is the end of the lifecycle of the product.
+                                li.custom #[strong Co-Investing:] This is a model we have introduced to allow investors to co-invest on our products with family and friends. This model permits up to 5 investors to co-invest. The investment will be initiated by one of the investors that has an account with investnfarm and invitation to co-invest will be sent to others.
+                                li.custom #[strong Referral:] This business model allows our customers/investors to recommend people through word of mouth or a referral link generated from their dashboard to our brand. We do not only believe that  this is a way to get our loyal investors to help spread the word about our  brand, but we also use this model to reward our investors and the referred potential investors with incentives.
+                                li.custom #[strong Collective Ownership:] This model qualifies our investors for the ownership of product investment that has been made with us which could be in farm or trading commodities. The ownership can be in a medium or long term investment as the investors want. This model  is only open to our 100 club investors.
 
-                    h4 Enhancing Food Production & Value Chain
-
-                    p We are not just contributing to food production. We engage in the five level process of food production Value chain, these levels include  #[strong our agricultural production, postharvest handling, processing, distribution/retail/service, and consumption.]
+                        br/
+                        li.custom <h5>Enhancing Food Production & Value Chain</h5>
+                            p We are not just contributing to food production. We engage in the five level process of food production Value chain, these levels include  #[strong our agricultural production, postharvest handling, processing, distribution/retail/service, and consumption.]
 
                     //- p Invest”N”farm is an innovative digital agritech sponsorship platform focused on arable, pastoral farming and other agricultural operations in Africa. 
                     //- p We are registered in Nigeria as Invest”N”farm limited, RC:1607086. We believe strongly that Agriculture is one of the most secured and profitable businesses to invest in as we provide opportunities to everyone to engage in Agribusiness anytime and on the go by investing in farms and trading in commodities. 

@@ -21,7 +21,7 @@ head
     link(rel='stylesheet' href='/style/owl.theme.default.min.css')
     link(rel='stylesheet' href='/style/navigation.css')
     link(rel='stylesheet' href='/style/animate.css')
-    link(rel='stylesheet' href='/style/style.css?v=1')
+    link(rel='stylesheet' href='/style/style.css?v=2')
     link(rel='stylesheet' href='/style/responsive.css')
 
     block StylesBlock
@@ -81,34 +81,35 @@ header.xs-header-nav
     .container
         .row.menu-item
             .col-lg-12
-                nav#navigation1.navigation.header-nav.clearfix
-                    .nav-header
-                        .nav-toggle
-                    .nav-menus-wrapper.clearfix
-                        ul.nav-menu
-                            li.active
-                                a(href='/') Home
-                            li
-                                a(href='/about') About us
-                            li
-                                a(href='/projects') Our Products
-                            li 
-                                a(href='/roi-cal') Calculate ROI
-                            li 
-                                a(href='/faq') FAQ
-                            li
-                                a(href='/contact') Contact Us
-                            li  
-                                if user 
-                                    a.btn.btn-success(href="/users/dashboard") 
-                                        | My Dashboard 
-                                else
-                                    a.btn.btn-success(href="/login") Login
+                .row
+                    nav#navigation1.navigation.header-nav.clearfix
+                        .nav-header
+                            .nav-toggle
+                        .nav-menus-wrapper.clearfix
+                            ul.nav-menu
+                                li.active
+                                    a(href='/') Home
+                                li
+                                    a(href='/about') About us
+                                li
+                                    a(href='/projects') Our Products
+                                li 
+                                    a(href='/roi-cal') Calculate ROI
+                                li 
+                                    a(href='/faq') FAQ
+                                li
+                                    a(href='/contact') Contact Us
+                                li  
+                                    if user 
+                                        a.btn.btn-success(href="/users/dashboard") 
+                                            | My Dashboard 
+                                    else
+                                        a.btn.btn-success(href="/login") Login
 
-                        .header-nav-right-info.align-to-right
-                            label(data-toggle="popover" data-placement="bottom" data-content="<br><p><a href='https://t.me/InvestNFarmStrategyTeam' class='btn btn-success btn-block'><i class='fa fa-telegram'></i> Message on Telegram</a></p><p><a href='https://api.whatsapp.com/send?phone=+447438257298' class='btn btn-success btn-block'><i class='fa fa-whatsapp'></i> Message on Whatsapp</a></p>")
-                                i.icon.icon-phone3
-                                a(href='tel:+447438257298').text-white +44 743 825 7298
+                            .header-nav-right-info.align-to-right
+                                label(data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="<br><p><a href='https://t.me/InvestNFarmStrategyTeam' class='btn btn-success btn-block'><i class='fa fa-telegram'></i> Message on Telegram</a></p><p><a href='https://api.whatsapp.com/send?phone=+447438257298' class='btn btn-success btn-block'><i class='fa fa-whatsapp'></i> Message on Whatsapp</a></p>")
+                                    i.icon.icon-phone3
+                                    a(href='#').text-white +44 743 825 7298
 
 
 block content 
