@@ -1,4 +1,4 @@
-const { Investment, Transaction, User, InvestmentCategory } = require('../models');
+const { Investment, UserInvestments, User, InvestmentCategory } = require('../models');
 const { ErrorHandler } = require('../helpers/errorHandler');
 const { uploadFile } = require('../helpers/fileUpload');
 const walletService = require('../services/walletService');
@@ -43,20 +43,24 @@ const list = async (criteria = {}) => {
     return investments.map(investment => sanitize(investment));
 }
 
-const getUserInvestments = async user_id => {
+const getUserInvestments = async (user_id, fullData = false) => {
     const user = await User.findByPk(user_id);
-    return user.getInvestments({ where: { status: 'active' }, joinTableAttributes: ['units', 'createdAt'], raw: true, nest: true });
+    if (!user) return null;
+    if (fullData) {
+        return user.getInvestments({ joinTableAttributes: ['units', 'createdAt'], raw: true, nest: true });
+    }
+    return user.getUserInvestments({ where: { status: 'active' }, joinTableAttributes: ['units', 'createdAt'], raw: true });
 }
 
 const invest = async ({ userId: UserId, investmentId: InvestmentId, units = 1 }) => {
     const investment = await Investment.findByPk(InvestmentId);
     if (!investment) throw new ErrorHandler(404, 'Investment not found');
 
-    // check for sufficient balance
-    // const { balance } = await walletService.fetchTransactions({ where: { user_id: UserId } });
-    // if (balance < investment.unit_cost * units) {
-    //     throw new ErrorHandler(400, 'You don\'t sufficient balance for this transaction');
-    // }
+    // return pending investment if any
+    const pendingInvestment = await UserInvestments.findOne({ where: { InvestmentId, UserId, status: 'pending' } });
+    if (pendingInvestment) {
+        return pendingInvestment;
+    }
 
     return investment.createUserInvestment({ UserId, InvestmentId, units });
 }

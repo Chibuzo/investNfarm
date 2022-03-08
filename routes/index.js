@@ -173,9 +173,16 @@ router.get('/projects', isAuthenticated, async (req, res, next) => {
 router.get('/projects/:id/*', isAuthenticated, async (req, res, next) => {
     try {
         const shouldFetchFarmInvestments = true;
-        const investment = await investmentService.view(req.params.id, shouldFetchFarmInvestments);
+        const [investment, userInvestments] = await Promise.all([
+            investmentService.view(req.params.id, shouldFetchFarmInvestments),
+            investmentService.getUserInvestments((req.session && req.session.user && req.session.user.id) || null)
+        ]);
+        let alreadyInvested = false;
+        if (userInvestments) {
+            alreadyInvested = userInvestments.find(inv => inv.InvestmentId === investment.id)
+        }
         const investments = investment.investments.filter(inv => inv.id != req.params.id);
-        res.render('portfolio-page', { title: investment.InvestmentCategory.category_name, investment, investments });
+        res.render('portfolio-page', { title: investment.InvestmentCategory.category_name, investment, investments, alreadyInvested });
     } catch (err) {
         next(err);
     }
@@ -197,11 +204,11 @@ router.get('/roi-cal', isAuthenticated, async (req, res, next) => {
 });
 
 router.post('/invest', authenticate, async (req, res, next) => {
+    console.log('here')
     try {
         const userId = req.session.user.id;
         const userInvestment = await investmentService.invest({ ...req.body, userId });
         res.status(200).json({ status: 'success', userInvestment });
-        //res.redirect(`/users/portfolio`);
     } catch (err) {
         console.log(err)
         next(err);

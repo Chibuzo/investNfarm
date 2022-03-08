@@ -39,16 +39,21 @@ block content
                         br/ 
                         h3 #{investment.roi}%
 
-                    .row.mt-5.pb-2.mb-4
-                        .col-6
-                            .input-group
-                                span.input-group-text(style="border-top-right-radius: 0; border-bottom-right-radius: 0") Units
-                                input.form-control.input-lg(type="number" id="units" value="1" min="1" max=`${investment.avaliable_units}` style="padding: 0.685rem .75rem")
-                        .col-6   
-                            if user   
-                                button.btn.btn-lg.btn-success(type="button" onClick=`makePayment('${user.email}', '${user.phone}', '${user.fullname}', ${investment.unit_cost}, ${investment.id})`) Invest Now  
-                            else
-                                button.btn.btn-lg.btn-success(type="button" data-toggle="modal" data-target="#loginModal") Invest Now
+                    if (alreadyInvested)
+                        .row.mt-5
+                            .col-xs-12
+                                .alert.alert-warning You have already invested in this product. <a href='/users/portfolio'>Click here</a> to view it on your dashboard
+                    else
+                        .row.mt-5.pb-2.mb-4
+                            .col-6
+                                .input-group
+                                    span.input-group-text(style="border-top-right-radius: 0; border-bottom-right-radius: 0") Units
+                                    input.form-control.input-lg(type="number" id="units" value="1" min="1" max=`${investment.avaliable_units}` style="padding: 0.685rem .75rem")
+                            .col-6   
+                                if user   
+                                    button.btn.btn-lg.btn-success(type="button" onClick="updateModal()" data-toggle="modal" data-target="#confirmationModal") Invest Now  
+                                else
+                                    button.btn.btn-lg.btn-success(type="button" data-toggle="modal" data-target="#loginModal") Invest Now
 
                 .col-lg-6.col-xs-12
                     .blog-content-item.single-blog-details
@@ -62,14 +67,15 @@ block content
                             h3.xs-blog-title Our Model
                             p= investment.InvestmentCategory.model
 
-    section.recent-work-sec.section-padding.section-bg
-        .container
-            .row 
-                .col-md-12.text-center
-                    .section-title-item
-                        h3.section-title.mb-5
-                            | SIMILAR PRODUCTS
-            include includes/portfolios.pug
+    if investments.length
+        section.recent-work-sec.section-padding.section-bg
+            .container
+                .row 
+                    .col-md-12.text-center
+                        .section-title-item
+                            h3.section-title.mb-5
+                                | SIMILAR PRODUCTS
+                include includes/portfolios.pug
 
 
     #loginModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
@@ -96,10 +102,45 @@ block content
                         button.btn.btn-secondary(type='button' data-dismiss='modal') Close
                         button.btn.btn-success(type='submit') Login 
 
+
+    #confirmationModal.modal.fade(tabindex='0' aria-hidden='true')
+        .modal-dialog.modal-lg
+            .modal-content
+                .modal-header
+                    h5.modal-title Confirm Investment
+                    button.btn-close(type='button' data-dismiss='modal' aria-label='Close') 
+                        span(aria-hidden="true") &times;
+                .modal-body
+                    .card.text-center
+                        .card-header
+                            | #[strong You are about to invest in:]
+                        .card-body
+                            h3= investment.investment_name
+                                br/
+                                small @₦#{view.formatCurrency(investment.unit_cost)} per unit
+
+                            p Units Selected: 
+                                span#units_
+                            p.mb-1 Total amount to invest:
+                                h5#total-amount
+
+                            if user
+                                button.btn.btn-success(type='button' onClick=`makePayment('${user.email}', '${user.phone}', '${user.fullname}', ${investment.unit_cost}, ${investment.id})`) Continue to Payment 
+                .modal-footer
+                    button.btn.btn-secondary.pull-start(type='button' data-dismiss='modal') Go back
+
 block scriptBlock 
     script(src="https://checkout.flutterwave.com/v3.js")
 
     script. 
+        function updateModal() {
+            const units = document.querySelector('#units').value;
+            const unit_cost = JSON.parse(!{JSON.stringify(investment.unit_cost)});
+            const total_cost = parseInt(units, 10) * parseInt(unit_cost, 10);
+            document.querySelector('#units_').innerHTML = '<strong>' + units + '</strong>';
+            document.querySelector("#total-amount").innerHTML = ' &#8358;' + total_cost.toLocaleString('en-US', { style: 'decimal' });
+        }
+
         $(document).ready(function() {
             $("#form-login").submit(function(e) {
                 e.preventDefault();
