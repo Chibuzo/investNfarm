@@ -49,7 +49,7 @@ const getUserInvestments = async (user_id, queryCriteria = {}, fullData = false)
     const { where, criteria } = buildCriteria(queryCriteria);
 
     if (fullData) {
-        return user.getInvestments({ where, joinTableAttributes: ['units', 'createdAt'], raw: true, nest: true });
+        return user.getInvestments({ where, ...criteria, joinTableAttributes: ['units', 'createdAt'], raw: true, nest: true });
     }
     return user.getUserInvestments({ where, joinTableAttributes: ['units', 'createdAt'], raw: true });
 }

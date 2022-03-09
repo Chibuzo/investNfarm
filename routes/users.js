@@ -21,7 +21,7 @@ router.get('/dashboard', async (req, res, next) => {
                     ['createdAt', 'DESC']
                 ]
             }),
-            investmentService.getUserInvestments(user_id, { where: { status: 'avaliable' } }, getInvestmentFullData)
+            investmentService.getUserInvestments(user_id, { where: { status: 'avaliable' }, include: ['InvestmentCategory'] }, getInvestmentFullData)
         ]);
 
         res.render('user/dashboard', { investments, userInvestments });
@@ -43,7 +43,7 @@ router.get('/portfolio', async (req, res, next) => {
                     ['createdAt', 'DESC']
                 ]
             }),
-            investmentService.getUserInvestments(user_id, { where: { status: 'avaliable' } }, getInvestmentFullData)
+            investmentService.getUserInvestments(user_id, { where: { status: 'avaliable' }, include: ['InvestmentCategory'] }, getInvestmentFullData)
         ]);
         res.render('user/portfolio', { investments, userInvestments });
     } catch (err) {

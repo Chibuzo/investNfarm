@@ -1,13 +1,13 @@
 extends layout 
 
 block styleBlock 
-    link(rel='stylesheet', href='/stylesheets/owl.carousel.min.css')
-    link(rel='stylesheet', href='/stylesheets/owl.theme.default.min.css')
+    link(rel='stylesheet' href='/stylesheets/owl.carousel.min.css')
+    link(rel='stylesheet' href='/stylesheets/owl.theme.default.min.css')
 
 block content
     section.content-header
         h1 Dashboard
-        
+
     // Main content
     section.content
         .row
@@ -15,7 +15,7 @@ block content
                 .box
                     .box-header.with-border
                         h3.box-title Your Portfolio At a Glance
-                        
+
                         .row 
                             .col-md-12
                                 h3 
@@ -31,9 +31,12 @@ block content
                                             //- th Details
                                     tbody
                                         each invt in userInvestments 
+                                            - const photo = invt.photo_url || invt.InvestmentCategory.photo_url;
                                             tr 
                                                 td= view.formatDate(invt.UserInvestments.createdAt)
-                                                td= invt.investment_name 
+                                                td #[strong #{invt.investment_name}]
+                                                    br/ 
+                                                    img(src=`/${photo}` style="width: 200px") 
                                                 td= invt.UserInvestments.units
                                                 td= '₦' + view.formatCurrency(invt.unit_cost * invt.UserInvestments.units) 
                                                 td= invt.period + ' Weeks'

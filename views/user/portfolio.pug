@@ -42,9 +42,12 @@ block content
                                             //- th Details
                                     tbody
                                         each invt in userInvestments 
+                                            - const photo = invt.photo_url || invt.InvestmentCategory.photo_url;
                                             tr 
                                                 td= view.formatDate(invt.UserInvestments.createdAt)
-                                                td= invt.investment_name 
+                                                td #[strong #{invt.investment_name}]
+                                                    br/ 
+                                                    img(src=`/${photo}` style="width: 200px")
                                                 td= invt.UserInvestments.units
                                                 td= '₦' + view.formatCurrency(invt.unit_cost * invt.UserInvestments.units) 
                                                 td= invt.period + ' Months'
