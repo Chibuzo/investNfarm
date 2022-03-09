@@ -1,5 +1,12 @@
 
 module.exports = {
+    buildCriteria: (criteria, deleteFlag = true) => {
+        const { where = {} } = criteria;
+        delete criteria.where;
+        if (deleteFlag) where.deleted = false;
+        return { criteria, where };
+    },
+
     formatCurrency: input => {
         return parseInt(input).toLocaleString('en-US', { style: 'decimal' });
     },

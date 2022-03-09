@@ -172,16 +172,16 @@ router.get('/projects', isAuthenticated, async (req, res, next) => {
 
 router.get('/projects/:id/*', isAuthenticated, async (req, res, next) => {
     try {
+        const investmentId = req.params.id;
         const shouldFetchFarmInvestments = true;
+        const userId = (req.session && req.session.user && req.session.user.id) || null;
         const [investment, userInvestments] = await Promise.all([
-            investmentService.view(req.params.id, shouldFetchFarmInvestments),
-            investmentService.getUserInvestments((req.session && req.session.user && req.session.user.id) || null)
+            investmentService.view(investmentId, shouldFetchFarmInvestments),
+            investmentService.getUserInvestments(userId, { where: { InvestmentId: investmentId } })
         ]);
-        let alreadyInvested = false;
-        if (userInvestments) {
-            alreadyInvested = userInvestments.find(inv => inv.InvestmentId === investment.id)
-        }
-        const investments = investment.investments.filter(inv => inv.id != req.params.id);
+        const alreadyInvested = userInvestments && userInvestments.length > 0;
+
+        const investments = investment.investments.filter(inv => inv.id != investmentId);
         res.render('portfolio-page', { title: investment.InvestmentCategory.category_name, investment, investments, alreadyInvested });
     } catch (err) {
         next(err);
@@ -267,6 +267,21 @@ router.post('/update-investor', authenticateAdmin, async (req, res, next) => {
     try {
         await userService.updateUser(req.body);
         res.json({ status: true });
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.get('/confirmation', authenticate, async (req, res, next) => {
+    try {
+        const userId = req.session.user.id;
+        const { inv: investmentId } = req.query;
+        const [investment, [userInvestment]] = await Promise.all([
+            investmentService.view(investmentId),
+            investmentService.getUserInvestments(userId, { where: { InvestmentId: investmentId } })
+        ]);
+        investment.units_purchased = userInvestment.units;
+        res.render('confirmation', { investment });
     } catch (err) {
         next(err);
     }

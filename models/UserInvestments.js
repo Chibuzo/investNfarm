@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
         status: {
             type: DataTypes.STRING,
             defaultValue: 'pending'
+        },
+        deleted: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     }, {});
 

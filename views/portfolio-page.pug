@@ -181,10 +181,11 @@ block scriptBlock
 
                             $.post('/save-payment', { amount, status, flw_ref, transaction_id, units, investmentId }, function(d) {
                                 if (d.status.trim() == 'success') {
-                                    location.replace('/users/dashboard');
+                                    location.replace('/confirmation?inv=' + investmentId);
                                     return;
                                 }
                                 alert('Payment not successful')
+                                location.replace('/confirmation?inv=' + investmentId);
                             });
                         },
                         customizations: {

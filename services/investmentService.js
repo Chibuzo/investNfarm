@@ -1,6 +1,7 @@
 const { Investment, UserInvestments, User, InvestmentCategory } = require('../models');
 const { ErrorHandler } = require('../helpers/errorHandler');
 const { uploadFile } = require('../helpers/fileUpload');
+const { buildCriteria } = require('../services/UtillityService');
 const walletService = require('../services/walletService');
 
 const save = async ({ body: investmentData, files }) => {
@@ -27,10 +28,8 @@ const view = async (id, investments = false) => {
     return investment;
 }
 
-const list = async (criteria = {}) => {
-    const { where = {} } = criteria;
-    delete criteria.where;
-    where.deleted = false;
+const list = async (queryCriteria = {}) => {
+    const { where, criteria } = buildCriteria(queryCriteria);
 
     const investments = await Investment.findAll({
         where,
@@ -43,13 +42,16 @@ const list = async (criteria = {}) => {
     return investments.map(investment => sanitize(investment));
 }
 
-const getUserInvestments = async (user_id, fullData = false) => {
+const getUserInvestments = async (user_id, queryCriteria = {}, fullData = false) => {
     const user = await User.findByPk(user_id);
     if (!user) return null;
+
+    const { where, criteria } = buildCriteria(queryCriteria);
+
     if (fullData) {
-        return user.getInvestments({ joinTableAttributes: ['units', 'createdAt'], raw: true, nest: true });
+        return user.getInvestments({ where, joinTableAttributes: ['units', 'createdAt'], raw: true, nest: true });
     }
-    return user.getUserInvestments({ where: { status: 'active' }, joinTableAttributes: ['units', 'createdAt'], raw: true });
+    return user.getUserInvestments({ where, joinTableAttributes: ['units', 'createdAt'], raw: true });
 }
 
 const invest = async ({ userId: UserId, investmentId: InvestmentId, units = 1 }) => {

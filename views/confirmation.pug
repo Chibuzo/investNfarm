@@ -1,0 +1,15 @@
+extends layout 
+
+block content
+    section.xs-faq-sec.section-padding  
+        .container
+            .row.justify-content-md-center 
+                .col-md-8.text-center 
+                    h3 Congratulations!
+                    .message(style="font-size: 18px") 
+                        | You have successfully invested in our #{investment.InvestmentCategory.category_name}.
+                        br/ <br> Your purchased a total of #[strong #{investment.units_purchased}] units and paid a sum total of 
+                        | #[strong ₦#{view.formatCurrency(investment.unit_cost * investment.units_purchased)}]
+                        br/ <br>
+                        a(href="/projects").btn.btn-success.btn-lg View more products
+
