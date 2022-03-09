@@ -177,7 +177,7 @@ router.get('/projects/:id/*', isAuthenticated, async (req, res, next) => {
         const userId = (req.session && req.session.user && req.session.user.id) || null;
         const [investment, userInvestments] = await Promise.all([
             investmentService.view(investmentId, shouldFetchFarmInvestments),
-            investmentService.getUserInvestments(userId, { where: { InvestmentId: investmentId } })
+            investmentService.getUserInvestments(userId, { where: { InvestmentId: investmentId, status: 'active' } })
         ]);
         const alreadyInvested = userInvestments && userInvestments.length > 0;
 
@@ -204,13 +204,11 @@ router.get('/roi-cal', isAuthenticated, async (req, res, next) => {
 });
 
 router.post('/invest', authenticate, async (req, res, next) => {
-    console.log('here')
     try {
         const userId = req.session.user.id;
         const userInvestment = await investmentService.invest({ ...req.body, userId });
         res.status(200).json({ status: 'success', userInvestment });
     } catch (err) {
-        console.log(err)
         next(err);
     }
 });

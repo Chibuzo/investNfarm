@@ -39,7 +39,7 @@ block content
                                                     img(src=`/${photo}` style="width: 200px") 
                                                 td= invt.UserInvestments.units
                                                 td= '₦' + view.formatCurrency(invt.unit_cost * invt.UserInvestments.units) 
-                                                td= invt.period + ' Weeks'
+                                                td= invt.period + ' Months'
                                                 td= '₦' + view.formatCurrency((invt.unit_cost * invt.UserInvestments.units) + (invt.unit_cost * invt.UserInvestments.units * (invt.roi / 100)))
                                                 //- td
                                                 //-     a(href="/investment") View Details         
