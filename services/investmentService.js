@@ -54,6 +54,11 @@ const getUserInvestments = async (user_id, queryCriteria = {}, fullData = false)
     return user.getUserInvestments({ where, joinTableAttributes: ['units', 'createdAt'], raw: true });
 }
 
+const fetchUserInvestments = async (criteria) => {
+    const investments = await UserInvestments.findAll(criteria);
+    return investments;
+}
+
 const invest = async ({ userId: UserId, investmentId: InvestmentId, units = 1 }) => {
     const investment = await Investment.findByPk(InvestmentId);
     if (!investment) throw new ErrorHandler(404, 'Investment not found');
@@ -127,6 +132,7 @@ module.exports = {
     view,
     list,
     getUserInvestments,
+    fetchUserInvestments,
     invest,
     updateInvestment,
     getFarms,

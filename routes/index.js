@@ -12,7 +12,7 @@ const emailService = require('../services/emailService');
 const { ErrorHandler } = require('../helpers/errorHandler');
 
 
-router.get('/', async (req, res, next) => {
+router.get('/', isAuthenticated, async (req, res, next) => {
     try {
         const investments = await investmentService.list({
             include: ['investors', 'InvestmentCategory'],
@@ -27,23 +27,23 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.get('/about', async (req, res, next) => {
+router.get('/about', isAuthenticated, async (req, res, next) => {
     res.render('about', { title: 'About InvestNFarm' });
 });
 
-router.get('/faq', (req, res, next) => {
+router.get('/faq', isAuthenticated, (req, res, next) => {
     res.render('faq', { title: 'Frequently asked Questions' });
 });
 
-router.get('/terms-and-conditions', (req, res, next) => {
+router.get('/terms-and-conditions', isAuthenticated, (req, res, next) => {
     res.render('terms', { title: "Terms of Agreement" });
 });
 
-router.get('/privacy-policy', (req, res, next) => {
+router.get('/privacy-policy', isAuthenticated, (req, res, next) => {
     res.render('privacy-policy', { title: "Privacy Policy" });
 });
 
-router.get('/contact', async (req, res, next) => {
+router.get('/contact', isAuthenticated, async (req, res, next) => {
     res.render('contact', { title: 'Contact InvestNFarm' });
 });
 

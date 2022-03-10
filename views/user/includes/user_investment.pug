@@ -1,0 +1,24 @@
+table.table.table-striped(style="margin-top: 15px")
+    thead
+        tr
+            th Date
+            th Product
+            th Units
+            th Amount Invested
+            th Duration
+            th ROI
+            //- th Details
+    tbody
+        each invt in userInvestments 
+            - const photo = invt.Investment.photo_url || invt.Investment.InvestmentCategory.photo_url;
+            tr 
+                td= view.formatDate(invt.createdAt)
+                td #[strong #{invt.Investment.investment_name}]
+                    br/
+                    img(src=`/${photo}` style="width: 200px") 
+                td= invt.units
+                td= '₦' + view.formatCurrency(invt.Investment.unit_cost * invt.units) 
+                td= invt.Investment.period + ' Months'
+                td= '₦' + view.formatCurrency((invt.Investment.unit_cost * invt.units) + (invt.Investment.unit_cost * invt.units * (invt.Investment.roi / 100)))
+                //- td
+                //-     a(href="/investment") View Details         

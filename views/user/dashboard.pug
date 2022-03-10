@@ -19,30 +19,7 @@ block content
                         .row 
                             .col-md-12
                                 h3 
-                                table.table.table-striped(style="margin-top: 15px")
-                                    thead
-                                        tr
-                                            th Date
-                                            th Product
-                                            th Units
-                                            th Amount Invested
-                                            th Duration
-                                            th ROI
-                                            //- th Details
-                                    tbody
-                                        each invt in userInvestments 
-                                            - const photo = invt.photo_url || invt.InvestmentCategory.photo_url;
-                                            tr 
-                                                td= view.formatDate(invt.UserInvestments.createdAt)
-                                                td #[strong #{invt.investment_name}]
-                                                    br/ 
-                                                    img(src=`/${photo}` style="width: 200px") 
-                                                td= invt.UserInvestments.units
-                                                td= '₦' + view.formatCurrency(invt.unit_cost * invt.UserInvestments.units) 
-                                                td= invt.period + ' Months'
-                                                td= '₦' + view.formatCurrency((invt.unit_cost * invt.UserInvestments.units) + (invt.unit_cost * invt.UserInvestments.units * (invt.roi / 100)))
-                                                //- td
-                                                //-     a(href="/investment") View Details         
+                                include includes/user_investment.pug
 
 
 

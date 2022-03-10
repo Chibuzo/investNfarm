@@ -2,6 +2,25 @@ const express = require('express');
 const router = express.Router();
 const investmentService = require('../services/investmentService');
 const walletService = require('../services/walletService');
+const { Investment, InvestmentCategory } = require('../models');
+
+const getUserInvestmentCriteria = user_id => {
+    return {
+        where: { UserId: user_id, status: 'active' },
+        include: {
+            model: Investment,
+            include: {
+                model: InvestmentCategory,
+                attributes: ['photo_url']
+            }
+        },
+        order: [
+            ['createdAt', 'DESC']
+        ],
+        raw: true,
+        nest: true
+    };
+};
 
 /* GET users listing. */
 router.get('/', function (req, res) {
@@ -11,20 +30,9 @@ router.get('/', function (req, res) {
 router.get('/dashboard', async (req, res, next) => {
     try {
         const user_id = req.session.user.id;
-        const getInvestmentFullData = true;
 
-        const [investments, userInvestments] = await Promise.all([
-            investmentService.list({
-                where: { status: 'avaliable' },
-                include: ['InvestmentCategory'],
-                order: [
-                    ['createdAt', 'DESC']
-                ]
-            }),
-            investmentService.getUserInvestments(user_id, { where: { status: 'avaliable' }, include: ['InvestmentCategory'] }, getInvestmentFullData)
-        ]);
-
-        res.render('user/dashboard', { investments, userInvestments });
+        const userInvestments = await investmentService.fetchUserInvestments(getUserInvestmentCriteria(user_id));
+        res.render('user/dashboard', { userInvestments });
     } catch (err) {
         next(err);
     }
@@ -33,7 +41,6 @@ router.get('/dashboard', async (req, res, next) => {
 router.get('/portfolio', async (req, res, next) => {
     try {
         const user_id = req.session.user.id;
-        const getInvestmentFullData = true;
 
         const [investments, userInvestments] = await Promise.all([
             investmentService.list({
@@ -43,7 +50,7 @@ router.get('/portfolio', async (req, res, next) => {
                     ['createdAt', 'DESC']
                 ]
             }),
-            investmentService.getUserInvestments(user_id, { where: { status: 'avaliable' }, include: ['InvestmentCategory'] }, getInvestmentFullData)
+            investmentService.fetchUserInvestments(getUserInvestmentCriteria(user_id))
         ]);
         res.render('user/portfolio', { investments, userInvestments });
     } catch (err) {
