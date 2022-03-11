@@ -23,16 +23,19 @@ block content
                                         tr
                                             th Date
                                             th Description
+                                            th Bank
                                             th Amount
                                             th Status
 
                                     tbody
-                                        each trnx in transactions 
-                                            //- - let row = trnx.type === 'C' ? 'success' : 'danger'
-                                            //- - if (trnx.status === 'pending') row = 'active'
+                                        each trnx in withdrawals 
+
                                             tr
                                                 td= view.formatDate(trnx.createdAt)
-                                                td= trnx.description 
+                                                td Withdrawal 
+                                                td= trnx.bank 
+                                                    br/ 
+                                                    | #{trnx.account_number}
                                                 td= '₦' + view.formatCurrency(trnx.amount) 
                                                 td= trnx.status
 
@@ -97,7 +100,10 @@ block Modals
                             input.form-control(name="account_name" type="text" required)
                         .form-group 
                             label Amount 
-                            input.form-control(name="amount" type="text" required)    
+                            input.form-control#amount(name="amount" type="text" required)   
+                        .form-group 
+                            .alert.alert-info.hidden 
+
                 .modal-footer
                     button.btn.btn-default.pull-left(type='button' data-dismiss='modal') Close
                     button.btn.btn-primary#withdrawal-btn(type='button') Send Request
@@ -134,9 +140,17 @@ block scriptBlock
             $("#account-form").submit(function(e) {
                 e.preventDefault();
 
+                const walletBalance = !{balance};
+                const amount = $("#amount").val();
+                if (+amount > 4000) {
+                    $(".alert-info").text('Your wallet balance is insufficient for this withdrawal').removeClass('hidden')
+                    return;
+                }
+
                 $.post('/request-withdrawal', $(this).serialize(), function(d) {
                     if (d.status.trim() === 'success') {
-                        toastr.success('Your withdrawal request has been reveived. It will take about 48 hours to process', 'Request Sent');
+                        $('alert-info').addClass('hidden')
+                        toastr.success('Your withdrawal request has been reveived. It will take about 24 hours to process', 'Request Sent');
                     }
                 })
             });

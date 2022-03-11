@@ -61,8 +61,8 @@ router.get('/portfolio', async (req, res, next) => {
 router.get('/wallet', async (req, res, next) => {
     try {
         const user_id = req.session.user.id;
-        const { transactions, balance } = await walletService.fetchTransactions({ where: { user_id } });
-        res.render('user/wallet', { transactions, balance });
+        const withdrawals = await walletService.listUserWithdrawals({ where: { user_id } });
+        res.render('user/wallet', { withdrawals, balance: 0 });
     } catch (err) {
         next(err);
     }

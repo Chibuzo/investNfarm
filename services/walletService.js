@@ -16,6 +16,12 @@ const fetchTransactions = async criteria => {
     return { transactions, balance };
 }
 
+const listUserWithdrawals = async criteria => {
+    const withdrawals = await Withdrawal.findAll({ ...criteria, raw: true });
+    console.log({ withdrawals })
+    return withdrawals;
+}
+
 // const topUpWallet = async ({ amount, status, flw_ref, transaction_id, user_id }) => {
 //     const payment = await Payment.create({
 //         userId: user_id,
@@ -77,5 +83,6 @@ module.exports = {
     fetchTransactions,
     requestWithdrawal,
     listWithdrawals,
+    listUserWithdrawals,
     updateWithdrawal
 }
