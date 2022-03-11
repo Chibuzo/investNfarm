@@ -142,7 +142,7 @@ block scriptBlock
 
                 const walletBalance = !{balance};
                 const amount = $("#amount").val();
-                if (+amount > 4000) {
+                if (+amount > walletBalance) {
                     $(".alert-info").text('Your wallet balance is insufficient for this withdrawal').removeClass('hidden')
                     return;
                 }
