@@ -285,6 +285,17 @@ router.get('/confirmation', authenticate, async (req, res, next) => {
     }
 });
 
+router.post('/send-email', (req, res, next) => {
+    try {
+        console.log('here')
+        emailService.emailINF(req.body);
+        res.status(200).json({ status: 'success' });
+    } catch (err) {
+        console.log(err)
+        next(err);
+    }
+});
+
 router.get('/logout', (req, res, next) => {
     req.session.destroy();
     res.redirect('/');

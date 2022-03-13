@@ -105,10 +105,11 @@ block content
                 .col-lg-4
                     .sidebar-widgets.faq-sidebar
                         .widget.widget-faq
-                            form#xs-contact-form.xs-form(action='#' method='POST')
-                                input#xs_contact_name.form-control(type='text' name='name' placeholder='Your name')
-                                input#xs_contact_email.form-control(type='email' name='email' placeholder='Your email')
-                                textarea#x_contact_massage.form-control.message-box(name='massage' placeholder='Your Question' cols='30' rows='10')
+                            form#contact-form.xs-form(action='#' method='POST')
+                                input#xs_contact_name.form-control(type='text' name='sender_name' placeholder='Your name')
+                                input#xs_contact_email.form-control(type='email' name='sender_email' placeholder='Your email')
+                                textarea#x_contact_massage.form-control.message-box(name='message' placeholder='Your Question' cols='30' rows='10')
+                                .alert.d-none
                                 .xs-btn-wraper
                                     input#xs_contact_submit.xs-btn.sm-btn(type='submit' value='SEND QUESTION')
 
@@ -120,3 +121,19 @@ block content
                     h2 Are you ready to start investing?
                     p Sign up right away and choose from our carefully selected farm projects and invest, while we take care of your investments and profit
                     a.xs-btn.fill(href='/signup') SIGN UP
+
+block scriptBlock
+    script.
+        $(document).ready(function() {
+            $("#contact-form").submit(function(e) {
+                e.preventDefault();
+
+                $.post('/send-email', $(this).serialize(), function(d) {
+                    if (d.status.trim() === 'success') {
+                        $(".alert").removeClass('d-none').addClass('alert-success').text('Thank you for writing us, your message has been reveived. You\'ll hear from us soon.')
+                    } else {
+                        $(".alert").removeClass('d-none').addClass('alert-danger').text('Error: Your message could\'t be delivered at this time, please try again later.');
+                    }
+                });
+            });
+        });

@@ -78,5 +78,32 @@ module.exports = {
         const subject = "InvestNfarm Password Reset Link";
         const template = 'passwordReset';
         sendMail(user.email, subject, template, data);
+    },
+
+    emailINF: function ({ sender_email, sender_name, sender_phone = '', subject = 'From FAQ', message }) {
+        const template = 'infEmail';
+        const data = {
+            sender_name,
+            sender_email,
+            sender_phone,
+            message,
+            base_url: BASE_URL
+        };
+
+        const mailOptions = {
+            from: sender_name + '<' + SENT_FROM + '>',
+            to: 'info@investnfarm.com',
+            replyTo: sender_email,
+            subject: subject,
+            template: template,
+            context: data
+        };
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            //console.log('Message sent: %s', info.messageId);
+        });
     }
 }
