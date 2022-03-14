@@ -74,7 +74,7 @@ block content
                                     input#xs_contact_email.form-control(type='email' name='sender_email' placeholder='Your email' required)
                             .row
                                 .col-lg-6
-                                    input#xs_contact_phone.form-control(type='number' name='sender_phone' placeholder='Your phone number')
+                                    input#xs_contact_phone.form-control(type='number' name='sender_phone' placeholder='Your phone number' required)
                                 .col-lg-6
                                     input#xs_contact_subject.form-control(type='text' name='subject' placeholder='Subject' required)
                             textarea#x_contact_massage.form-control.message-box(name='message' placeholder='Message' cols='30' rows='10' required)
@@ -94,7 +94,7 @@ block scriptBlock
 
                 $.post('/send-email', $(this).serialize(), function(d) {
                     if (d.status.trim() === 'success') {
-                        $(".alert").removeClass('d-none').addClass('alert-success').text('Thank you for writing us, your message has been reveived. You\'ll hear from us soon.')
+                        $(".alert").removeClass('d-none').addClass('alert-success').text('Thank you for writing us, your message has been received. You\'ll hear from us soon.')
                     } else {
                         $(".alert").removeClass('d-none').addClass('alert-danger').text('Error: Your message could\'t be delivered at this time, please try again later.');
                     }
