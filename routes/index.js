@@ -7,7 +7,7 @@ const investmentService = require('../services/investmentService');
 const paymentService = require('../services/PaymentService');
 const walletService = require('../services/walletService');
 const authenticateAdmin = require('../middlewares/authenticateAdmin');
-const Country = require('../models').Country;
+const { UserInvestments, Country } = require('../models');
 const emailService = require('../services/emailService');
 const { ErrorHandler } = require('../helpers/errorHandler');
 
