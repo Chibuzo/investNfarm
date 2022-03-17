@@ -158,7 +158,17 @@ router.post('/reset-password', async (req, res, next) => {
 router.get('/projects', isAuthenticated, async (req, res, next) => {
     try {
         const investments = await investmentService.list({
-            include: ['investors', 'InvestmentCategory'],
+            include: [
+                {
+                    model: UserInvestments,
+                    as: 'userInvestments',
+                    where: { status: 'active' },
+                    required: false
+                },
+                {
+                    model: InvestmentCategory
+                }
+            ],
             order: [
                 ['createdAt', 'DESC']
             ],

@@ -5,8 +5,7 @@ const authenticateAdmin = require('../middlewares/authenticateAdmin');
 const investmentService = require('../services/investmentService');
 const walletService = require('../services/walletService');
 const userService = require('../services/userService');
-const User = require('../models').User;
-const Investment = require('../models').Investment;
+const { User, Investment, UserInvestments } = require('../models');
 
 
 router.get('/', function (req, res) {
@@ -55,7 +54,16 @@ router.get('/dashboard', authenticateAdmin, async (req, res, next) => {
 
 router.get('/portfolio', authenticateAdmin, async (req, res, next) => {
     try {
-        const investments = await investmentService.list({ include: 'investors' });
+        const investments = await investmentService.list({
+            include: [
+                {
+                    model: UserInvestments,
+                    as: 'userInvestments',
+                    where: { status: 'active' },
+                    required: false
+                }
+            ]
+        });
         res.render('admin/portfolio', { investments });
     } catch (err) {
         next(err);

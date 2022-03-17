@@ -18,8 +18,22 @@ const save = async ({ body: investmentData, files }) => {
 const view = async (id, investments = false) => {
     const rawInvestment = await Investment.findOne({
         where: { id },
-        include: ['investors', 'InvestmentCategory']
+        //include: ['investors', 'InvestmentCategory']
+        include: [
+            {
+                model: UserInvestments,
+                as: 'userInvestments',
+                where: { status: 'active' },
+                required: false
+            },
+            {
+                model: InvestmentCategory
+            }
+        ]
     });
+    if (!rawInvestment) {
+        throw new ErrorHandler(404, 'Investment not found');
+    }
     const investment = sanitize(rawInvestment);
 
     if (investments) {
@@ -110,13 +124,15 @@ const saveFarm = async ({ body: farmData, files }) => {
 }
 
 const sanitize = rawInvestment => {
+    if (!rawInvestment) return null;
+
     const investment = { ...rawInvestment.toJSON() };
     if (investment.InvestmentCategory) {
         investment.InvestmentCategory.benefits = JSON.parse(investment.InvestmentCategory.benefits) || [];
     }
-    if (investment.investors) {
-        investment.investor_count = investment.investors.length;
-        investment.sold_unit_count = investment.investors.reduce((totalUnits, user) => totalUnits + user.UserInvestments.units, 0);
+    if (investment.userInvestments) {
+        investment.investor_count = investment.userInvestments.length;
+        investment.sold_unit_count = investment.userInvestments.reduce((totalUnits, user) => totalUnits + user.units, 0);
         investment.avaliable_units = investment.units - investment.sold_unit_count;
     }
     return investment;
