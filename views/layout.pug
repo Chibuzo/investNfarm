@@ -25,6 +25,15 @@ head
     link(rel='stylesheet' href='/style/responsive.css')
 
     block StylesBlock
+
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-228130630-1')
+    script.
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-228130630-1');
+
 //if lt IE 10
     p.browserupgrade
         | You are using an 
