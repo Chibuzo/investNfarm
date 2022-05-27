@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         dial_code: DataTypes.STRING,
         code: DataTypes.STRING
-    });
+    },
+        { timestamps: false });
 
     return Country;
 }
