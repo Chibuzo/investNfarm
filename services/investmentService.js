@@ -2,7 +2,6 @@ const { Investment, UserInvestments, User, InvestmentCategory } = require('../mo
 const { ErrorHandler } = require('../helpers/errorHandler');
 const { uploadFile } = require('../helpers/fileUpload');
 const { buildCriteria } = require('../services/UtillityService');
-const walletService = require('../services/walletService');
 
 const save = async ({ body: investmentData, files }) => {
     const photo_url = await uploadFile(files);
@@ -87,7 +86,7 @@ const invest = async ({ userId: UserId, investmentId: InvestmentId, units = 1 })
 }
 
 const updateInvestment = async (data) => {
-    const id = data.id;
+    const { id } = data;
     delete data.id;
     return Investment.update(data, { where: { id } });
 }

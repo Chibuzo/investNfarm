@@ -18,7 +18,6 @@ const fetchTransactions = async criteria => {
 
 const listUserWithdrawals = async criteria => {
     const withdrawals = await Withdrawal.findAll({ ...criteria, raw: true });
-    console.log({ withdrawals })
     return withdrawals;
 }
 
